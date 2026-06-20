@@ -48,10 +48,13 @@ export default function PlatformPage() {
           <Reveal>
             <Eyebrow className="mb-8">The layers</Eyebrow>
           </Reveal>
-          <ol className="relative overflow-hidden rounded-2xl border border-line">
-            {layers.map((l, i) => (
-              <Reveal key={l.name} delay={i * 60} as="li">
-                <div className="group flex items-start gap-6 border-b border-line bg-paper p-7 transition-colors hover:bg-mist sm:items-center sm:p-8">
+          <Reveal>
+            <ol className="relative overflow-hidden rounded-2xl border border-line">
+              {layers.map((l, i) => (
+                <li
+                  key={l.name}
+                  className="group flex items-start gap-6 border-b border-line bg-paper p-7 transition-colors last:border-b-0 hover:bg-mist sm:items-center sm:p-8"
+                >
                   <span className="font-mono text-sm tabular-nums text-amber">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -63,10 +66,10 @@ export default function PlatformPage() {
                       {l.body}
                     </p>
                   </div>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
 
           <Reveal>
             <p className="mx-auto mt-14 max-w-2xl text-center font-display text-xl font-medium leading-relaxed tracking-tight text-ink sm:text-2xl">

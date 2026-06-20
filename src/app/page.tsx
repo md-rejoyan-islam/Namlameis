@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { Container } from "@/components/ui/Container";
-import { Section, SectionHeading, Eyebrow } from "@/components/ui/Section";
-import { LinkButton, ArrowRight } from "@/components/ui/Button";
-import { SignalMap } from "@/components/SignalMap";
 import { SolutionCard } from "@/components/cards";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
+import { SignalMap } from "@/components/SignalMap";
+import { ArrowRight, LinkButton } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { Eyebrow, Section, SectionHeading } from "@/components/ui/Section";
 import { solutions } from "@/lib/content";
+import Link from "next/link";
 
 const method = [
   {
@@ -36,7 +36,10 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-navy text-paper">
-        <div className="signal-grid absolute inset-0 opacity-50" aria-hidden="true" />
+        <div
+          className="signal-grid absolute inset-0 opacity-50"
+          aria-hidden="true"
+        />
         <div
           className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-azure/15 blur-3xl"
           aria-hidden="true"
@@ -65,15 +68,19 @@ export default function Home() {
             </Reveal>
             <Reveal delay={120}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/75">
-                Namlameis unites AI-powered cybersecurity, human-led vulnerability
-                discovery, threat detection and response, and reputation defense in
-                a single, disciplined practice. Where automation finds the known, we
-                hunt the unknown.
+                Namlameis unites AI-powered cybersecurity, human-led
+                vulnerability discovery, threat detection and response, and
+                reputation defense in a single, disciplined practice. Where
+                automation finds the known, we hunt the unknown.
               </p>
             </Reveal>
             <Reveal delay={180}>
               <div className="mt-9 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
-                <LinkButton href="/contact" size="lg" className="w-full sm:w-auto">
+                <LinkButton
+                  href="/contact"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   Request a briefing <ArrowRight />
                 </LinkButton>
                 <LinkButton
@@ -106,9 +113,9 @@ export default function Home() {
             <Eyebrow className="mb-5">The difference</Eyebrow>
             <p className="font-display text-2xl font-medium leading-[1.4] tracking-tight text-ink sm:text-[1.75rem]">
               Most security companies sell you a platform. We give you what a
-              platform alone cannot: a patient, expert team that hunts the threats
-              automation was never built to find — and an intelligence that turns
-              overwhelming signal into a clear story you can act on.
+              platform alone cannot: a patient, expert team that hunts the
+              threats automation was never built to find — and an intelligence
+              that turns overwhelming signal into a clear story you can act on.
             </p>
             <p className="mt-6 text-lg font-medium text-amber">
               Machines find the known. We find the unknown.
@@ -153,7 +160,10 @@ export default function Home() {
 
       {/* INDUSTRIES STRIP */}
       <Section tone="navy" className="relative overflow-hidden">
-        <div className="signal-grid absolute inset-0 opacity-40" aria-hidden="true" />
+        <div
+          className="signal-grid absolute inset-0 opacity-40"
+          aria-hidden="true"
+        />
         <Container className="relative">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
             <Reveal>
@@ -169,9 +179,18 @@ export default function Home() {
             <Reveal delay={100}>
               <ul className="divide-y divide-white/10 border-y border-white/10">
                 {[
-                  { name: "Financial Services & FinTech", href: "/industries/fintech" },
-                  { name: "Government & Defense", href: "/industries/government-defense" },
-                  { name: "Critical Infrastructure", href: "/industries/critical-infrastructure" },
+                  {
+                    name: "Financial Services & FinTech",
+                    href: "/industries/fintech",
+                  },
+                  {
+                    name: "Government & Defense",
+                    href: "/industries/government-defense",
+                  },
+                  {
+                    name: "Critical Infrastructure",
+                    href: "/industries/critical-infrastructure",
+                  },
                 ].map((i) => (
                   <li key={i.href}>
                     <a
@@ -201,10 +220,13 @@ export default function Home() {
               intro="An ant colony searches every path until the shortest route to the target emerges — patient, distributed, signal-driven. Our engagements follow the same discipline."
             />
           </Reveal>
-          <div className="mt-14 grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2 lg:grid-cols-4">
-            {method.map((m, i) => (
-              <Reveal key={m.step} delay={i * 70}>
-                <div className="h-full border-b border-r border-line bg-paper p-7">
+          <Reveal>
+            <div className="mt-14 grid overflow-hidden rounded-2xl border  border-line sm:grid-cols-2 lg:grid-cols-4">
+              {method.map((m) => (
+                <div
+                  key={m.step}
+                  className={`h-full  border-r border-line bg-paper p-7 ${m.step === "04" ? "border-r-0" : ""}`}
+                >
                   <span className="font-mono text-xs tracking-[0.18em] text-amber">
                     {m.step}
                   </span>
@@ -215,9 +237,9 @@ export default function Home() {
                     {m.body}
                   </p>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </Section>
 

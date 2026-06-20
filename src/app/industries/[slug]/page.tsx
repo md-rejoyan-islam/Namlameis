@@ -94,10 +94,11 @@ export default async function IndustryPage({
           <Reveal>
             <Eyebrow className="mb-6">Other industries</Eyebrow>
           </Reveal>
-          <div className="grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
-            {others.map((o, i) => (
-              <Reveal key={o.slug} delay={i * 50}>
+          <Reveal>
+            <div className="grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
+              {others.map((o) => (
                 <Link
+                  key={o.slug}
                   href={`/industries/${o.slug}`}
                   className="group flex h-full items-center justify-between gap-4 border-b border-r border-line bg-paper p-6 transition-colors hover:bg-mist"
                 >
@@ -106,9 +107,9 @@ export default async function IndustryPage({
                   </span>
                   <ArrowRight className="shrink-0 text-subtle transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber" />
                 </Link>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
