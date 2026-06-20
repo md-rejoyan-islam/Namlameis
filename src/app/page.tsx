@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/Section";
 import { LinkButton, ArrowRight } from "@/components/ui/Button";
@@ -43,7 +44,19 @@ export default function Home() {
         <Container className="relative grid items-center gap-12 py-24 sm:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:py-32">
           <div>
             <Reveal>
-              <Eyebrow className="mb-6">Cyber · AI · Defense</Eyebrow>
+              <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.28em] text-amber">
+                {["Cyber", "AI", "Defense"].map((t, i) => (
+                  <span key={t} className="flex items-center gap-3">
+                    {i > 0 && (
+                      <span
+                        className="h-1 w-1 rounded-full bg-amber/40"
+                        aria-hidden="true"
+                      />
+                    )}
+                    {t}
+                  </span>
+                ))}
+              </div>
             </Reveal>
             <Reveal delay={60}>
               <h1 className="font-display text-4xl font-medium leading-[1.06] tracking-tight sm:text-5xl md:text-[3.6rem]">
@@ -59,11 +72,16 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={180}>
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <LinkButton href="/contact" size="lg">
+              <div className="mt-9 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+                <LinkButton href="/contact" size="lg" className="w-full sm:w-auto">
                   Request a briefing <ArrowRight />
                 </LinkButton>
-                <LinkButton href="/platform" size="lg" variant="light">
+                <LinkButton
+                  href="/platform"
+                  size="lg"
+                  variant="light"
+                  className="w-full sm:w-auto"
+                >
                   Explore the platform
                 </LinkButton>
               </div>
@@ -72,7 +90,7 @@ export default function Home() {
 
           <Reveal delay={220} className="relative">
             <div className="relative mx-auto aspect-4/3 w-full max-w-lg">
-              <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/3 backdrop-blur-sm" />
+              <div className="absolute inset-0 rounded-xl border border-white/10 bg-white/3 backdrop-blur-sm" />
               <div className="absolute inset-0 p-6">
                 <SignalMap />
               </div>
@@ -116,18 +134,18 @@ export default function Home() {
               </Reveal>
             ))}
             <Reveal delay={solutions.length * 60}>
-              <LinkButton
+              <Link
                 href="/solutions"
-                variant="secondary"
-                className="flex h-full min-h-40 w-full flex-col items-start justify-end gap-2 rounded-2xl px-7! py-7! text-left"
+                className="group flex h-full min-h-40 flex-col items-start justify-end gap-2 rounded-xl border border-line-strong bg-paper p-7 text-left transition-all duration-300 hover:-translate-y-1 hover:border-navy hover:shadow-(--shadow-card-hover)"
               >
-                <span className="font-display text-lg font-medium">
+                <span className="font-display text-lg font-medium text-ink">
                   All solutions
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-sm text-muted">
-                  See the full practice <ArrowRight />
+                <span className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors group-hover:text-amber">
+                  See the full practice{" "}
+                  <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
-              </LinkButton>
+              </Link>
             </Reveal>
           </div>
         </Container>
@@ -183,10 +201,10 @@ export default function Home() {
               intro="An ant colony searches every path until the shortest route to the target emerges — patient, distributed, signal-driven. Our engagements follow the same discipline."
             />
           </Reveal>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2 lg:grid-cols-4">
             {method.map((m, i) => (
               <Reveal key={m.step} delay={i * 70}>
-                <div className="h-full bg-paper p-7">
+                <div className="h-full border-b border-r border-line bg-paper p-7">
                   <span className="font-mono text-xs tracking-[0.18em] text-amber">
                     {m.step}
                   </span>

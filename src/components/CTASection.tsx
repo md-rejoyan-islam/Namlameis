@@ -23,12 +23,17 @@ export function CTASection({
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-paper/70">
             {body}
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <LinkButton href={primary.href} size="lg">
+          <div className="mt-9 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
+            <LinkButton href={primary.href} size="lg" className="w-full sm:w-auto">
               {primary.label} <ArrowRight />
             </LinkButton>
             {secondary && (
-              <LinkButton href={secondary.href} size="lg" variant="light">
+              <LinkButton
+                href={secondary.href}
+                size="lg"
+                variant="light"
+                className="w-full sm:w-auto"
+              >
                 {secondary.label}
               </LinkButton>
             )}

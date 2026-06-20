@@ -32,7 +32,7 @@ const messages = [
 
 function Monogram({ initials }: { initials: string }) {
   return (
-    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-navy to-azure font-display text-xl font-semibold text-paper shadow-[var(--shadow-card)]">
+    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-navy to-azure font-display text-xl font-semibold text-paper shadow-[var(--shadow-card)]">
       {initials}
     </div>
   );
@@ -48,7 +48,7 @@ export default function LeadershipPage() {
           <div className="space-y-10">
             {messages.map((m, i) => (
               <Reveal key={m.name} delay={i * 80}>
-                <figure className="rounded-3xl border border-line bg-mist p-8 shadow-[var(--shadow-card)] sm:p-10">
+                <figure className="rounded-xl border border-line bg-mist p-8 shadow-[var(--shadow-card)] sm:p-10">
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-amber">
                     {m.heading}
                   </p>

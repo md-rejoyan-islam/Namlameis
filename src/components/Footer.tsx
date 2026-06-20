@@ -51,7 +51,7 @@ function Column({
 export function Footer() {
   return (
     <footer className="bg-ink text-paper">
-      <Container className="py-16">
+      <Container className="py-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr_0.9fr]">
           <div className="max-w-xs">
             <div className="flex items-center gap-2.5">
@@ -78,7 +78,7 @@ export function Footer() {
           <Column title="Legal" links={legalLinks} />
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
           <p className="text-xs text-paper/50">
             © {site.founded}–2026 {site.name} · {site.location}
           </p>

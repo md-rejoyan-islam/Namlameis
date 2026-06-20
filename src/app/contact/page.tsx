@@ -72,7 +72,7 @@ export default function ContactPage() {
 
             {/* Service-request form */}
             <Reveal delay={100}>
-              <div className="rounded-3xl border border-line bg-mist p-7 shadow-[var(--shadow-card)] sm:p-9">
+              <div className="rounded-xl border border-line bg-mist p-7 shadow-[var(--shadow-card)] sm:p-9">
                 <Eyebrow className="mb-2">Service request</Eyebrow>
                 <p className="mb-7 text-sm leading-relaxed text-muted">
                   Register a request directly. The team reviews every submission

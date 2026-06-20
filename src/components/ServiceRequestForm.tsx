@@ -57,7 +57,7 @@ export function ServiceRequestForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-teal/30 bg-teal/8 p-8 text-center">
+      <div className="rounded-lg border border-teal/30 bg-teal/8 p-8 text-center">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal/15 text-teal">
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
             <path

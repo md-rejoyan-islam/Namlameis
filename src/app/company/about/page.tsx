@@ -55,7 +55,7 @@ export default function AboutPage() {
 
             <Reveal delay={120}>
               <div className="sticky top-28 space-y-6">
-                <div className="relative overflow-hidden rounded-3xl bg-navy p-10 text-paper">
+                <div className="relative overflow-hidden rounded-xl bg-navy p-10 text-paper">
                   <div
                     className="signal-grid absolute inset-0 opacity-40"
                     aria-hidden="true"
@@ -65,7 +65,7 @@ export default function AboutPage() {
                     The colony explores every path until the surest route emerges.
                   </p>
                 </div>
-                <dl className="rounded-3xl border border-line bg-mist p-8">
+                <dl className="rounded-xl border border-line bg-mist p-8">
                   <div>
                     <dt className="font-mono text-xs uppercase tracking-[0.18em] text-subtle">
                       Founded

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "ghost" | "light";
+type Variant = "primary" | "secondary" | "ghost" | "light" | "dark";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
 
 const sizes: Record<Size, string> = {
   md: "px-5 py-2.5 text-sm",
@@ -20,6 +20,7 @@ const variants: Record<Variant, string> = {
   ghost: "text-ink hover:text-amber",
   light:
     "border border-white/25 text-paper hover:bg-white/10 hover:border-white/50",
+  dark: "bg-ink text-paper hover:bg-navy hover:-translate-y-0.5",
 };
 
 function classesFor(variant: Variant, size: Size, className?: string) {

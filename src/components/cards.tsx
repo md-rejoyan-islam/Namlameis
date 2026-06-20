@@ -14,7 +14,7 @@ export function SolutionCard({
     <Link
       href={`/solutions/${solution.slug}`}
       className={cn(
-        "group relative flex flex-col rounded-2xl border border-line bg-paper p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[var(--shadow-card-hover)]",
+        "group relative flex flex-col rounded-xl border border-line bg-paper p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[var(--shadow-card-hover)]",
         className,
       )}
     >
@@ -46,7 +46,7 @@ export function IndustryCard({
     <Link
       href={`/industries/${industry.slug}`}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-paper p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[var(--shadow-card-hover)]",
+        "group relative flex flex-col overflow-hidden rounded-xl border border-line bg-paper p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[var(--shadow-card-hover)]",
         className,
       )}
     >

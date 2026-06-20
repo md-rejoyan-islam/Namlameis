@@ -81,7 +81,7 @@ export default async function SolutionPage({
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {solution.capabilities.map((c, i) => (
               <Reveal key={c.name} delay={i * 50}>
-                <div className="h-full rounded-2xl border border-line bg-paper p-7 shadow-[var(--shadow-card)]">
+                <div className="h-full rounded-xl border border-line bg-paper p-7 shadow-(--shadow-card)">
                   <h3 className="font-display text-lg font-medium tracking-tight text-ink">
                     {c.name}
                   </h3>
@@ -116,7 +116,7 @@ export default async function SolutionPage({
       <Section tone={solution.method ? "mist" : "paper"}>
         <Container>
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-navy p-10 text-paper sm:p-14">
+            <div className="relative overflow-hidden rounded-xl bg-navy p-10 text-paper sm:p-14">
               <div
                 className="signal-grid absolute inset-0 opacity-40"
                 aria-hidden="true"
@@ -138,12 +138,12 @@ export default async function SolutionPage({
           <Reveal>
             <Eyebrow className="mb-6">More solutions</Eyebrow>
           </Reveal>
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+          <div className="grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
             {others.map((o, i) => (
               <Reveal key={o.slug} delay={i * 40}>
                 <Link
                   href={`/solutions/${o.slug}`}
-                  className="group flex h-full items-center justify-between gap-4 bg-paper p-6 transition-colors hover:bg-mist"
+                  className="group flex h-full items-center justify-between gap-4 border-b border-r border-line bg-paper p-6 transition-colors hover:bg-mist"
                 >
                   <span>
                     <span className="font-mono text-xs tracking-[0.18em] text-amber">

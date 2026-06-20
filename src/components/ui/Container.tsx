@@ -11,10 +11,10 @@ export function Container({
 }) {
   const max =
     size === "narrow"
-      ? "max-w-3xl"
+      ? "max-w-4xl"
       : size === "wide"
-        ? "max-w-7xl"
-        : "max-w-6xl";
+        ? "max-w-[88rem]"
+        : "max-w-7xl";
   return (
     <div className={cn("mx-auto w-full px-6 sm:px-8", max, className)}>
       {children}
