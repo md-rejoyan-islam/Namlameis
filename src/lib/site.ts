@@ -1,14 +1,27 @@
 // Central site configuration: brand, navigation, contact details.
 // Single source of truth used by the navbar, footer, and metadata.
 
+// Resolve the public origin from the environment so absolute URLs (metadataBase,
+// sitemap, OG images) auto-adopt the real host after deployment:
+//   1. NEXT_PUBLIC_SITE_URL — explicit custom domain (preferred in production)
+//   2. VERCEL_URL — the current Vercel deployment URL
+//   3. localhost — local development fallback
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://namlameis.vercel.app")
+).replace(/\/$/, "");
+
 export const site = {
   name: "Namlameis",
   tagline: "Cyber · AI · Defense",
   domain: "namlameis.com",
-  url: "https://namlameis.com",
+  url: siteUrl,
   founded: 2024,
   location: "Salzburg, Austria",
-  title: "Namlameis — Defense-grade cybersecurity, AI & vulnerability discovery",
+  title:
+    "Namlameis — Defense-grade cybersecurity, AI & vulnerability discovery",
   description:
     "Namlameis unites AI-powered cybersecurity, human-led vulnerability discovery, threat detection and response, and reputation defense. We find what others miss — before it finds you.",
   footerLine:
@@ -28,12 +41,14 @@ export const solutionsNav: NavLink[] = [
   {
     label: "AI-Powered Cybersecurity",
     href: "/solutions/ai-powered-cybersecurity",
-    blurb: "Intelligence that learns your environment and defends it in real time.",
+    blurb:
+      "Intelligence that learns your environment and defends it in real time.",
   },
   {
     label: "Vulnerability Discovery & Offensive Security",
     href: "/solutions/vulnerability-discovery",
-    blurb: "Human-led research that finds what scanners and checklists never will.",
+    blurb:
+      "Human-led research that finds what scanners and checklists never will.",
   },
   {
     label: "Threat Detection & Response",
@@ -48,7 +63,8 @@ export const solutionsNav: NavLink[] = [
   {
     label: "Data Security",
     href: "/solutions/data-security",
-    blurb: "Protection that travels with the data — at rest, in motion, and in use.",
+    blurb:
+      "Protection that travels with the data — at rest, in motion, and in use.",
   },
 ];
 
@@ -74,9 +90,21 @@ export const mainNav: NavGroup[] = [
   { label: "Solutions", href: "/solutions", children: solutionsNav },
   { label: "Industries", href: "/industries", children: industriesNav },
   { label: "Platform", href: "/platform" },
-  { label: "Company", href: "/company/about", children: [
-    { label: "About", href: "/company/about", blurb: "Founded 2024 to find what others miss." },
-    { label: "Leadership", href: "/company/leadership", blurb: "A message from our leadership." },
-  ] },
+  {
+    label: "Company",
+    href: "/company/about",
+    children: [
+      {
+        label: "About",
+        href: "/company/about",
+        blurb: "Founded 2024 to find what others miss.",
+      },
+      {
+        label: "Leadership",
+        href: "/company/leadership",
+        blurb: "A message from our leadership.",
+      },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];

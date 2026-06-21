@@ -27,6 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${solution.cardTitle} · Namlameis`,
       description: solution.heroSub,
+      images: ["/opengraph-image"],
     },
   };
 }

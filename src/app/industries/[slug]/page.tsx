@@ -27,6 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${industry.name} · Namlameis`,
       description: industry.heroHeadline,
+      images: ["/opengraph-image"],
     },
   };
 }
