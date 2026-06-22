@@ -1,11 +1,3 @@
-// Central site configuration: brand, navigation, contact details.
-// Single source of truth used by the navbar, footer, and metadata.
-
-// Resolve the public origin from the environment so absolute URLs (metadataBase,
-// sitemap, OG images) auto-adopt the real host after deployment:
-//   1. NEXT_PUBLIC_SITE_URL — explicit custom domain (preferred in production)
-//   2. VERCEL_URL — the current Vercel deployment URL
-//   3. localhost — local development fallback
 const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_URL
