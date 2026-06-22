@@ -227,10 +227,30 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="nm-nav-mobile" style={{ background: "#0A1424", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px 28px", display: "flex", flexDirection: "column", gap: 4 }}>
-          {[{ name: "Platform", href: "/platform" }, ...solutions, ...products, ...services, ...industries, ...company, { name: "Contact", href: "/contact" }].map((it, i) => (
-            <Link key={`${it.href}-${i}`} href={it.href} onClick={() => setMobileOpen(false)} style={{ padding: "10px 0", fontSize: 15, color: "rgba(226,232,241,0.82)", textDecoration: "none", fontFamily: "var(--font-sans)" }}>{it.name}</Link>
+        <div className="nm-nav-mobile" style={{ background: "#0A1424", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "8px 24px 28px", display: "flex", flexDirection: "column", maxHeight: "calc(100vh - 74px)", overflowY: "auto" }}>
+          <Link href="/platform" onClick={() => setMobileOpen(false)} style={{ padding: "13px 0", fontSize: 15.5, fontWeight: 500, color: "#FFFFFF", textDecoration: "none", fontFamily: "var(--font-sans)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>Platform</Link>
+
+          {([
+            { title: "Solutions", items: solutions },
+            { title: "Products", items: products },
+            { title: "Services", items: services },
+            { title: "Industries", items: industries },
+            { title: "Company", items: company },
+          ] as { title: string; items: Item[] }[]).map((group) => (
+            <div key={group.title} style={{ padding: "16px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", color: "#16B9A6", marginBottom: 8 }}>{group.title.toUpperCase()}</div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {group.items.map((it) => (
+                  <Link key={it.href} href={it.href} onClick={() => setMobileOpen(false)} style={{ padding: "8px 0", fontSize: 14.5, color: "rgba(226,232,241,0.78)", textDecoration: "none", fontFamily: "var(--font-sans)" }}>{it.name}</Link>
+                ))}
+              </div>
+            </div>
           ))}
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, paddingTop: 20 }}>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} style={{ textAlign: "center", padding: "13px 18px", border: "1px solid rgba(255,255,255,0.4)", borderRadius: 8, color: "#FFFFFF", fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 500, textDecoration: "none" }}>Get a demo</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} style={{ textAlign: "center", padding: "14px 18px", background: "linear-gradient(180deg,#42E6D2,#13B19E)", borderRadius: 8, color: "#04231f", fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 600, textDecoration: "none" }}>Request a briefing</Link>
+          </div>
         </div>
       )}
     </header>
