@@ -1,186 +1,238 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Logo } from "./Logo";
-import { LinkButton, ArrowRight } from "./ui/Button";
-import { mainNav } from "@/lib/site";
-import { cn } from "@/lib/cn";
+import { BrandMark } from "./BrandMark";
+
+type Item = { no?: string; name: string; desc?: string; href: string; dot?: string };
+
+const solutions: Item[] = [
+  { no: "01", name: "AI-Powered Cybersecurity", desc: "Defense at machine speed, governed by human judgment.", href: "/solutions/ai-powered-cybersecurity" },
+  { no: "02", name: "Vulnerability Discovery", desc: "Find the flaw automation was never built to see.", href: "/solutions/vulnerability-discovery" },
+  { no: "03", name: "Threat Detection & Response", desc: "See the attack as it forms; answer before it lands.", href: "/solutions/threat-detection-response" },
+  { no: "04", name: "Reputation & Narrative Defense", desc: "A reputation is a perimeter. We defend it.", href: "/solutions/reputation-narrative-defense" },
+  { no: "05", name: "Data Security", desc: "Protection that travels with the data itself.", href: "/solutions/data-security" },
+];
+
+const products: Item[] = [
+  { no: "01", name: "Client Portal", desc: "Engagement & findings, one secure place.", href: "/products/client-portal", dot: "#16B9A6" },
+  { no: "02", name: "Request Intake & Triage", desc: "Captured and routed in seconds.", href: "/products/request-intake", dot: "#16B9A6" },
+  { no: "03", name: "Findings Dashboard", desc: "Signal, turned into a narrative.", href: "/products/findings-dashboard", dot: "#1FA98F" },
+  { no: "04", name: "Trust Center", desc: "We practise what we sell.", href: "/products/trust-center", dot: "#1FA98F" },
+  { no: "05", name: "Threat-Briefing Hub", desc: "The credibility engine, published.", href: "/products/briefing-hub", dot: "#16B9A6" },
+  { no: "06", name: "Secure Data Vault", desc: "Where sensitive client data lives.", href: "/products/data-vault", dot: "#16B9A6" },
+];
+
+const services: Item[] = [
+  { no: "01", name: "Data Discovery & Classification", href: "/services/data-discovery" },
+  { no: "02", name: "Data Access Review", href: "/services/access-review" },
+  { no: "03", name: "Shadow-AI & AI Data-Exposure", href: "/services/shadow-ai" },
+  { no: "04", name: "DLP Strategy & Tuning", href: "/services/dlp-tuning" },
+  { no: "05", name: "Managed Data-Risk Monitoring", href: "/services/managed-monitoring" },
+];
+
+const industries: Item[] = [
+  { name: "Financial Services", dot: "#16B9A6", href: "/industries/fintech" },
+  { name: "Government & Defense", dot: "#16B9A6", href: "/industries/government-defense" },
+  { name: "Critical Infrastructure", dot: "#1FA98F", href: "/industries/critical-infrastructure" },
+  { name: "All industries", dot: "rgba(226,232,241,0.4)", href: "/industries" },
+];
+
+const company: Item[] = [
+  { name: "About Namlameis", desc: "Founded 2024 to find what others miss.", href: "/company/about" },
+  { name: "Vision & Goals", desc: "The next decade, fought in code and trust.", href: "/company/vision" },
+  { name: "Leadership", desc: "In their own words.", href: "/company/leadership" },
+  { name: "Research", desc: "Credibility, published.", href: "/company/research" },
+];
+
+type Key = "platform" | "solutions" | "products" | "services" | "industries" | "company";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<Key | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    // Sync once on mount in case the page loads already scrolled.
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const hl = (seg: string) =>
+    pathname.startsWith(seg) ? "#FFFFFF" : "rgba(226,232,241,0.66)";
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setOpen(false);
-  }, [pathname]);
-
-  // Lock scroll when mobile menu open
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  return (
-    <>
-      <header
-        className={cn(
-          "sticky top-0 z-50 transition-colors duration-300",
-          scrolled || open
-            ? "border-b border-line bg-paper/85 backdrop-blur-md"
-            : "border-b border-transparent bg-paper/0",
-        )}
+  const trigger = (key: Key, label: string, seg: string) => (
+    <div
+      style={{ position: "relative" }}
+      onMouseEnter={() => setOpen(key)}
+      onMouseLeave={() => setOpen(null)}
+    >
+      <span
+        style={{
+          padding: "9px 12px",
+          fontSize: 14,
+          fontWeight: 450,
+          color: hl(seg),
+          cursor: "default",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 5,
+        }}
       >
-        <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-6 px-6 py-3.5 sm:px-8">
-          <Logo />
+        {label}
+        <span style={{ fontSize: 9, opacity: 0.6 }}>▾</span>
+      </span>
+      {open === key && <div style={{ position: "absolute", top: 38, left: 0, paddingTop: 10 }}>{renderMenu(key)}</div>}
+    </div>
+  );
 
-          {/* Desktop nav */}
-          <ul className="hidden items-center gap-1 lg:flex">
-            {mainNav.map((item) => (
-              <li key={item.label} className="group relative">
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-ink/80 transition-colors hover:text-ink",
-                    pathname.startsWith(item.href) &&
-                      item.href !== "/" &&
-                      "text-ink",
-                  )}
-                >
-                  {item.label}
-                  {item.children && (
-                    <svg
-                      viewBox="0 0 12 12"
-                      className="h-3 w-3 text-subtle transition-transform duration-200 group-hover:rotate-180"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M3 4.5 6 7.5 9 4.5"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </Link>
+  const panel: React.CSSProperties = {
+    background: "#0A1424",
+    border: "1px solid rgba(226,232,241,0.14)",
+    borderRadius: 14,
+    padding: 10,
+    boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
+  };
 
-                {item.children && (
-                  <div className="invisible absolute left-1/2 top-full w-[22rem] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="overflow-hidden rounded-lg border border-line bg-paper p-2 shadow-[var(--shadow-card-hover)]">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block rounded-xl px-3.5 py-3 transition-colors hover:bg-mist"
-                        >
-                          <span className="block text-sm font-medium text-ink">
-                            {child.label}
-                          </span>
-                          {child.blurb && (
-                            <span className="mt-0.5 block text-[0.8rem] leading-snug text-subtle">
-                              {child.blurb}
-                            </span>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </li>
+  function renderMenu(key: Key) {
+    if (key === "solutions") {
+      return (
+        <div style={{ ...panel, width: 380 }}>
+          {solutions.map((it) => (
+            <Link key={it.href} href={it.href} className="nm-menu-item" style={{ display: "flex", gap: 13, alignItems: "flex-start", padding: "11px 12px", borderRadius: 9, textDecoration: "none" }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#16B9A6", marginTop: 2, flex: "none", width: 18 }}>{it.no}</span>
+              <span style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <span style={{ fontSize: 13.5, fontWeight: 550, color: "#FFFFFF" }}>{it.name}</span>
+                <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)", lineHeight: 1.4 }}>{it.desc}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      );
+    }
+    if (key === "products") {
+      return (
+        <div style={{ ...panel, width: 560, padding: 12 }}>
+          <Link href="/products" className="nm-menu-item" style={{ display: "block", padding: "10px 12px", marginBottom: 4, borderRadius: 9, textDecoration: "none", borderBottom: "1px solid rgba(226,232,241,0.08)" }}>
+            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#16B9A6" }}>The product suite ↗</span>
+            <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)", marginLeft: 8 }}>a platform around the service</span>
+          </Link>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginTop: 4 }}>
+            {products.map((it) => (
+              <Link key={it.href} href={it.href} className="nm-menu-item" style={{ display: "flex", gap: 11, alignItems: "flex-start", padding: "10px 12px", borderRadius: 9, textDecoration: "none" }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: it.dot, marginTop: 3, flex: "none" }}>{it.no}</span>
+                <span style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <span style={{ fontSize: 13, fontWeight: 550, color: "#FFFFFF" }}>{it.name}</span>
+                  <span style={{ fontSize: 11.5, color: "rgba(226,232,241,0.5)", lineHeight: 1.35 }}>{it.desc}</span>
+                </span>
+              </Link>
             ))}
-          </ul>
-
-          <div className="hidden lg:block">
-            <LinkButton href="/contact" size="md">
-              Request a briefing <ArrowRight />
-            </LinkButton>
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="relative z-50 flex h-10 w-10 items-center justify-center text-ink lg:hidden"
-          >
-            <span className="sr-only">Menu</span>
-            <div className="flex flex-col gap-1.5">
-              <span
-                className={cn(
-                  "block h-0.5 w-5 bg-ink transition-transform duration-300",
-                  open && "translate-y-2 rotate-45",
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-0.5 w-5 bg-ink transition-opacity duration-300",
-                  open && "opacity-0",
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-0.5 w-5 bg-ink transition-transform duration-300",
-                  open && "-translate-y-2 -rotate-45",
-                )}
-              />
-            </div>
-          </button>
-        </nav>
-      </header>
-
-      {/* Mobile menu — rendered outside the (blurred) header so `fixed`
-          is measured against the viewport, not the header's box. */}
-      {open && (
-        <div className="fixed inset-x-0 bottom-0 top-18 z-40 overflow-y-auto bg-paper lg:hidden">
-          <div className="space-y-1 px-6 py-6">
-            {mainNav.map((item) => (
-              <div key={item.label} className="border-b border-line py-3">
-                <Link
-                  href={item.href}
-                  className="block text-lg font-medium text-ink"
-                >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="mt-2 space-y-1 pl-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block py-1.5 text-sm text-muted"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="pt-6">
-              <LinkButton href="/contact" size="lg" className="w-full">
-                Request a briefing <ArrowRight />
-              </LinkButton>
-            </div>
           </div>
         </div>
+      );
+    }
+    if (key === "services") {
+      return (
+        <div style={{ ...panel, width: 400, padding: 12 }}>
+          <Link href="/services" className="nm-menu-item" style={{ display: "block", padding: "10px 12px", marginBottom: 4, borderRadius: 9, textDecoration: "none", borderBottom: "1px solid rgba(226,232,241,0.08)" }}>
+            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#16B9A6" }}>Data-security services ↗</span>
+            <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)", marginLeft: 8 }}>human-delivered</span>
+          </Link>
+          {services.map((it) => (
+            <Link key={it.href} href={it.href} className="nm-menu-item" style={{ display: "flex", gap: 13, alignItems: "flex-start", padding: "10px 12px", borderRadius: 9, textDecoration: "none" }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#1FA98F", marginTop: 2, flex: "none", width: 16 }}>{it.no}</span>
+              <span style={{ fontSize: 13, fontWeight: 520, color: "#FFFFFF" }}>{it.name}</span>
+            </Link>
+          ))}
+        </div>
+      );
+    }
+    if (key === "industries") {
+      return (
+        <div style={{ ...panel, width: 300 }}>
+          {industries.map((it) => (
+            <Link key={it.href} href={it.href} className="nm-menu-item" style={{ display: "flex", gap: 13, alignItems: "center", padding: "11px 12px", borderRadius: 9, textDecoration: "none" }}>
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: it.dot, flex: "none" }} />
+              <span style={{ fontSize: 13.5, fontWeight: 500, color: "#FFFFFF" }}>{it.name}</span>
+            </Link>
+          ))}
+        </div>
+      );
+    }
+    // company
+    return (
+      <div style={{ ...panel, width: 300, right: 0 }}>
+        {company.map((it) => (
+          <Link key={it.href} href={it.href} className="nm-menu-item" style={{ display: "flex", flexDirection: "column", gap: 2, padding: "11px 12px", borderRadius: 9, textDecoration: "none" }}>
+            <span style={{ fontSize: 13.5, fontWeight: 550, color: "#FFFFFF" }}>{it.name}</span>
+            <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)" }}>{it.desc}</span>
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        background: "rgba(8,8,10,0.88)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
+        borderBottom: "1px solid rgba(255,255,255,0.14)",
+      }}
+    >
+      <nav
+        style={{
+          maxWidth: 1320,
+          margin: "0 auto",
+          padding: "0 32px",
+          height: 74,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 20,
+        }}
+      >
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 13, textDecoration: "none", flex: "none" }}>
+          <BrandMark size={40} />
+          <span style={{ display: "flex", alignItems: "center", lineHeight: 1 }}>
+            <span style={{ fontFamily: "var(--font-brand)", fontWeight: 800, fontSize: 21, letterSpacing: "0.04em", color: "#FFFFFF" }}>NAMLAMEIS</span>
+          </span>
+        </Link>
+
+        {/* desktop nav */}
+        <div className="nm-nav-center" style={{ display: "flex", alignItems: "center", gap: 2, fontFamily: "var(--font-sans)" }}>
+          <Link href="/platform" style={{ padding: "9px 12px", fontSize: 14, fontWeight: 450, color: hl("/platform"), textDecoration: "none", borderRadius: 7 }}>Platform</Link>
+          {trigger("solutions", "Solutions", "/solutions")}
+          {trigger("products", "Products", "/products")}
+          {trigger("services", "Services", "/services")}
+          {trigger("industries", "Industries", "/industries")}
+          {trigger("company", "Company", "/company")}
+        </div>
+
+        <div className="nm-nav-cta" style={{ display: "flex", alignItems: "center", gap: 10, flex: "none" }}>
+          <Link href="/contact" style={{ padding: "10px 16px", fontFamily: "var(--font-sans)", fontSize: 13.5, fontWeight: 500, color: "#FFFFFF", textDecoration: "none", border: "1px solid rgba(255,255,255,0.4)", borderRadius: 8 }}>Get a demo</Link>
+          <Link href="/contact" style={{ padding: "11px 18px", background: "#FFFFFF", color: "#000000", fontFamily: "var(--font-sans)", fontSize: 13.5, fontWeight: 600, textDecoration: "none", borderRadius: 8 }}>Request a briefing</Link>
+        </div>
+
+        {/* mobile toggle */}
+        <button
+          aria-label="Toggle menu"
+          onClick={() => setMobileOpen((v) => !v)}
+          className="nm-nav-burger"
+          style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8 }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" stroke="#FFFFFF" strokeWidth="1.6" fill="none" strokeLinecap="round">
+            {mobileOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
+      </nav>
+
+      {mobileOpen && (
+        <div className="nm-nav-mobile" style={{ background: "#0A1424", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px 28px", display: "flex", flexDirection: "column", gap: 4 }}>
+          {[{ name: "Platform", href: "/platform" }, ...solutions, ...products, ...services, ...industries, ...company, { name: "Contact", href: "/contact" }].map((it, i) => (
+            <Link key={`${it.href}-${i}`} href={it.href} onClick={() => setMobileOpen(false)} style={{ padding: "10px 0", fontSize: 15, color: "rgba(226,232,241,0.82)", textDecoration: "none", fontFamily: "var(--font-sans)" }}>{it.name}</Link>
+          ))}
+        </div>
       )}
-    </>
+    </header>
   );
 }

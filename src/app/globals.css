@@ -11,26 +11,29 @@
   /* Brand palette */
   --color-navy: #0b1a2e;
   --color-ink: #0a1424;
-  --color-amber: #f0712c;
+  --color-teal: #16b9a6;
+  --color-teal-deep: #1fa98f;
+  --color-teal-bright: #42e6d2;
+  --color-amber: #16b9a6; /* legacy alias → teal accent */
   --color-azure: #3d7dd8;
-  --color-teal: #1fa98f;
   --color-paper: #ffffff;
-  --color-mist: #f7f9fc;
+  --color-mist: #eaf8f5;
 
   /* Tinted neutrals derived from the ink/navy for borders & muted text */
-  --color-line: #e3e9f2;
-  --color-line-strong: #cdd7e6;
-  --color-muted: #51607a;
-  --color-subtle: #6b7a93;
+  --color-line: #e2e8f1;
+  --color-line-strong: #cfdbeb;
+  --color-muted: #475569;
+  --color-subtle: #64748b;
 
   /* Semantic */
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
 
   /* Typography */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-mono: var(--font-mono-jet), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-brand: var(--font-syne), var(--font-geist), sans-serif;
 
   /* Layout */
   --spacing-section: 7rem;
@@ -121,6 +124,95 @@
   .fade-up {
     animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+
+  /* Nav dropdown item hover */
+  .nm-menu-item {
+    transition: background 0.18s ease;
+  }
+  .nm-menu-item:hover {
+    background: rgba(22, 185, 166, 0.1);
+  }
+
+  /* Nav responsive: hide desktop nav + cta below 1024px, show burger */
+  .nm-nav-burger {
+    display: none;
+  }
+  @media (max-width: 1023px) {
+    .nm-nav-center,
+    .nm-nav-cta {
+      display: none !important;
+    }
+    .nm-nav-burger {
+      display: inline-flex !important;
+    }
+  }
+
+  .nm-footer-link {
+    transition: color 0.18s ease;
+  }
+  .nm-footer-link:hover {
+    color: #ffffff;
+  }
+
+  @media (max-width: 900px) {
+    .nm-footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+  @media (max-width: 520px) {
+    .nm-footer-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Homepage hover states (replacing the comp's style-hover) */
+  .nm-cta-primary { transition: transform .25s ease, box-shadow .25s ease; }
+  .nm-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(22,185,166,0.42); }
+  .nm-cta-light { transition: background .25s ease, border-color .25s ease; }
+  .nm-cta-light:hover { background: #F1FBF9; border-color: rgba(22,185,166,0.55); }
+  .nm-disc-card { transition: box-shadow .3s ease, border-color .3s ease, transform .3s ease; }
+  .nm-disc-card:hover { box-shadow: 0 18px 44px rgba(11,26,46,0.12); border-color: #cfdbeb; transform: translateY(-3px); }
+  .nm-closing-primary { transition: transform .25s ease; }
+  .nm-closing-primary:hover { transform: translateY(-2px); }
+  .nm-closing-ghost { transition: border-color .25s ease; }
+  .nm-closing-ghost:hover { border-color: rgba(226,232,241,0.4); }
+
+  /* Homepage responsive: collapse two-column grids on small screens */
+  @media (max-width: 900px) {
+    .nm-grid-2 { grid-template-columns: 1fr !important; }
+    .nm-disc-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 560px) {
+    .nm-disc-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* Inner-page cards & buttons */
+  .nm-feature-card { transition: box-shadow .3s ease, transform .3s ease; }
+  .nm-feature-card:hover { box-shadow: 0 16px 40px rgba(11,26,46,0.1); transform: translateY(-3px); }
+  .nm-suite-card { transition: box-shadow .3s ease, transform .3s ease; }
+  .nm-suite-card:hover { box-shadow: 0 20px 48px rgba(11,26,46,0.13); transform: translateY(-4px); }
+  .nm-ghost-dark { transition: border-color .25s ease; }
+  .nm-ghost-dark:hover { border-color: rgba(226,232,241,0.4); }
+
+  @media (max-width: 860px) {
+    .nm-suite-grid { grid-template-columns: 1fr 1fr !important; }
+    .nm-feature-grid { grid-template-columns: 1fr !important; }
+    .nm-overview-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  }
+  @media (max-width: 560px) {
+    .nm-suite-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* Diagram grids collapse on small screens */
+  @media (max-width: 760px) {
+    .nm-portal-body { grid-template-columns: 1fr !important; }
+    .nm-trust-grid { grid-template-columns: 1fr !important; }
+    .nm-brief-grid { grid-template-columns: 1fr !important; }
+    .nm-research-feature { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 680px) {
+    .nm-goal-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+  }
 }
 
 @keyframes fadeUp {
@@ -133,3 +225,35 @@
     transform: translateY(0);
   }
 }
+
+/* ── Design-comp motion system (Home.dc.html) ───────────────── */
+@keyframes nm-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes nm-draw { to { stroke-dashoffset: 0; } }
+@keyframes nm-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-60px, -60px); }
+}
+@keyframes nm-pulse { 0%, 100% { opacity: .4; } 50% { opacity: .95; } }
+@keyframes nm-glow { 0%, 100% { opacity: .5; } 50% { opacity: .85; } }
+@keyframes nm-twinkle { 0%, 100% { opacity: .25; } 50% { opacity: .7; } }
+@keyframes nm-trace {
+  0% { offset-distance: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes nm-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes nm-donut { from { stroke-dashoffset: 339; } to { stroke-dashoffset: 95; } }
+@keyframes nm-line { to { stroke-dashoffset: 0; } }
+
+/* ── Inner-page diagram motion ──────────────────────────────── */
+@keyframes nm-fill { from { width: 0; } to { width: 70%; } }
+@keyframes nm-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes nm-ring { from { stroke-dashoffset: 339; } to { stroke-dashoffset: 129; } }
+@keyframes nm-close { from { stroke-dashoffset: 201; } to { stroke-dashoffset: 0; } }
+@keyframes nm-breathe { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(1.3); } }
+@keyframes nm-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -22; } }
+@keyframes nm-orbit { to { transform: rotate(360deg); } }

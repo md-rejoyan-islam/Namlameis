@@ -1,100 +1,97 @@
 import Link from "next/link";
-import { AntMark } from "./AntMark";
-import { Container } from "./ui/Container";
-import {
-  site,
-  solutionsNav,
-  industriesNav,
-} from "@/lib/site";
+import { BrandMark } from "./BrandMark";
 
-const companyLinks = [
-  { label: "About", href: "/company/about" },
-  { label: "Leadership", href: "/company/leadership" },
-  { label: "Platform", href: "/platform" },
-  { label: "Contact", href: "/contact" },
+const columns: { title: string; links: { label: string; href: string }[] }[] = [
+  {
+    title: "Solutions",
+    links: [
+      { label: "AI-Powered Cybersecurity", href: "/solutions/ai-powered-cybersecurity" },
+      { label: "Vulnerability Discovery", href: "/solutions/vulnerability-discovery" },
+      { label: "Detection & Response", href: "/solutions/threat-detection-response" },
+      { label: "Reputation Defense", href: "/solutions/reputation-narrative-defense" },
+      { label: "Data Security", href: "/solutions/data-security" },
+    ],
+  },
+  {
+    title: "Industries",
+    links: [
+      { label: "FinTech", href: "/industries/fintech" },
+      { label: "Government & Defense", href: "/industries/government-defense" },
+      { label: "Critical Infrastructure", href: "/industries/critical-infrastructure" },
+      { label: "Overview", href: "/industries" },
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      { label: "The suite", href: "/products" },
+      { label: "Client Portal", href: "/products/client-portal" },
+      { label: "Findings Dashboard", href: "/products/findings-dashboard" },
+      { label: "Trust Center", href: "/products/trust-center" },
+      { label: "Briefing Hub", href: "/products/briefing-hub" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { label: "Data Discovery", href: "/services/data-discovery" },
+      { label: "Access Review", href: "/services/access-review" },
+      { label: "Shadow-AI", href: "/services/shadow-ai" },
+      { label: "DLP Tuning", href: "/services/dlp-tuning" },
+      { label: "Managed Monitoring", href: "/services/managed-monitoring" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/company/about" },
+      { label: "Vision & Goals", href: "/company/vision" },
+      { label: "Leadership", href: "/company/leadership" },
+      { label: "Research", href: "/company/research" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
 ];
-
-const legalLinks = [
-  { label: "Privacy", href: "/legal/privacy" },
-  { label: "Terms", href: "/legal/terms" },
-  { label: "Security", href: "/legal/security" },
-];
-
-function Column({
-  title,
-  links,
-}: {
-  title: string;
-  links: { label: string; href: string }[];
-}) {
-  return (
-    <div>
-      <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-paper/40">
-        {title}
-      </h3>
-      <ul className="mt-4 space-y-2.5">
-        {links.map((l) => (
-          <li key={l.href}>
-            <Link
-              href={l.href}
-              className="text-sm text-paper/70 transition-colors hover:text-paper"
-            >
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-paper">
-      <Container className="py-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr_0.9fr]">
-          <div className="max-w-xs">
-            <div className="flex items-center gap-2.5">
-              <AntMark className="h-7 w-7 text-paper" />
-              <span className="font-display text-xl font-semibold tracking-tight">
-                {site.name}
-              </span>
+    <footer style={{ background: "#0A1424", borderTop: "1px solid rgba(226,232,241,0.1)", fontFamily: "var(--font-sans)", color: "rgba(226,232,241,0.6)" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "72px 32px 40px" }}>
+        <div className="nm-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.7fr 1fr 1fr 1fr 1fr 1fr", gap: 32 }}>
+          <div style={{ maxWidth: 300 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 18 }}>
+              <BrandMark size={38} />
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 15, letterSpacing: "0.14em", color: "#FFFFFF" }}>NAMLAMEIS</span>
             </div>
-            <p className="mt-5 text-sm leading-relaxed text-paper/60">
-              {site.footerLine}
+            <p style={{ fontSize: 13.5, lineHeight: 1.7, color: "rgba(226,232,241,0.55)", margin: "0 0 20px" }}>
+              Defense-grade cybersecurity, AI, and complex vulnerability discovery. We find what others miss — before it finds you.
             </p>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.06em", color: "rgba(226,232,241,0.42)", lineHeight: 1.9 }}>
+              <div>hello@namlameis.com</div>
+              <div>A branch in Salzburg, Austria</div>
+            </div>
           </div>
-
-          <Column
-            title="Solutions"
-            links={solutionsNav.map((s) => ({
-              // Shorten the long card titles for the footer
-              label: s.label.replace(" & Offensive Security", ""),
-              href: s.href,
-            }))}
-          />
-          <Column title="Industries" links={industriesNav} />
-          <Column title="Company" links={companyLinks} />
-          <Column title="Legal" links={legalLinks} />
+          {columns.map((col) => (
+            <div key={col.title}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", textTransform: "uppercase", color: "#16B9A6", marginBottom: 16 }}>{col.title}</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+                {col.links.map((lk) => (
+                  <Link key={lk.href + lk.label} href={lk.href} className="nm-footer-link" style={{ fontSize: 13.5, color: "rgba(226,232,241,0.62)", textDecoration: "none" }}>{lk.label}</Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
-          <p className="text-xs text-paper/50">
-            © {site.founded}–2026 {site.name} · {site.location}
-          </p>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Namlameis on LinkedIn"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-paper/70 transition-colors hover:border-white/40 hover:text-paper"
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-              <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.05c.53-1 1.83-2.05 3.76-2.05C20.6 8.59 22 10.3 22 13.6V21h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V21H9V9Z" />
-            </svg>
-          </a>
+        <div style={{ marginTop: 56, paddingTop: 26, borderTop: "1px solid rgba(226,232,241,0.1)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ fontSize: 12.5, color: "rgba(226,232,241,0.45)" }}>© 2024–2026 Namlameis — a branch in Salzburg, Austria.</div>
+          <div style={{ display: "flex", gap: 22, alignItems: "center" }}>
+            <Link href="/legal/privacy" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Privacy</Link>
+            <Link href="/legal/terms" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Terms</Link>
+            <Link href="/legal/security" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Security</Link>
+            <a href="https://linkedin.com/company/namlameis" style={{ fontSize: 12.5, color: "#16B9A6", textDecoration: "none", fontWeight: 500 }}>LinkedIn</a>
+          </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
