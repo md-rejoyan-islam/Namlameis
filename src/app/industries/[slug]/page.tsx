@@ -43,6 +43,10 @@ function CheckMark() {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+        <circle r="0.9" fill="currentColor">
+          <animateMotion dur="3.2s" repeatCount="indefinite" path="M3.5 8.5 6.5 11.5 12.5 4.5" />
+          <animate attributeName="opacity" dur="3.2s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.85;1" />
+        </circle>
       </svg>
     </span>
   );

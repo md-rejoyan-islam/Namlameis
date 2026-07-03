@@ -22,36 +22,36 @@ export default function ServicesPage() {
       />
 
       {/* THE HONEST DISTINCTION */}
-      <section style={{ background: "#FFFFFF", padding: "96px 32px" }}>
+      <section style={{ background: "#FFFFFF", padding: "clamp(48px, 11vw, 96px) clamp(20px, 5vw, 32px)" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <div className="nm-overview-grid" style={{ display: "grid", gridTemplateColumns: "0.42fr 0.58fr", gap: 56 }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%") }}>
               <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#16B9A6", marginBottom: 16 }}>THE HONEST DISTINCTION</div>
-              <div style={{ fontFamily: serif, fontSize: 28, lineHeight: 1.2, color: "#0A1424", letterSpacing: "-0.01em" }}>Five services, each the human-led counterpart to a capability the platform leaders automate.</div>
+              <div style={{ fontFamily: serif, fontSize: "clamp(20px, 3.4vw, 28px)", lineHeight: 1.2, color: "#0A1424", letterSpacing: "-0.01em" }}>Five services, each the human-led counterpart to a capability the platform leaders automate.</div>
             </div>
             <div>
-              <p style={{ ...rise(".8s", "entry 0% cover 28%"), fontSize: 17, lineHeight: 1.78, color: "#475569", margin: "0 0 22px" }}>The most valuable platforms in data security automate discovery and control at vast scale. That is a genuine achievement — and a genuinely different thing from what a small expert firm offers. Where they sell a system a customer runs forever, we sell the judgment of people, delivered as engagements and retainers.</p>
-              <p style={{ ...rise(".8s", "entry 0% cover 32%"), fontSize: 17, lineHeight: 1.78, color: "#475569", margin: 0 }}>We do not reproduce the leader’s autonomous engine — we neither can nor should. We reproduce the structure and the language this market understands, and deliver the substance through human expertise. <strong style={{ color: "#0A1424", fontWeight: 600 }}>For many organisations, that is not a lesser offering. It is the right one.</strong></p>
+              <p style={{ ...rise(".8s", "entry 0% cover 28%"), fontSize: "clamp(15.5px, 2.4vw, 17px)", lineHeight: 1.78, color: "#475569", margin: "0 0 22px" }}>The most valuable platforms in data security automate discovery and control at vast scale. That is a genuine achievement — and a genuinely different thing from what a small expert firm offers. Where they sell a system a customer runs forever, we sell the judgment of people, delivered as engagements and retainers.</p>
+              <p style={{ ...rise(".8s", "entry 0% cover 32%"), fontSize: "clamp(15.5px, 2.4vw, 17px)", lineHeight: 1.78, color: "#475569", margin: 0 }}>We do not reproduce the leader’s autonomous engine — we neither can nor should. We reproduce the structure and the language this market understands, and deliver the substance through human expertise. <strong style={{ color: "#0A1424", fontWeight: 600 }}>For many organisations, that is not a lesser offering. It is the right one.</strong></p>
             </div>
           </div>
         </div>
       </section>
 
       {/* THE SERVICE CATALOGUE */}
-      <section style={{ background: "#FFFFFF", padding: "40px 32px 100px", borderTop: "1px solid #E2E8F1" }}>
+      <section style={{ background: "#FFFFFF", padding: "clamp(24px, 13vw, 40px) clamp(20px, 5vw, 32px) clamp(55px, 10vw, 100px)", borderTop: "1px solid #E2E8F1" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ maxWidth: 640, margin: "56px 0 44px" }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%"), fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#16B9A6", marginBottom: 16 }}>THE SERVICE CATALOGUE</div>
-            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: 36, lineHeight: 1.16, color: "#0A1424", margin: 0 }}>Platform-grade, human-delivered.</h2>
+            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 36px)", lineHeight: 1.16, color: "#0A1424", margin: 0 }}>Platform-grade, human-delivered.</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {serviceCatalogue.map((s) => (
-              <Link key={s.slug} href={`/services/${s.slug}`} className="nm-feature-card" style={{ ...rise(".8s", "entry 0% cover 30%"), textDecoration: "none", display: "flex", alignItems: "center", gap: 22, background: "#FFFFFF", border: "1px solid #E2E8F1", borderRadius: 16, padding: "26px 28px" }}>
+              <Link key={s.slug} href={`/services/${s.slug}`} className="nm-feature-card" style={{ ...rise(".8s", "entry 0% cover 30%"), textDecoration: "none", display: "flex", alignItems: "center", gap: 22, background: "#FFFFFF", border: "1px solid #E2E8F1", borderRadius: 16, padding: "clamp(17px, 4vw, 26px) clamp(18px, 4vw, 28px)" }}>
                 <span style={{ width: 52, height: 52, borderRadius: 13, background: "rgba(22,185,166,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}><SuiteIcon k={s.iconKey} /></span>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6, flexWrap: "wrap" }}>
                     <span style={{ fontFamily: mono, fontSize: 11, color: "#94a3b8" }}>{s.no}</span>
-                    <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 18, color: "#0A1424", margin: 0, letterSpacing: "-0.01em" }}>{s.name}</h3>
+                    <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: "clamp(15.5px, 2.4vw, 18px)", color: "#0A1424", margin: 0, letterSpacing: "-0.01em" }}>{s.name}</h3>
                     <span style={{ fontFamily: mono, fontSize: 9.5, letterSpacing: "0.12em", color: "#16B9A6", border: "1px solid rgba(22,185,166,0.3)", borderRadius: 5, padding: "2px 7px" }}>{s.mirrors}</span>
                   </div>
                   <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#64748b", margin: 0 }}>{s.desc}</p>
@@ -64,9 +64,9 @@ export default function ServicesPage() {
       </section>
 
       {/* CLOSING */}
-      <section style={{ background: "linear-gradient(165deg,#0A1424,#0B1A2E)", padding: "100px 32px", borderTop: "1px solid rgba(226,232,241,0.08)" }}>
+      <section style={{ background: "linear-gradient(165deg,#0A1424,#0B1A2E)", padding: "clamp(50px, 11vw, 100px) clamp(20px, 5vw, 32px)", borderTop: "1px solid rgba(226,232,241,0.08)" }}>
         <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center" }}>
-          <p style={{ ...rise(".85s", "entry 0% cover 30%"), fontFamily: serif, fontStyle: "italic", fontWeight: 300, fontSize: 34, lineHeight: 1.32, color: "#FFFFFF", margin: "0 0 36px" }}>Some need the answer once, established rigorously. Others need a standing alliance. We offer both — delivered by people.</p>
+          <p style={{ ...rise(".85s", "entry 0% cover 30%"), fontFamily: serif, fontStyle: "italic", fontWeight: 300, fontSize: "clamp(26px, 5vw, 34px)", lineHeight: 1.32, color: "#FFFFFF", margin: "0 0 36px" }}>Some need the answer once, established rigorously. Others need a standing alliance. We offer both — delivered by people.</p>
           <div style={{ ...rise(".85s", "entry 0% cover 34%"), display: "flex", gap: 13, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/contact" className="nm-cta-primary" style={{ padding: "16px 30px", background: "linear-gradient(180deg,#42E6D2,#13B19E)", color: "#04231f", fontFamily: sans, fontSize: 15, fontWeight: 600, textDecoration: "none", borderRadius: 9, boxShadow: "0 10px 30px rgba(22,185,166,0.3)" }}>Request a briefing</Link>
             <Link href="/contact" className="nm-ghost-dark" style={{ padding: "16px 30px", background: "transparent", border: "1px solid rgba(226,232,241,0.22)", color: "#FFFFFF", fontFamily: sans, fontSize: 15, fontWeight: 500, textDecoration: "none", borderRadius: 9 }}>Submit a request</Link>

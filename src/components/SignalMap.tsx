@@ -104,7 +104,7 @@ export function SignalMap({ className }: { className?: string }) {
         <line x1="276" y1="20" x2="276" y2="280" stroke="#3D7DD8" strokeOpacity="0.12" strokeDasharray="3 5" />
 
         {/* explored, clear trails */}
-        <g stroke="#3D7DD8" strokeOpacity="0.18" strokeWidth="1">
+        <g stroke="#3D7DD8" strokeOpacity="0.18" strokeWidth="1" style={{ animation: "nm-twinkle 3.4s ease-in-out infinite" }}>
           {explored.map((d, i) => (
             <path key={i} d={d} />
           ))}

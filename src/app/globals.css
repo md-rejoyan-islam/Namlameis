@@ -38,9 +38,40 @@
   /* Layout */
   --spacing-section: 7rem;
 
-  /* Soft, premium shadows */
-  --shadow-card: 0 1px 2px rgba(10, 20, 36, 0.04), 0 8px 24px rgba(10, 20, 36, 0.06);
-  --shadow-card-hover: 0 2px 4px rgba(10, 20, 36, 0.06), 0 18px 40px rgba(10, 20, 36, 0.1);
+  /* Warm-contrast neutrals (teal + warm sand palette) */
+  --color-sand: #c79a6d;
+  --color-sand-soft: #efe4d3;
+  --color-warm-paper: #faf7f2;
+  --color-warm-tint: #f5eee2;
+  --color-warm-line: #ece1d0;
+
+  /* Premium radius scale */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* Custom layered shadow system (cool ink-tinted, multi-stop) */
+  /* Even, all-sides ambient shadows (no bottom-only bias) — kept subtle */
+  --shadow-xs: 0 0 2px rgba(11, 26, 46, 0.04);
+  --shadow-sm: 0 0 2px rgba(11, 26, 46, 0.035), 0 0 6px rgba(11, 26, 46, 0.04);
+  --shadow-md: 0 0 2px rgba(11, 26, 46, 0.03), 0 0 9px rgba(11, 26, 46, 0.04), 0 0 20px rgba(11, 26, 46, 0.035);
+  --shadow-lg: 0 0 3px rgba(11, 26, 46, 0.04), 0 0 15px rgba(11, 26, 46, 0.055), 0 0 34px rgba(11, 26, 46, 0.055);
+  --shadow-dark: 0 28px 60px -24px rgba(0, 0, 0, 0.55), 0 10px 26px -14px rgba(0, 0, 0, 0.42);
+  --shadow-teal: 0 1px 2px rgba(11, 26, 46, 0.10), 0 10px 22px -8px rgba(16, 185, 166, 0.42), 0 3px 8px -3px rgba(16, 185, 166, 0.30);
+  --shadow-teal-hover: 0 2px 4px rgba(11, 26, 46, 0.12), 0 16px 32px -8px rgba(16, 185, 166, 0.52);
+
+  /* Primary action = blue */
+  --color-blue: #2563eb;
+  --color-blue-bright: #4c86f5;
+  --shadow-blue: 0 1px 2px rgba(11, 26, 46, 0.12), 0 10px 22px -8px rgba(37, 99, 235, 0.45), 0 3px 8px -3px rgba(37, 99, 235, 0.35);
+  --shadow-blue-hover: 0 2px 4px rgba(11, 26, 46, 0.14), 0 16px 34px -8px rgba(37, 99, 235, 0.55);
+  --shadow-warm: 0 1px 2px rgba(78, 54, 28, 0.05), 0 12px 28px -12px rgba(120, 84, 44, 0.18);
+
+  /* Legacy aliases kept for inner pages */
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
 }
 
 @layer base {
@@ -166,16 +197,18 @@
   }
 
   /* Homepage hover states (replacing the comp's style-hover) */
-  .nm-cta-primary { transition: transform .25s ease, box-shadow .25s ease; }
-  .nm-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(22,185,166,0.42); }
-  .nm-cta-light { transition: background .25s ease, border-color .25s ease; }
-  .nm-cta-light:hover { background: #F1FBF9; border-color: rgba(22,185,166,0.55); }
-  .nm-disc-card { transition: box-shadow .3s ease, border-color .3s ease, transform .3s ease; }
-  .nm-disc-card:hover { box-shadow: 0 18px 44px rgba(11,26,46,0.12); border-color: #cfdbeb; transform: translateY(-3px); }
-  .nm-closing-primary { transition: transform .25s ease; }
-  .nm-closing-primary:hover { transform: translateY(-2px); }
-  .nm-closing-ghost { transition: border-color .25s ease; }
-  .nm-closing-ghost:hover { border-color: rgba(226,232,241,0.4); }
+  .nm-cta-primary { transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s ease, filter .28s ease; }
+  .nm-cta-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-blue-hover); filter: brightness(1.05); }
+  .nm-cta-light { transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+  .nm-cta-light:hover { background: #F5F8FF; border-color: rgba(37,99,235,0.5); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+  .nm-disc-card { transition: box-shadow .35s cubic-bezier(.22,.61,.36,1), transform .35s cubic-bezier(.22,.61,.36,1); }
+  .nm-disc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .nm-closing-primary { transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s ease, filter .28s ease; }
+  .nm-closing-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-blue-hover); filter: brightness(1.05); }
+  .nm-closing-ghost { transition: border-color .25s ease, background .25s ease; }
+  .nm-closing-ghost:hover { border-color: rgba(226,232,241,0.42); background: rgba(255,255,255,0.04); }
+  .nm-trust-chip { transition: color .2s ease; }
+  .nm-trust-chip:hover { color: #0A1424; }
 
   /* Homepage responsive: collapse two-column grids on small screens */
   @media (max-width: 900px) {
@@ -257,3 +290,4 @@
 @keyframes nm-breathe { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(1.3); } }
 @keyframes nm-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -22; } }
 @keyframes nm-orbit { to { transform: rotate(360deg); } }
+@keyframes nm-shimmer { 0% { transform: translateX(-130%); } 55%, 100% { transform: translateX(230%); } }

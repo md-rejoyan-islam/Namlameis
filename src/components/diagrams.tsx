@@ -33,7 +33,9 @@ export function ProductDiagram({ slug }: { slug: string }) {
                 <div style={{ fontFamily: mono, fontSize: 10.5, letterSpacing: "0.14em", color: "#94a3b8", marginBottom: 10 }}>ENGAGEMENT PROGRESS</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 26 }}>
                   <div style={{ flex: 1, height: 10, borderRadius: 6, background: "#EEF2F7", overflow: "hidden" }}>
-                    <div style={{ height: "100%", borderRadius: 6, background: "#16B9A6", width: "70%", animation: "nm-fill 1.4s ease both", animationTimeline: "view()", animationRange: "entry 0% cover 40%" } as CSSProperties} />
+                    <div style={{ position: "relative", height: "100%", borderRadius: 6, background: "#16B9A6", width: "70%", overflow: "hidden", animation: "nm-fill 1.4s ease both", animationTimeline: "view()", animationRange: "entry 0% cover 40%" } as CSSProperties}>
+                      <span style={{ position: "absolute", inset: 0, width: "40%", background: "linear-gradient(90deg,transparent,rgba(255,255,255,0.55),transparent)", animation: "nm-shimmer 3.4s linear infinite" }} />
+                    </div>
                   </div>
                   <span style={{ fontFamily: sans, fontWeight: 700, fontSize: 16, color: "#16B9A6" }}>70%</span>
                 </div>
@@ -62,7 +64,11 @@ export function ProductDiagram({ slug }: { slug: string }) {
             <div style={{ textAlign: "center", fontFamily: serif, fontStyle: "italic", fontSize: 20, color: "rgba(226,232,241,0.7)", marginBottom: 36 }}>From submission to the right desk, automatically</div>
             <svg viewBox="0 0 900 150" style={{ width: "100%", display: "block" }}>
               <line x1="100" y1="60" x2="800" y2="60" stroke="rgba(226,232,241,0.18)" strokeWidth="1.5" />
-              <path d="M250 60 H300 M470 60 H520 M690 60 H740" fill="none" stroke="rgba(226,232,241,0.3)" strokeWidth="1.5" />
+              <path d="M250 60 H300 M470 60 H520 M690 60 H740" fill="none" stroke="#16B9A6" strokeWidth="1.5" strokeDasharray="6 5" style={{ animation: "nm-flow .6s linear infinite" }} />
+              <circle r="4" fill="#5EEAD9">
+                <animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M140 60 H760" />
+                <animate attributeName="opacity" dur="4.2s" begin="0.4s" repeatCount="indefinite" values="0;1;1;1;0" keyTimes="0;0.08;0.5;0.92;1" />
+              </circle>
               <g>
                 <g><circle cx="100" cy="60" r="40" fill="#0B1A2E" stroke="#16B9A6" strokeWidth="2" /><g transform="translate(86,46)" stroke="#16B9A6" strokeWidth="1.6" fill="none"><rect x="0" y="0" width="20" height="26" rx="3" /><path d="M5 8h10M5 14h10M5 20h6" /></g><text x="100" y="118" textAnchor="middle" fill="#FFFFFF" fontFamily={sans} fontSize="16" fontWeight="600">Request</text><text x="100" y="140" textAnchor="middle" fill="rgba(226,232,241,0.5)" fontFamily={sans} fontSize="12">Client submits</text></g>
                 <g><circle cx="370" cy="60" r="40" fill="#0B1A2E" stroke="#1f4e8f" strokeWidth="2" /><g transform="translate(356,46)" stroke="#16B9A6" strokeWidth="1.6" fill="none"><rect x="0" y="0" width="20" height="26" rx="3" /><path d="M5 8h10M5 14h10M5 20h6" /></g><text x="370" y="118" textAnchor="middle" fill="#FFFFFF" fontFamily={sans} fontSize="16" fontWeight="600">Validate</text><text x="370" y="140" textAnchor="middle" fill="rgba(226,232,241,0.5)" fontFamily={sans} fontSize="12">Server-side check</text></g>
@@ -103,6 +109,10 @@ export function ProductDiagram({ slug }: { slug: string }) {
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <svg viewBox="0 0 120 120" style={{ width: 160, height: 160 }}>
                   <circle cx="60" cy="60" r="54" fill="none" stroke="#EEF2F7" strokeWidth="11" />
+                  <circle cx="60" cy="60" r="4" fill="none" stroke="#16B9A6" strokeWidth="1.2">
+                    <animate attributeName="r" values="4;14" dur="3.2s" repeatCount="indefinite" />
+                    <animate attributeName="stroke-opacity" values="0.55;0" dur="3.2s" repeatCount="indefinite" />
+                  </circle>
                   <circle cx="60" cy="60" r="54" fill="none" stroke="#16B9A6" strokeWidth="11" strokeLinecap="round" strokeDasharray="339" strokeDashoffset="129" transform="rotate(-90 60 60)" style={{ animation: "nm-ring 1.4s ease both", animationTimeline: "view()", animationRange: "entry 0% cover 46%" } as CSSProperties} />
                   <text x="60" y="58" textAnchor="middle" fill="#0A1424" fontFamily={sans} fontSize="26" fontWeight="700">62%</text>
                   <text x="60" y="76" textAnchor="middle" fill="#64748b" fontFamily={sans} fontSize="10">remediated</text>
@@ -163,12 +173,13 @@ export function ProductDiagram({ slug }: { slug: string }) {
           <figure style={{ animation: "nm-rise 1s both", animationTimeline: "view()", animationRange: "entry 0% cover 26%", margin: 0 } as CSSProperties}>
             <svg viewBox="0 0 720 340" style={{ width: "100%", display: "block" }}>
               <g fontFamily={sans} fontSize="15">
-                <g><circle cx="150" cy="100" r="7" fill="#16B9A6" /><text x="135" y="105" textAnchor="end" fill="rgba(226,232,241,0.85)">Encrypted at rest</text><line x1="157" y1="104" x2="300" y2="150" stroke="rgba(226,232,241,0.2)" strokeWidth="1.4" /></g>
-                <g><circle cx="570" cy="100" r="7" fill="#1FA98F" /><text x="585" y="105" fill="rgba(226,232,241,0.85)">Encrypted in transit</text><line x1="563" y1="104" x2="420" y2="150" stroke="rgba(226,232,241,0.2)" strokeWidth="1.4" /></g>
-                <g><circle cx="150" cy="250" r="7" fill="#16B9A6" /><text x="135" y="255" textAnchor="end" fill="rgba(226,232,241,0.85)">Least-privilege access</text><line x1="157" y1="248" x2="300" y2="195" stroke="rgba(226,232,241,0.2)" strokeWidth="1.4" /></g>
-                <g><circle cx="570" cy="250" r="7" fill="#16B9A6" /><text x="585" y="255" fill="rgba(226,232,241,0.85)">Full audit trail</text><line x1="563" y1="248" x2="420" y2="195" stroke="rgba(226,232,241,0.2)" strokeWidth="1.4" /></g>
+                <g><circle cx="150" cy="100" r="7" fill="#16B9A6" /><text x="135" y="105" textAnchor="end" fill="rgba(226,232,241,0.85)">Encrypted at rest</text><line x1="157" y1="104" x2="300" y2="150" stroke="#16B9A6" strokeWidth="1.4" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }} /></g>
+                <g><circle cx="570" cy="100" r="7" fill="#1FA98F" /><text x="585" y="105" fill="rgba(226,232,241,0.85)">Encrypted in transit</text><line x1="563" y1="104" x2="420" y2="150" stroke="#16B9A6" strokeWidth="1.4" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }} /></g>
+                <g><circle cx="150" cy="250" r="7" fill="#16B9A6" /><text x="135" y="255" textAnchor="end" fill="rgba(226,232,241,0.85)">Least-privilege access</text><line x1="157" y1="248" x2="300" y2="195" stroke="#16B9A6" strokeWidth="1.4" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }} /></g>
+                <g><circle cx="570" cy="250" r="7" fill="#16B9A6" /><text x="585" y="255" fill="rgba(226,232,241,0.85)">Full audit trail</text><line x1="563" y1="248" x2="420" y2="195" stroke="#16B9A6" strokeWidth="1.4" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }} /></g>
               </g>
               <circle cx="360" cy="172" r="76" fill="#0A1424" stroke="rgba(226,232,241,0.14)" strokeWidth="1.5" />
+              <circle cx="360" cy="172" r="76" fill="none" stroke="#16B9A6" strokeWidth="1.5" opacity="0.45" style={{ transformOrigin: "360px 172px", animation: "nm-pulse 3s ease-in-out infinite" }} />
               <circle cx="360" cy="172" r="66" fill="none" stroke="#16B9A6" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="201 414" transform="rotate(-90 360 172)" style={{ animation: "nm-close 1.6s ease both", animationTimeline: "view()", animationRange: "entry 0% cover 40%" } as CSSProperties} />
               <g transform="translate(344,156)" stroke="#FFFFFF" strokeWidth="1.8" fill="none"><rect x="0" y="0" width="32" height="32" rx="8" /><circle cx="16" cy="16" r="6" /><path d="M16 22v6" strokeLinecap="round" /></g>
             </svg>
@@ -200,11 +211,16 @@ export function ServiceDiagram({ slug }: { slug: string }) {
                 <rect x="10" y="144" width="92" height="30" rx="7" fill="rgba(247,249,252,0.04)" stroke="rgba(226,232,241,0.2)" /><text x="56" y="163" textAnchor="middle" fill="#FFFFFF">On-prem</text>
                 <rect x="10" y="196" width="92" height="30" rx="7" fill="rgba(247,249,252,0.04)" stroke="rgba(226,232,241,0.2)" /><text x="56" y="215" textAnchor="middle" fill="#FFFFFF">Email</text>
               </g>
-              <g stroke="rgba(226,232,241,0.2)" strokeWidth="1" fill="none"><path d="M102 55 L186 130" /><path d="M102 107 L186 138" /><path d="M102 159 L186 146" /><path d="M102 211 L186 154" /></g>
+              <g stroke="#16B9A6" strokeWidth="1" fill="none" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }}><path d="M102 55 L186 130" /><path d="M102 107 L186 138" /><path d="M102 159 L186 146" /><path d="M102 211 L186 154" /></g>
               <circle cx="220" cy="142" r="34" fill="rgba(22,185,166,0.12)" stroke="#16B9A6" strokeWidth="1.4" />
+              <circle cx="220" cy="142" r="34" fill="none" stroke="#16B9A6" strokeWidth="1.4" opacity="0.5" style={{ transformOrigin: "220px 142px", animation: "nm-pulse 2.8s ease-in-out infinite" }} />
               <g transform="translate(210,132)" stroke="#16B9A6" strokeWidth="1.8" fill="none"><circle cx="7" cy="7" r="7" /><path d="M12 12l5 5" strokeLinecap="round" /></g>
               <text x="220" y="196" textAnchor="middle" fill="#16B9A6" fontFamily={mono} fontSize="9.5">Classify</text>
-              <g stroke="rgba(226,232,241,0.2)" strokeWidth="1" fill="none"><path d="M254 130 L320 70" /><path d="M254 138 L320 112" /><path d="M254 150 L320 154" /><path d="M254 158 L320 196" /></g>
+              <g stroke="#16B9A6" strokeWidth="1" fill="none" strokeDasharray="5 5" style={{ animation: "nm-flow .7s linear infinite" }}><path d="M254 130 L320 70" /><path d="M254 138 L320 112" /><path d="M254 150 L320 154" /><path d="M254 158 L320 196" /></g>
+              <circle r="3" fill="#5EEAD9">
+                <animateMotion dur="3.2s" begin="0.3s" repeatCount="indefinite" path="M254 150 L320 154" />
+                <animate attributeName="opacity" dur="3.2s" begin="0.3s" repeatCount="indefinite" values="0;1;1;1;0" keyTimes="0;0.1;0.5;0.9;1" />
+              </circle>
               <g fontFamily={mono} fontSize="9.5">
                 <rect x="320" y="56" width="110" height="28" rx="6" fill="none" stroke="#16B9A6" /><circle cx="336" cy="70" r="4" fill="#16B9A6" /><text x="348" y="73" fill="#FFFFFF">Restricted</text>
                 <rect x="320" y="98" width="110" height="28" rx="6" fill="none" stroke="#16B9A6" /><circle cx="336" cy="112" r="4" fill="#16B9A6" /><text x="348" y="115" fill="#FFFFFF">Confidential</text>
@@ -228,6 +244,7 @@ export function ServiceDiagram({ slug }: { slug: string }) {
                     <g transform="translate(11,9)" stroke={c as string} strokeWidth="1.4" fill="none"><circle cx="6" cy="4" r="3.2" /><path d="M0.5 16a5.5 5.5 0 0 1 11 0" strokeLinecap="round" /></g>
                     <text x="44" y="15" fill="#FFFFFF" fontSize="12" fontWeight="600">{name as string}</text>
                     <text x="44" y="29" fill={(warn ? "#16B9A6" : "rgba(226,232,241,0.5)")} fontSize="10" fontWeight={warn ? 600 : 400}>{sub as string}</text>
+                    {warn ? <circle cx="17" cy="17" r="17" fill="none" stroke="#16B9A6" strokeWidth="1.2" style={{ transformOrigin: "17px 17px", animation: "nm-pulse 2.4s ease-in-out infinite" }} /> : null}
                   </g>
                 ))}
               </g>
@@ -235,6 +252,10 @@ export function ServiceDiagram({ slug }: { slug: string }) {
               <text x="304" y="110" fill="rgba(226,232,241,0.5)" fontFamily={mono} fontSize="9">SENSITIVE DATA</text>
               <rect x="304" y="122" width="114" height="34" rx="7" fill="rgba(22,185,166,0.12)" stroke="#16B9A6" /><text x="361" y="143" textAnchor="middle" fill="#FFFFFF" fontFamily={sans} fontSize="12" fontWeight="600">Customer records</text>
               <rect x="304" y="164" width="114" height="34" rx="7" fill="rgba(22,185,166,0.12)" stroke="#16B9A6" /><text x="361" y="185" textAnchor="middle" fill="#FFFFFF" fontFamily={sans} fontSize="12" fontWeight="600">Financial data</text>
+              <circle cx="361" cy="181" r="10" fill="none" stroke="#16B9A6" strokeWidth="1.2">
+                <animate attributeName="r" values="10;30" dur="2.8s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.5;0" dur="2.8s" repeatCount="indefinite" />
+              </circle>
               <g fill="none">
                 <path d="M150 47 L286 138" stroke="rgba(226,232,241,0.22)" strokeWidth="1.2" />
                 <path d="M150 109 L286 142" stroke="rgba(226,232,241,0.22)" strokeWidth="1.2" />
@@ -266,6 +287,11 @@ export function ServiceDiagram({ slug }: { slug: string }) {
               </g>
               <path d="M332 130 l8 2 l-5 7" fill="none" stroke="#16B9A6" strokeWidth="1.6" />
               <circle cx="360" cy="142" r="30" fill="rgba(22,185,166,0.12)" stroke="#16B9A6" strokeWidth="1.4" />
+              <circle cx="360" cy="142" r="30" fill="none" stroke="#16B9A6" strokeWidth="1.4" opacity="0.5" style={{ transformOrigin: "360px 142px", animation: "nm-pulse 2.6s ease-in-out infinite" }} />
+              <circle cx="360" cy="142" r="30" fill="none" stroke="#16B9A6" strokeWidth="1.2">
+                <animate attributeName="r" values="30;46" dur="2.8s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.45;0" dur="2.8s" repeatCount="indefinite" />
+              </circle>
               <path d="M348 142 h24" stroke="#16B9A6" strokeWidth="2.4" strokeLinecap="round" />
               <text x="360" y="192" textAnchor="middle" fill="#16B9A6" fontFamily={mono} fontSize="8.5">leak</text>
             </svg>
@@ -279,10 +305,10 @@ export function ServiceDiagram({ slug }: { slug: string }) {
             <div style={svcLabel}>THE SAME TOOLING · BEFORE &amp; AFTER</div>
             <svg viewBox="0 0 440 280" style={{ width: "100%", display: "block" }}>
               <text x="14" y="28" fill="rgba(226,232,241,0.4)" fontFamily={mono} fontSize="9">BEFORE</text>
-              <g fill="rgba(226,232,241,0.28)">
+              <g fill="rgba(226,232,241,0.28)" style={{ animation: "nm-twinkle 3s ease-in-out infinite" }}>
                 <circle cx="30" cy="70" r="3" /><circle cx="55" cy="50" r="2.5" /><circle cx="75" cy="95" r="3" /><circle cx="48" cy="120" r="2.5" /><circle cx="92" cy="62" r="2.5" /><circle cx="110" cy="110" r="3" /><circle cx="70" cy="150" r="2.5" /><circle cx="40" cy="175" r="3" /><circle cx="100" cy="160" r="2.5" /><circle cx="125" cy="85" r="2.5" /><circle cx="135" cy="140" r="3" /><circle cx="60" cy="205" r="2.5" /><circle cx="95" cy="200" r="2.5" /><circle cx="120" cy="180" r="2.5" /><circle cx="150" cy="115" r="2.5" /><circle cx="32" cy="100" r="2" /><circle cx="85" cy="130" r="2" />
               </g>
-              <g fill="#16B9A6"><circle cx="62" cy="80" r="3.2" /><circle cx="105" cy="135" r="3.2" /><circle cx="78" cy="185" r="3.2" /></g>
+              <g fill="#16B9A6" style={{ animation: "nm-pulse 2.6s ease-in-out infinite" }}><circle cx="62" cy="80" r="3.2" /><circle cx="105" cy="135" r="3.2" /><circle cx="78" cy="185" r="3.2" /></g>
               <text x="220" y="125" textAnchor="middle" fill="#16B9A6" fontFamily={mono} fontSize="11" fontWeight="600">tune</text>
               <path d="M180 140 H262" stroke="#16B9A6" strokeWidth="1.6" /><path d="M262 140 l-7 -4 v8 z" fill="#16B9A6" />
               <text x="300" y="28" fill="rgba(226,232,241,0.4)" fontFamily={mono} fontSize="9">AFTER</text>
