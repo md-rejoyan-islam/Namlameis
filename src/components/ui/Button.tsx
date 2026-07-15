@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "ghost" | "light" | "dark";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
 
 const sizes: Record<Size, string> = {
   md: "px-5 py-2.5 text-sm",
@@ -14,7 +14,7 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-amber text-white shadow-[0_6px_20px_-6px_rgba(240,113,44,0.6)] hover:bg-[#e0641f] hover:-translate-y-0.5",
+    "bg-amber text-white shadow-[0_6px_20px_-6px_rgba(138,57,192,0.55)] hover:bg-[#6D28D9] hover:-translate-y-0.5",
   secondary:
     "border border-line-strong text-ink hover:border-navy hover:bg-mist",
   ghost: "text-ink hover:text-amber",

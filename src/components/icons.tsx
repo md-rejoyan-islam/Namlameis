@@ -1,7 +1,7 @@
 // Inline SVG icons used by the Products & Services suite cards.
 // Keyed strings keep the data files free of JSX.
 
-export function SuiteIcon({ k, color = "#16B9A6" }: { k: string; color?: string }) {
+export function SuiteIcon({ k, color = "#8A39C0" }: { k: string; color?: string }) {
   const common = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: color, strokeWidth: 1.6 } as const;
   switch (k) {
     case "portal":

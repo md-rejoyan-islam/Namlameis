@@ -11,12 +11,12 @@ export type SuiteCard = {
 };
 
 export const productSuite: SuiteCard[] = [
-  { no: "01", name: "Client Portal", desc: "A private, encrypted workspace where each client follows their engagement in real time.", slug: "client-portal", accent: "#16B9A6", tint: "rgba(22,185,166,0.12)", iconKey: "portal" },
-  { no: "02", name: "Request Intake & Triage", desc: "Captures exactly what a client needs and routes it, triaged, to the right expert in seconds.", slug: "request-intake", accent: "#16B9A6", tint: "rgba(22,185,166,0.12)", iconKey: "intake" },
-  { no: "03", name: "Findings Dashboard", desc: "Raw findings rendered into a clear, prioritised, human-readable story.", slug: "findings-dashboard", accent: "#1FA98F", tint: "rgba(31,169,143,0.12)", iconKey: "dashboard" },
-  { no: "04", name: "Trust Center", desc: "A living, public statement of the firm’s own security and compliance posture.", slug: "trust-center", accent: "#1FA98F", tint: "rgba(31,169,143,0.12)", iconKey: "shield" },
-  { no: "05", name: "Threat-Briefing Hub", desc: "The home of the firm’s research and recurring intelligence briefings.", slug: "briefing-hub", accent: "#16B9A6", tint: "rgba(22,185,166,0.12)", iconKey: "doc" },
-  { no: "06", name: "Secure Data Vault", desc: "An encrypted, access-governed, fully-audited store for sensitive engagement data.", slug: "data-vault", accent: "#16B9A6", tint: "rgba(22,185,166,0.12)", iconKey: "vault" },
+  { no: "01", name: "Client Portal", desc: "A private, encrypted workspace where each client follows their engagement in real time.", slug: "client-portal", accent: "#8A39C0", tint: "rgba(138,57,192,0.12)", iconKey: "portal" },
+  { no: "02", name: "Request Intake & Triage", desc: "Captures exactly what a client needs and routes it, triaged, to the right expert in seconds.", slug: "request-intake", accent: "#8A39C0", tint: "rgba(138,57,192,0.12)", iconKey: "intake" },
+  { no: "03", name: "Findings Dashboard", desc: "Raw findings rendered into a clear, prioritised, human-readable story.", slug: "findings-dashboard", accent: "#6D28D9", tint: "rgba(109,40,217,0.12)", iconKey: "dashboard" },
+  { no: "04", name: "Trust Center", desc: "A living, public statement of the firm’s own security and compliance posture.", slug: "trust-center", accent: "#6D28D9", tint: "rgba(109,40,217,0.12)", iconKey: "shield" },
+  { no: "05", name: "Threat-Briefing Hub", desc: "The home of the firm’s research and recurring intelligence briefings.", slug: "briefing-hub", accent: "#8A39C0", tint: "rgba(138,57,192,0.12)", iconKey: "doc" },
+  { no: "06", name: "Secure Data Vault", desc: "An encrypted, access-governed, fully-audited store for sensitive engagement data.", slug: "data-vault", accent: "#8A39C0", tint: "rgba(138,57,192,0.12)", iconKey: "vault" },
 ];
 
 const heroPrimary = { label: "Get a demo", href: "/contact" };

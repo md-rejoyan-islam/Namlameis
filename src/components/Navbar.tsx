@@ -16,12 +16,12 @@ const solutions: Item[] = [
 ];
 
 const products: Item[] = [
-  { no: "01", name: "Client Portal", desc: "Engagement & findings, one secure place.", href: "/products/client-portal", dot: "#16B9A6" },
-  { no: "02", name: "Request Intake & Triage", desc: "Captured and routed in seconds.", href: "/products/request-intake", dot: "#16B9A6" },
-  { no: "03", name: "Findings Dashboard", desc: "Signal, turned into a narrative.", href: "/products/findings-dashboard", dot: "#1FA98F" },
-  { no: "04", name: "Trust Center", desc: "We practise what we sell.", href: "/products/trust-center", dot: "#1FA98F" },
-  { no: "05", name: "Threat-Briefing Hub", desc: "The credibility engine, published.", href: "/products/briefing-hub", dot: "#16B9A6" },
-  { no: "06", name: "Secure Data Vault", desc: "Where sensitive client data lives.", href: "/products/data-vault", dot: "#16B9A6" },
+  { no: "01", name: "Client Portal", desc: "Engagement & findings, one secure place.", href: "/products/client-portal", dot: "#8A39C0" },
+  { no: "02", name: "Request Intake & Triage", desc: "Captured and routed in seconds.", href: "/products/request-intake", dot: "#8A39C0" },
+  { no: "03", name: "Findings Dashboard", desc: "Signal, turned into a narrative.", href: "/products/findings-dashboard", dot: "#6D28D9" },
+  { no: "04", name: "Trust Center", desc: "We practise what we sell.", href: "/products/trust-center", dot: "#6D28D9" },
+  { no: "05", name: "Threat-Briefing Hub", desc: "The credibility engine, published.", href: "/products/briefing-hub", dot: "#8A39C0" },
+  { no: "06", name: "Secure Data Vault", desc: "Where sensitive client data lives.", href: "/products/data-vault", dot: "#8A39C0" },
 ];
 
 const services: Item[] = [
@@ -33,9 +33,9 @@ const services: Item[] = [
 ];
 
 const industries: Item[] = [
-  { name: "Financial Services", dot: "#16B9A6", href: "/industries/fintech" },
-  { name: "Government & Defense", dot: "#16B9A6", href: "/industries/government-defense" },
-  { name: "Critical Infrastructure", dot: "#1FA98F", href: "/industries/critical-infrastructure" },
+  { name: "Financial Services", dot: "#8A39C0", href: "/industries/fintech" },
+  { name: "Government & Defense", dot: "#8A39C0", href: "/industries/government-defense" },
+  { name: "Critical Infrastructure", dot: "#6D28D9", href: "/industries/critical-infrastructure" },
   { name: "All industries", dot: "rgba(226,232,241,0.4)", href: "/industries" },
 ];
 
@@ -68,8 +68,8 @@ export function Navbar() {
   // light homepage hero (and the scrolled light pill), white over dark heroes.
   const lightHero = pathname === "/";
   const onDark = !scrolled && !lightHero; // white text only while over a dark hero
-  const textActive = onDark ? "#FFFFFF" : "#0B1A2E";
-  const textMuted = onDark ? "rgba(226,232,241,0.72)" : "rgba(11,26,46,0.62)";
+  const textActive = onDark ? "#FFFFFF" : "#120428";
+  const textMuted = onDark ? "rgba(226,232,241,0.72)" : "rgba(11,4,32,0.62)";
 
   const hl = (seg: string) =>
     pathname.startsWith(seg) ? textActive : textMuted;
@@ -117,7 +117,7 @@ export function Navbar() {
   );
 
   const panel: React.CSSProperties = {
-    background: "#0A1424",
+    background: "#0B0420",
     border: "1px solid rgba(226,232,241,0.14)",
     borderRadius: 14,
     padding: 10,
@@ -141,7 +141,7 @@ export function Navbar() {
       return (
         <div style={{ ...panel, width: 560, padding: 12 }}>
           <Link href="/products" className="nm-menu-item" style={{ display: "block", padding: "10px 12px", marginBottom: 4, borderRadius: 9, textDecoration: "none", borderBottom: "1px solid rgba(226,232,241,0.08)" }}>
-            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#16B9A6" }}>The product suite ↗</span>
+            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#8A39C0" }}>The product suite ↗</span>
             <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)", marginLeft: 8 }}>a platform around the service</span>
           </Link>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginTop: 4 }}>
@@ -159,7 +159,7 @@ export function Navbar() {
       return (
         <div style={{ ...panel, width: 400, padding: 12 }}>
           <Link href="/services" className="nm-menu-item" style={{ display: "block", padding: "10px 12px", marginBottom: 4, borderRadius: 9, textDecoration: "none", borderBottom: "1px solid rgba(226,232,241,0.08)" }}>
-            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#16B9A6" }}>Data-security services ↗</span>
+            <span style={{ fontSize: 13.5, fontWeight: 600, color: "#8A39C0" }}>Data-security services ↗</span>
             <span style={{ fontSize: 12, color: "rgba(226,232,241,0.5)", marginLeft: 8 }}>human-delivered</span>
           </Link>
           {services.map((it) => (
@@ -222,14 +222,14 @@ export function Navbar() {
           justifyContent: "space-between",
           gap: 20,
           background: scrolled
-            ? "rgba(251,249,245,0.82)"
+            ? "rgba(248,245,252,0.85)"
             : "transparent",
           // Frosted blur only for the scrolled pill and the homepage's static
           // header; every other page stays fully clean (no colour, no blur) at top.
           backdropFilter: scrolled || lightHero ? "blur(18px) saturate(150%)" : "none",
           WebkitBackdropFilter: scrolled || lightHero ? "blur(18px) saturate(150%)" : "none",
           borderRadius: scrolled ? 16 : 0,
-          border: scrolled ? "1px solid rgba(11,26,46,0.07)" : "1px solid transparent",
+          border: scrolled ? "1px solid rgba(11,4,32,0.07)" : "1px solid transparent",
           boxShadow: scrolled
             ? "var(--shadow-lg)"
             : "none",
@@ -239,7 +239,7 @@ export function Navbar() {
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 13, textDecoration: "none", flex: "none" }}>
           <BrandMark size={scrolled ? 36 : 40} />
           <span style={{ display: "flex", alignItems: "center", lineHeight: 1 }}>
-            <span style={{ fontFamily: "var(--font-brand)", fontWeight: 800, fontSize: scrolled ? 19 : 21, letterSpacing: "0.04em", color: textActive, transition: "color .35s ease, font-size .35s ease" }}>NAMLAMEIS</span>
+            <span style={{ fontFamily: "var(--font-brand)", fontWeight: 800, fontSize: scrolled ? 19 : 21, letterSpacing: "0.02em", color: textActive, transition: "color .35s ease, font-size .35s ease" }}>NAMLAMEIS</span>
           </span>
         </Link>
 
@@ -261,10 +261,10 @@ export function Navbar() {
               fontFamily: "var(--font-sans)",
               fontSize: 13.5,
               fontWeight: 500,
-              color: scrolled ? "#2563EB" : textActive,
+              color: scrolled ? "#8A39C0" : textActive,
               textDecoration: "none",
-              border: `1px solid ${scrolled ? "rgba(37,99,235,0.35)" : onDark ? "rgba(255,255,255,0.4)" : "rgba(11,26,46,0.20)"}`,
-              borderRadius: 10,
+              border: `1px solid ${scrolled ? "rgba(138,57,192,0.35)" : onDark ? "rgba(255,255,255,0.4)" : "rgba(11,4,32,0.20)"}`,
+              borderRadius: 9999,
               letterSpacing: "-0.01em",
               transition: "color .3s ease, border-color .3s ease",
             }}
@@ -275,14 +275,14 @@ export function Navbar() {
             href="/contact"
             style={{
               padding: "11px 19px",
-              background: "linear-gradient(180deg,#4C86F5 0%,#2563EB 100%)",
+              background: "linear-gradient(180deg,#9B5DE5 0%,#6D28D9 100%)",
               color: "#FFFFFF",
               fontFamily: "var(--font-sans)",
               fontSize: 13.5,
               fontWeight: 600,
               letterSpacing: "-0.01em",
               textDecoration: "none",
-              borderRadius: 10,
+              borderRadius: 9999,
               border: "1px solid rgba(255,255,255,0.18)",
               boxShadow: "var(--shadow-blue)",
               transition: "background .3s ease, color .3s ease, box-shadow .3s ease",
@@ -306,7 +306,7 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="nm-nav-mobile" style={{ pointerEvents: "auto", position: "fixed", top: scrolled ? 74 : 78, left: 0, right: 0, zIndex: 99, background: "#0A1424", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "8px 24px 28px", display: "flex", flexDirection: "column", maxHeight: "calc(100vh - 78px)", overflowY: "auto" }}>
+        <div className="nm-nav-mobile" style={{ pointerEvents: "auto", position: "fixed", top: scrolled ? 74 : 78, left: 0, right: 0, zIndex: 99, background: "#0B0420", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "8px 24px 28px", display: "flex", flexDirection: "column", maxHeight: "calc(100vh - 78px)", overflowY: "auto" }}>
           <Link href="/platform" onClick={() => setMobileOpen(false)} style={{ padding: "13px 0", fontSize: 15.5, fontWeight: 500, color: "#FFFFFF", textDecoration: "none", fontFamily: "var(--font-sans)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>Platform</Link>
 
           {([
@@ -317,7 +317,7 @@ export function Navbar() {
             { title: "Company", items: company },
           ] as { title: string; items: Item[] }[]).map((group) => (
             <div key={group.title} style={{ padding: "16px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", color: "#16B9A6", marginBottom: 8 }}>{group.title.toUpperCase()}</div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", color: "#8A39C0", marginBottom: 8 }}>{group.title.toUpperCase()}</div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {group.items.map((it) => (
                   <Link key={it.href} href={it.href} onClick={() => setMobileOpen(false)} style={{ padding: "8px 0", fontSize: 14.5, color: "rgba(226,232,241,0.78)", textDecoration: "none", fontFamily: "var(--font-sans)" }}>{it.name}</Link>
@@ -328,7 +328,7 @@ export function Navbar() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10, paddingTop: 20 }}>
             <Link href="/contact" onClick={() => setMobileOpen(false)} style={{ textAlign: "center", padding: "13px 18px", border: "1px solid rgba(255,255,255,0.4)", borderRadius: 10, color: "#FFFFFF", fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 500, textDecoration: "none" }}>Get a demo</Link>
-            <Link href="/contact" onClick={() => setMobileOpen(false)} style={{ textAlign: "center", padding: "14px 18px", background: "linear-gradient(180deg,#4C86F5 0%,#2563EB 100%)", borderRadius: 10, color: "#FFFFFF", fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 600, textDecoration: "none" }}>Request a briefing</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} style={{ textAlign: "center", padding: "14px 18px", background: "linear-gradient(180deg,#9B5DE5 0%,#6D28D9 100%)", borderRadius: 10, color: "#FFFFFF", fontFamily: "var(--font-sans)", fontSize: 14.5, fontWeight: 600, textDecoration: "none" }}>Request a briefing</Link>
           </div>
         </div>
       )}

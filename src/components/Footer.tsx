@@ -55,13 +55,13 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
 
 export function Footer() {
   return (
-    <footer style={{ background: "#0A1424", borderTop: "1px solid rgba(226,232,241,0.1)", fontFamily: "var(--font-sans)", color: "rgba(226,232,241,0.6)" }}>
+    <footer style={{ background: "#0B0420", borderTop: "1px solid rgba(226,232,241,0.1)", fontFamily: "var(--font-sans)", color: "rgba(226,232,241,0.6)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "72px 32px 40px" }}>
         <div className="nm-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.7fr 1fr 1fr 1fr 1fr 1fr", gap: 32 }}>
           <div style={{ maxWidth: 300 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 11, marginBottom: 18 }}>
               <BrandMark size={38} />
-              <span style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 15, letterSpacing: "0.14em", color: "#FFFFFF" }}>NAMLAMEIS</span>
+              <span style={{ fontFamily: "var(--font-brand)", fontWeight: 800, fontSize: 15, letterSpacing: "0.02em", color: "#FFFFFF" }}>NAMLAMEIS</span>
             </div>
             <p style={{ fontSize: 13.5, lineHeight: 1.7, color: "rgba(226,232,241,0.55)", margin: "0 0 20px" }}>
               Defense-grade cybersecurity, AI, and complex vulnerability discovery. We find what others miss — before it finds you.
@@ -73,7 +73,7 @@ export function Footer() {
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", textTransform: "uppercase", color: "#16B9A6", marginBottom: 16 }}>{col.title}</div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.2em", textTransform: "uppercase", color: "#8A39C0", marginBottom: 16 }}>{col.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
                 {col.links.map((lk) => (
                   <Link key={lk.href + lk.label} href={lk.href} className="nm-footer-link" style={{ fontSize: 13.5, color: "rgba(226,232,241,0.62)", textDecoration: "none" }}>{lk.label}</Link>
@@ -88,7 +88,7 @@ export function Footer() {
             <Link href="/legal/privacy" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Privacy</Link>
             <Link href="/legal/terms" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Terms</Link>
             <Link href="/legal/security" style={{ fontSize: 12.5, color: "rgba(226,232,241,0.5)", textDecoration: "none" }}>Security</Link>
-            <a href="https://linkedin.com/company/namlameis" style={{ fontSize: 12.5, color: "#16B9A6", textDecoration: "none", fontWeight: 500 }}>LinkedIn</a>
+            <a href="https://linkedin.com/company/namlameis" style={{ fontSize: 12.5, color: "#8A39C0", textDecoration: "none", fontWeight: 500 }}>LinkedIn</a>
           </div>
         </div>
       </div>

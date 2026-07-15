@@ -1,33 +1,20 @@
 import type { Metadata } from "next";
-import { Newsreader, Geist, Geist_Mono, Syne } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const geist = Geist({
-  variable: "--font-geist",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-});
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -75,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${newsreader.variable} ${geistMono.variable} ${syne.variable} h-full`}
+      className={`${jakarta.variable} ${geistMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink antialiased">
         <Navbar />

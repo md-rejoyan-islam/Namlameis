@@ -1,25 +1,33 @@
 @import "tailwindcss";
 
 /*
-  Namlameis brand system
-  Palette: navy #0B1A2E · ink #0A1424 · amber #F0712C · azure #3D7DD8 · teal #1FA98F
-  Paper:   #FFFFFF / #F7F9FC
-  Tone:    calm, confident, premium · light theme · generous whitespace
+  Namlameis brand system — Cyera-inspired violet reskin
+  Palette: indigo #120428 · indigo-deep #0B0420 · violet #8A39C0 · violet-deep #6D28D9 · violet-bright #9B5DE5 · magenta #DB2777
+  Paper:   #FFFFFF / #F7F8FA
+  Tone:    vibrant, premium, AI-native · light theme with deep-indigo dark sections
 */
 
 @theme {
-  /* Brand palette */
-  --color-navy: #0b1a2e;
-  --color-ink: #0a1424;
-  --color-teal: #16b9a6;
-  --color-teal-deep: #1fa98f;
-  --color-teal-bright: #42e6d2;
-  --color-amber: #16b9a6; /* legacy alias → teal accent */
-  --color-azure: #3d7dd8;
+  /* Brand palette (repointeds — old-system classes like bg-navy/text-amber/bg-teal resolve to the violet system) */
+  --color-navy: #120428;        /* indigo */
+  --color-ink: #0b0420;         /* indigo-deep */
+  --color-teal: #8a39c0;        /* repointed → violet */
+  --color-teal-deep: #6d28d9;   /* violet-deep */
+  --color-teal-bright: #9b5de5; /* violet-bright */
+  --color-amber: #8a39c0;       /* legacy alias → violet */
+  --color-azure: #7c3aed;       /* focus + bg-azure → violet-indigo */
   --color-paper: #ffffff;
-  --color-mist: #eaf8f5;
+  --color-mist: #f3effc;        /* violet tint */
 
-  /* Tinted neutrals derived from the ink/navy for borders & muted text */
+  /* Violet system (canonical names) */
+  --color-violet: #8a39c0;
+  --color-violet-deep: #6d28d9;
+  --color-violet-bright: #9b5de5;
+  --color-magenta: #db2777;
+  --color-indigo: #120428;
+  --color-indigo-deep: #0b0420;
+
+  /* Tinted neutrals for borders & muted text (unchanged) */
   --color-line: #e2e8f1;
   --color-line-strong: #cfdbeb;
   --color-muted: #475569;
@@ -29,16 +37,16 @@
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
 
-  /* Typography */
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+  /* Typography — single grotesque (Plus Jakarta Sans) for sans/display/brand; Geist Mono for micro */
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
-  --font-brand: var(--font-syne), var(--font-geist), sans-serif;
+  --font-brand: var(--font-jakarta), ui-sans-serif, sans-serif;
 
   /* Layout */
   --spacing-section: 7rem;
 
-  /* Warm-contrast neutrals (teal + warm sand palette) */
+  /* Warm-contrast neutrals (legacy, retained for compatibility) */
   --color-sand: #c79a6d;
   --color-sand-soft: #efe4d3;
   --color-warm-paper: #faf7f2;
@@ -52,24 +60,30 @@
   --radius-xl: 28px;
   --radius-pill: 9999px;
 
-  /* Custom layered shadow system (cool ink-tinted, multi-stop) */
-  /* Even, all-sides ambient shadows (no bottom-only bias) — kept subtle */
-  --shadow-xs: 0 0 2px rgba(11, 26, 46, 0.04);
-  --shadow-sm: 0 0 2px rgba(11, 26, 46, 0.035), 0 0 6px rgba(11, 26, 46, 0.04);
-  --shadow-md: 0 0 2px rgba(11, 26, 46, 0.03), 0 0 9px rgba(11, 26, 46, 0.04), 0 0 20px rgba(11, 26, 46, 0.035);
-  --shadow-lg: 0 0 3px rgba(11, 26, 46, 0.04), 0 0 15px rgba(11, 26, 46, 0.055), 0 0 34px rgba(11, 26, 46, 0.055);
-  --shadow-dark: 0 28px 60px -24px rgba(0, 0, 0, 0.55), 0 10px 26px -14px rgba(0, 0, 0, 0.42);
-  --shadow-teal: 0 1px 2px rgba(11, 26, 46, 0.10), 0 10px 22px -8px rgba(16, 185, 166, 0.42), 0 3px 8px -3px rgba(16, 185, 166, 0.30);
-  --shadow-teal-hover: 0 2px 4px rgba(11, 26, 46, 0.12), 0 16px 32px -8px rgba(16, 185, 166, 0.52);
+  /* Signature gradients */
+  --grad-cta: linear-gradient(180deg, #9b5de5 0%, #6d28d9 100%);
+  --grad-tri: linear-gradient(120deg, #6d28d9 0%, #2563eb 55%, #db2777 100%);
+  --grad-dark-hero: radial-gradient(120% 100% at 50% 0%, #1e0b4e 0%, #0b0420 52%, #080214 100%);
 
-  /* Primary action = blue */
-  --color-blue: #2563eb;
-  --color-blue-bright: #4c86f5;
-  --shadow-blue: 0 1px 2px rgba(11, 26, 46, 0.12), 0 10px 22px -8px rgba(37, 99, 235, 0.45), 0 3px 8px -3px rgba(37, 99, 235, 0.35);
-  --shadow-blue-hover: 0 2px 4px rgba(11, 26, 46, 0.14), 0 16px 34px -8px rgba(37, 99, 235, 0.55);
+  /* Custom layered shadow system (indigo-tinted, multi-stop) */
+  --shadow-xs: 0 0 2px rgba(11, 4, 32, 0.04);
+  --shadow-sm: 0 0 2px rgba(11, 4, 32, 0.035), 0 0 6px rgba(11, 4, 32, 0.04);
+  --shadow-md: 0 0 2px rgba(11, 4, 32, 0.03), 0 0 9px rgba(11, 4, 32, 0.04), 0 0 20px rgba(11, 4, 32, 0.035);
+  --shadow-lg: 0 0 3px rgba(11, 4, 32, 0.04), 0 0 15px rgba(11, 4, 32, 0.055), 0 0 34px rgba(11, 4, 32, 0.055);
+  --shadow-dark: 0 28px 60px -24px rgba(0, 0, 0, 0.55), 0 10px 26px -14px rgba(0, 0, 0, 0.42);
+  --shadow-violet: 0 1px 2px rgba(11, 4, 32, 0.10), 0 10px 22px -8px rgba(138, 57, 192, 0.42), 0 3px 8px -3px rgba(138, 57, 192, 0.30);
+  --shadow-violet-hover: 0 2px 4px rgba(11, 4, 32, 0.12), 0 16px 32px -8px rgba(138, 57, 192, 0.52);
   --shadow-warm: 0 1px 2px rgba(78, 54, 28, 0.05), 0 12px 28px -12px rgba(120, 84, 44, 0.18);
 
+  /* Primary action = violet (legacy blue token folded into violet) */
+  --color-blue: #8a39c0;
+  --color-blue-bright: #9b5de5;
+  --shadow-blue: var(--shadow-violet);
+  --shadow-blue-hover: var(--shadow-violet-hover);
+
   /* Legacy aliases kept for inner pages */
+  --shadow-teal: var(--shadow-violet);
+  --shadow-teal-hover: var(--shadow-violet-hover);
   --shadow-card: var(--shadow-sm);
   --shadow-card-hover: var(--shadow-md);
 }
@@ -88,7 +102,7 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-amber) 28%, transparent);
+    background: color-mix(in srgb, var(--color-violet) 28%, transparent);
     color: var(--color-ink);
   }
 
@@ -122,15 +136,15 @@
     font-size: 0.6rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-amber);
+    color: var(--color-violet);
     font-weight: 500;
     padding: 0.35rem 0.8rem;
     border-radius: 9999px;
-    background: color-mix(in srgb, var(--color-amber) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-amber) 22%, transparent);
+    background: color-mix(in srgb, var(--color-violet) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-violet) 22%, transparent);
   }
 
-  /* Display headings use the serif */
+  /* Display headings use the grotesque */
   .font-display {
     font-family: var(--font-display);
     font-optical-sizing: auto;
@@ -161,7 +175,7 @@
     transition: background 0.18s ease;
   }
   .nm-menu-item:hover {
-    background: rgba(22, 185, 166, 0.1);
+    background: rgba(138, 57, 192, 0.12);
   }
 
   /* Nav responsive: hide desktop nav + cta below 1024px, show burger */
@@ -196,19 +210,22 @@
     }
   }
 
-  /* Homepage hover states (replacing the comp's style-hover) */
-  .nm-cta-primary { transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s ease, filter .28s ease; }
-  .nm-cta-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-blue-hover); filter: brightness(1.05); }
-  .nm-cta-light { transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
-  .nm-cta-light:hover { background: #F5F8FF; border-color: rgba(37,99,235,0.5); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
-  .nm-disc-card { transition: box-shadow .35s cubic-bezier(.22,.61,.36,1), transform .35s cubic-bezier(.22,.61,.36,1); }
-  .nm-disc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-  .nm-closing-primary { transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s ease, filter .28s ease; }
-  .nm-closing-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-blue-hover); filter: brightness(1.05); }
-  .nm-closing-ghost { transition: border-color .25s ease, background .25s ease; }
-  .nm-closing-ghost:hover { border-color: rgba(226,232,241,0.42); background: rgba(255,255,255,0.04); }
+  /* Homepage hover states — Cyera-style: flat, bordered, a short lift on
+     hover rather than a glow. Buttons are 12px "squircles", not full pills. */
+  .nm-cta-primary { transition: transform .18s cubic-bezier(.22,.61,.36,1), background .18s ease; }
+  .nm-cta-primary:hover { transform: translateY(-2px); background: linear-gradient(180deg,#A873EA 0%,#7B31E0 100%); }
+  .nm-cta-light { transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+  .nm-cta-light:hover { background: #f5f2fc; border-color: rgba(138,57,192,0.5); transform: translateY(-2px); }
+  .nm-disc-card { transition: border-color .2s ease, transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease; }
+  .nm-disc-card:hover { border-color: rgba(138,57,192,0.3); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(11,4,32,0.05), 0 10px 22px rgba(11,4,32,0.08); }
+  .nm-closing-primary { transition: transform .18s cubic-bezier(.22,.61,.36,1), background .18s ease; }
+  .nm-closing-primary:hover { transform: translateY(-2px); background: linear-gradient(180deg,#A873EA 0%,#7B31E0 100%); }
+  .nm-closing-ghost { transition: border-color .2s ease, background .2s ease; }
+  .nm-closing-ghost:hover { border-color: rgba(196,181,253,0.5); background: rgba(255,255,255,0.04); }
   .nm-trust-chip { transition: color .2s ease; }
-  .nm-trust-chip:hover { color: #0A1424; }
+  .nm-trust-chip:hover { color: #0b0420; }
+  .nm-stat-card { transition: border-color .2s ease, transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease; }
+  .nm-stat-card:hover { border-color: rgba(138,57,192,0.32); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(11,4,32,0.05), 0 10px 22px rgba(11,4,32,0.08); }
 
   /* Homepage responsive: collapse two-column grids on small screens */
   @media (max-width: 900px) {
@@ -221,11 +238,11 @@
 
   /* Inner-page cards & buttons */
   .nm-feature-card { transition: box-shadow .3s ease, transform .3s ease; }
-  .nm-feature-card:hover { box-shadow: 0 16px 40px rgba(11,26,46,0.1); transform: translateY(-3px); }
+  .nm-feature-card:hover { box-shadow: 0 16px 40px rgba(11,4,32,0.1); transform: translateY(-3px); }
   .nm-suite-card { transition: box-shadow .3s ease, transform .3s ease; }
-  .nm-suite-card:hover { box-shadow: 0 20px 48px rgba(11,26,46,0.13); transform: translateY(-4px); }
+  .nm-suite-card:hover { box-shadow: 0 20px 48px rgba(11,4,32,0.13); transform: translateY(-4px); }
   .nm-ghost-dark { transition: border-color .25s ease; }
-  .nm-ghost-dark:hover { border-color: rgba(226,232,241,0.4); }
+  .nm-ghost-dark:hover { border-color: rgba(196,181,253,0.4); }
 
   @media (max-width: 860px) {
     .nm-suite-grid { grid-template-columns: 1fr 1fr !important; }
@@ -291,3 +308,4 @@
 @keyframes nm-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -22; } }
 @keyframes nm-orbit { to { transform: rotate(360deg); } }
 @keyframes nm-shimmer { 0% { transform: translateX(-130%); } 55%, 100% { transform: translateX(230%); } }
+@keyframes nm-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
