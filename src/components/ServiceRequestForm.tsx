@@ -12,7 +12,7 @@ import { Button } from "./ui/Button";
 import { cn } from "@/lib/cn";
 
 const inputBase =
-  "w-full rounded-xl border border-line-strong bg-paper px-4 py-3 text-sm text-ink placeholder:text-subtle transition-colors focus:border-azure focus:outline-none";
+  "w-full rounded-xl border border-line-strong bg-paper px-4 py-3 text-sm text-heading placeholder:text-subtle transition-colors focus:border-azure focus:outline-none";
 
 function FieldError({ messages }: { messages?: string[] }) {
   if (!messages?.length) return null;
@@ -31,7 +31,7 @@ function Label({
   return (
     <label
       htmlFor={htmlFor}
-      className="mb-1.5 block text-sm font-medium text-ink"
+      className="mb-1.5 block text-sm font-medium text-heading"
     >
       {children}
       {required && <span className="ml-0.5 text-amber">*</span>}
@@ -69,7 +69,7 @@ export function ServiceRequestForm() {
             />
           </svg>
         </div>
-        <p className="mx-auto mt-4 max-w-md text-[1.02rem] leading-relaxed text-ink">
+        <p className="mx-auto mt-4 max-w-md text-[1.02rem] leading-relaxed text-heading">
           {state.message}
         </p>
       </div>
@@ -91,7 +91,7 @@ export function ServiceRequestForm() {
       </div>
 
       {state.status === "error" && state.message && (
-        <div className="rounded-xl border border-amber/30 bg-amber/8 px-4 py-3 text-sm text-ink">
+        <div className="rounded-xl border border-amber/30 bg-amber/8 px-4 py-3 text-sm text-heading">
           {state.message}
         </div>
       )}
@@ -155,14 +155,14 @@ export function ServiceRequestForm() {
       </div>
 
       <fieldset>
-        <legend className="mb-2.5 text-sm font-medium text-ink">
+        <legend className="mb-2.5 text-sm font-medium text-heading">
           Service required <span className="text-amber">*</span>
         </legend>
         <div className="grid gap-2.5 sm:grid-cols-2">
           {SERVICES.map((s) => (
             <label
               key={s}
-              className="flex cursor-pointer items-start gap-3 rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink transition-colors hover:border-line-strong has-checked:border-azure has-checked:bg-azure/5"
+              className="flex cursor-pointer items-start gap-3 rounded-xl border border-line bg-paper px-4 py-3 text-sm text-heading transition-colors hover:border-line-strong has-checked:border-azure has-checked:bg-azure/5"
             >
               <input
                 type="checkbox"

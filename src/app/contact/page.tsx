@@ -46,7 +46,7 @@ export default function ContactPage() {
                     <dt className="font-mono text-xs uppercase tracking-[0.16em] text-subtle">
                       {d.label}
                     </dt>
-                    <dd className="mt-1 text-[1.02rem] text-ink">
+                    <dd className="mt-1 text-[1.02rem] text-heading">
                       {d.href ? (
                         <a
                           href={d.href}

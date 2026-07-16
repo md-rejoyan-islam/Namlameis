@@ -70,7 +70,7 @@ export default function AboutPage() {
                     <dt className="font-mono text-xs uppercase tracking-[0.18em] text-subtle">
                       Founded
                     </dt>
-                    <dd className="mt-1 font-display text-2xl font-medium text-ink">
+                    <dd className="mt-1 font-display text-2xl font-medium text-heading">
                       2024
                     </dd>
                   </div>
@@ -78,7 +78,7 @@ export default function AboutPage() {
                     <dt className="font-mono text-xs uppercase tracking-[0.18em] text-subtle">
                       Where we are
                     </dt>
-                    <dd className="mt-1 text-[1.02rem] leading-relaxed text-ink">
+                    <dd className="mt-1 text-[1.02rem] leading-relaxed text-heading">
                       A branch in Salzburg, Austria — working with clients
                       internationally.
                     </dd>

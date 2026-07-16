@@ -52,13 +52,13 @@ export default function LeadershipPage() {
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-amber">
                     {m.heading}
                   </p>
-                  <blockquote className="mt-5 font-display text-xl font-medium leading-relaxed tracking-tight text-ink sm:text-[1.55rem]">
+                  <blockquote className="mt-5 font-display text-xl font-medium leading-relaxed tracking-tight text-heading sm:text-[1.55rem]">
                     “{m.quote}”
                   </blockquote>
                   <figcaption className="mt-7 flex items-center gap-4 border-t border-line pt-6">
                     <Monogram initials={m.initials} />
                     <div>
-                      <div className="font-display text-lg font-medium text-ink">
+                      <div className="font-display text-lg font-medium text-heading">
                         {m.name}
                       </div>
                       <div className="text-sm text-muted">{m.role}</div>

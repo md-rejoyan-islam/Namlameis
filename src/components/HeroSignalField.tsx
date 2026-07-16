@@ -58,7 +58,7 @@ export function HeroSignalField({ density = 70 }: { density?: number }) {
             dy = a.y - b.y,
             d = Math.hypot(dx, dy);
           if (d < 128) {
-            ctx.strokeStyle = "rgba(138,57,192," + 0.22 * (1 - d / 128) + ")";
+            ctx.strokeStyle = "rgba(140,65,204," + 0.22 * (1 - d / 128) + ")";
             ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -70,12 +70,12 @@ export function HeroSignalField({ density = 70 }: { density?: number }) {
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, 6.2832);
-        ctx.fillStyle = n.accent ? "rgba(138,57,192,0.95)" : "rgba(100,116,139,0.42)";
+        ctx.fillStyle = n.accent ? "rgba(140,65,204,0.95)" : "rgba(100,116,139,0.42)";
         ctx.fill();
         if (n.accent) {
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.r + 3, 0, 6.2832);
-          ctx.strokeStyle = "rgba(138,57,192,0.25)";
+          ctx.strokeStyle = "rgba(140,65,204,0.25)";
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
@@ -85,13 +85,13 @@ export function HeroSignalField({ density = 70 }: { density?: number }) {
       const px = -40 + tick * (w + 80);
       const py = h * 0.62 + Math.sin(tick * Math.PI * 1.6) * -h * 0.28;
       const g = ctx.createRadialGradient(px, py, 0, px, py, 26);
-      g.addColorStop(0, "rgba(138,57,192,0.9)");
-      g.addColorStop(1, "rgba(138,57,192,0)");
+      g.addColorStop(0, "rgba(140,65,204,0.9)");
+      g.addColorStop(1, "rgba(140,65,204,0)");
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.arc(px, py, 26, 0, 6.2832);
       ctx.fill();
-      ctx.fillStyle = "#7C3AED";
+      ctx.fillStyle = "#4945FF";
       ctx.beginPath();
       ctx.arc(px, py, 2.6, 0, 6.2832);
       ctx.fill();

@@ -52,13 +52,13 @@ export function SignalMap({ className }: { className?: string }) {
     >
       <defs>
         <radialGradient id="sm-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#8A39C0" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#8A39C0" stopOpacity="0" />
+          <stop offset="0%" stopColor="#8C41CC" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#8C41CC" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="sm-trail" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#7C3AED" />
-          <stop offset="55%" stopColor="#6D28D9" />
-          <stop offset="100%" stopColor="#8A39C0" />
+          <stop offset="55%" stopColor="#7C35B8" />
+          <stop offset="100%" stopColor="#8C41CC" />
         </linearGradient>
         <linearGradient id="sm-sweep" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#7C3AED" stopOpacity="0" />
@@ -84,7 +84,7 @@ export function SignalMap({ className }: { className?: string }) {
           fontFamily="ui-monospace, monospace"
           fontSize="8"
           letterSpacing="2"
-          fill="#6D28D9"
+          fill="#7C35B8"
           fillOpacity="0.7"
         >
           KNOWN
@@ -96,7 +96,7 @@ export function SignalMap({ className }: { className?: string }) {
           fontFamily="ui-monospace, monospace"
           fontSize="8"
           letterSpacing="2"
-          fill="#8A39C0"
+          fill="#8C41CC"
           fillOpacity="0.85"
         >
           UNKNOWN
@@ -130,7 +130,7 @@ export function SignalMap({ className }: { className?: string }) {
 
         {/* ants crawling toward the threat */}
         {[0, 0.5].map((begin, i) => (
-          <circle key={i} r="2.4" fill="#8A39C0">
+          <circle key={i} r="2.4" fill="#8C41CC">
             <animateMotion
               path={trail}
               dur="3.5s"
@@ -144,10 +144,10 @@ export function SignalMap({ className }: { className?: string }) {
         {/* KNOWN nodes — cleared, with a teal check + label */}
         {cleared.map((n, i) => (
           <g key={i}>
-            <circle cx={n.x} cy={n.y} r="6.5" fill="#120428" stroke="#6D28D9" strokeOpacity="0.6" strokeWidth="1.2" />
+            <circle cx={n.x} cy={n.y} r="6.5" fill="#292875" stroke="#7C35B8" strokeOpacity="0.6" strokeWidth="1.2" />
             <path
               d={`M${n.x - 3} ${n.y} L${n.x - 0.8} ${n.y + 2.4} L${n.x + 3.2} ${n.y - 2.6}`}
-              stroke="#6D28D9"
+              stroke="#7C35B8"
               strokeWidth="1.4"
               fill="none"
               strokeLinecap="round"
@@ -168,7 +168,7 @@ export function SignalMap({ className }: { className?: string }) {
 
         {/* path waypoints */}
         {waypoints.map((n, i) => (
-          <circle key={i} cx={n.x} cy={n.y} r="3.4" fill="#120428" stroke="#7C3AED" strokeOpacity="0.7" strokeWidth="1" />
+          <circle key={i} cx={n.x} cy={n.y} r="3.4" fill="#292875" stroke="#7C3AED" strokeOpacity="0.7" strokeWidth="1" />
         ))}
 
         {/* origin — the colony (ant mark) with scanning ring */}
@@ -176,7 +176,7 @@ export function SignalMap({ className }: { className?: string }) {
           <animate attributeName="r" values="16;27;16" dur="3.2s" repeatCount="indefinite" />
           <animate attributeName="stroke-opacity" values="0.3;0;0.3" dur="3.2s" repeatCount="indefinite" />
         </circle>
-        <circle cx={origin.x} cy={origin.y} r="13" fill="#120428" stroke="#7C3AED" strokeOpacity="0.5" />
+        <circle cx={origin.x} cy={origin.y} r="13" fill="#292875" stroke="#7C3AED" strokeOpacity="0.5" />
         <g transform={`translate(${origin.x - 8}, ${origin.y - 8}) scale(0.5)`} fill="#E9F0FB">
           <path
             d="M14.5 5.5C13 3.5 12 2.5 10.5 1.5M17.5 5.5c1.5-2 2.5-3 4-4"
@@ -203,11 +203,11 @@ export function SignalMap({ className }: { className?: string }) {
 
         {/* the threat — found in the unknown */}
         <circle cx={threat.x} cy={threat.y} r="28" fill="url(#sm-glow)" />
-        <circle cx={threat.x} cy={threat.y} r="11" stroke="#8A39C0" strokeWidth="1.2" strokeOpacity="0.6">
+        <circle cx={threat.x} cy={threat.y} r="11" stroke="#8C41CC" strokeWidth="1.2" strokeOpacity="0.6">
           <animate attributeName="r" values="11;21;11" dur="2.2s" repeatCount="indefinite" />
           <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2.2s" repeatCount="indefinite" />
         </circle>
-        <circle cx={threat.x} cy={threat.y} r="6.5" fill="#8A39C0">
+        <circle cx={threat.x} cy={threat.y} r="6.5" fill="#8C41CC">
           <animate attributeName="r" values="6.5;7.6;6.5" dur="2.2s" repeatCount="indefinite" />
         </circle>
         {/* alert glyph inside the threat */}
@@ -218,7 +218,7 @@ export function SignalMap({ className }: { className?: string }) {
           fontFamily="ui-sans-serif, sans-serif"
           fontSize="9"
           fontWeight="700"
-          fill="#120428"
+          fill="#292875"
         >
           !
         </text>
@@ -229,7 +229,7 @@ export function SignalMap({ className }: { className?: string }) {
           fontFamily="ui-sans-serif, sans-serif"
           fontSize="8.5"
           fontWeight="600"
-          fill="#8A39C0"
+          fill="#8C41CC"
         >
           Hidden threat
         </text>

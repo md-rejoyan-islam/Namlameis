@@ -82,7 +82,7 @@ export default async function IndustryPage({
                 {industry.help.map((h) => (
                   <li key={h} className="flex gap-3.5">
                     <CheckMark />
-                    <span className="text-[1.02rem] leading-relaxed text-ink/90">
+                    <span className="text-[1.02rem] leading-relaxed text-heading/90">
                       {h}
                     </span>
                   </li>
@@ -107,7 +107,7 @@ export default async function IndustryPage({
                   href={`/industries/${o.slug}`}
                   className="group flex h-full items-center justify-between gap-4 border-b border-r border-line bg-paper p-6 transition-colors hover:bg-mist"
                 >
-                  <span className="font-display text-lg font-medium tracking-tight text-ink">
+                  <span className="font-display text-lg font-medium tracking-tight text-heading">
                     {o.name}
                   </span>
                   <ArrowRight className="shrink-0 text-subtle transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber" />

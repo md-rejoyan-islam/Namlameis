@@ -60,7 +60,7 @@ export default async function SolutionPage({
               {solution.overview.map((p, i) => (
                 <p
                   key={i}
-                  className="text-lg leading-relaxed text-muted [&>strong]:text-ink"
+                  className="text-lg leading-relaxed text-muted [&>strong]:text-heading"
                 >
                   {p}
                 </p>
@@ -75,7 +75,7 @@ export default async function SolutionPage({
         <Container>
           <Reveal>
             <Eyebrow className="mb-5">Capabilities</Eyebrow>
-            <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
+            <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
               What this practice covers.
             </h2>
           </Reveal>
@@ -83,7 +83,7 @@ export default async function SolutionPage({
             {solution.capabilities.map((c, i) => (
               <Reveal key={c.name} delay={i * 50}>
                 <div className="h-full rounded-xl border border-line bg-paper p-7 shadow-(--shadow-card)">
-                  <h3 className="font-display text-lg font-medium tracking-tight text-ink">
+                  <h3 className="font-display text-lg font-medium tracking-tight text-heading">
                     {c.name}
                   </h3>
                   <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">
@@ -102,7 +102,7 @@ export default async function SolutionPage({
           <Container>
             <Reveal className="max-w-3xl">
               <Eyebrow className="mb-5">Method</Eyebrow>
-              <h2 className="font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
+              <h2 className="font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
                 {solution.method.heading}
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-muted">
@@ -151,7 +151,7 @@ export default async function SolutionPage({
                     <span className="font-mono text-xs tracking-[0.18em] text-amber">
                       {o.number}
                     </span>
-                    <span className="mt-1 block font-display text-lg font-medium tracking-tight text-ink">
+                    <span className="mt-1 block font-display text-lg font-medium tracking-tight text-heading">
                       {o.cardTitle}
                     </span>
                   </span>

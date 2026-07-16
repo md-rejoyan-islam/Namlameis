@@ -35,17 +35,19 @@ export function PageHero({
         <div className="max-w-3xl">
           {eyebrow && (
             <Reveal>
-              <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
+              <Eyebrow light className="mb-5">
+                {eyebrow}
+              </Eyebrow>
             </Reveal>
           )}
           <Reveal delay={60}>
-            <h1 className="font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl md:text-[3.4rem]">
+            <h1 className="font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
               {title}
             </h1>
           </Reveal>
           {intro && (
             <Reveal delay={120}>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/75">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-taupe">
                 {intro}
               </p>
             </Reveal>

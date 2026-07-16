@@ -1,91 +1,212 @@
 @import "tailwindcss";
 
 /*
-  Namlameis brand system — Cyera-inspired violet reskin
-  Palette: indigo #120428 · indigo-deep #0B0420 · violet #8A39C0 · violet-deep #6D28D9 · violet-bright #9B5DE5 · magenta #DB2777
-  Paper:   #FFFFFF / #F7F8FA
-  Tone:    vibrant, premium, AI-native · light theme with deep-indigo dark sections
+  Namlameis brand system — Strapi-informed premium palette
+  ------------------------------------------------------------------
+  Every neutral is TINTED toward the brand hue. That is the whole trick:
+  Strapi's greys are indigo-greys (#666687), their surfaces are indigo-tinted
+  whites (#F6F6FF on #E9E9FF borders), and their headings are indigo (#292875)
+  rather than black. Nothing on the page is a pure neutral, so the palette
+  reads as one deliberate system instead of "brand colour + grey UI".
+
+  Cards are WHITE. The tint is for surfaces INSIDE a card (chart plots, chips,
+  rails), so a graph's interior harmonises with the card it sits in.
+
+  Surfaces:  paper #FFFFFF · tint #F6F6FF · line #E9E9FF · line-strong #DCDCE4
+  Headings:  #292875 (12.69:1) — titles are indigo, never black
+  Body:      #666687 (5.50:1) · subtle #6E6E8C (4.92:1)
+  Action:    indigo #4945FF   Brand: purple #8C41CC
+  Dark ink:  #120428 / #0B0420 (heroes + statement sections keep these)
+
+  THE TWO-SURFACE RULE
+  No accent clears 4.5:1 on both white and the ink heroes, whose LIGHTEST
+  radial stop is #1E0B4E — always check against that, not #120428:
+    #4945FF -> 5.87 on white, 2.95 on #1E0B4E  (fails on dark)
+    #A5A2FF -> 2.4  on white, 7.59 on #1E0B4E  (fails on light)
+  So each accent is split by surface:
+    on light -> --color-indigo / --color-purple
+    on ink   -> --color-indigo-on-dark / --color-purple-on-dark
+  Never the reverse.
 */
 
 @theme {
-  /* Brand palette (repointeds — old-system classes like bg-navy/text-amber/bg-teal resolve to the violet system) */
-  --color-navy: #120428;        /* indigo */
-  --color-ink: #0b0420;         /* indigo-deep */
-  --color-teal: #8a39c0;        /* repointed → violet */
-  --color-teal-deep: #6d28d9;   /* violet-deep */
-  --color-teal-bright: #9b5de5; /* violet-bright */
-  --color-amber: #8a39c0;       /* legacy alias → violet */
-  --color-azure: #7c3aed;       /* focus + bg-azure → violet-indigo */
+  /* ── Surfaces — indigo-tinted, never neutral grey */
   --color-paper: #ffffff;
-  --color-mist: #f3effc;        /* violet tint */
+  --color-tint: #f6f6ff;      /* surfaces INSIDE a white card */
+  --color-alabaster: #f6f6ff; /* legacy alias → tint */
+  --color-linen: #f6f6ff;     /* legacy alias → tint */
+  --color-mist: #f6f6ff;      /* legacy alias → tint */
 
-  /* Violet system (canonical names) */
-  --color-violet: #8a39c0;
-  --color-violet-deep: #6d28d9;
-  --color-violet-bright: #9b5de5;
-  --color-magenta: #db2777;
-  --color-indigo: #120428;
-  --color-indigo-deep: #0b0420;
+  /* ── Ink — dark heroes / statement sections only */
+  --color-ink: #120428;
+  --color-ink-deep: #0b0420;
+  --color-navy: #120428;      /* legacy alias → ink */
+  --color-indigo-night: #120428;
+  --color-indigo-deep-night: #0b0420;
 
-  /* Tinted neutrals for borders & muted text (unchanged) */
-  --color-line: #e2e8f1;
-  --color-line-strong: #cfdbeb;
-  --color-muted: #475569;
-  --color-subtle: #64748b;
+  /* ── Headings. Titles are indigo, not black — Strapi's defining move
+     and the reason their pages read as designed rather than assembled. */
+  --color-heading: #292875;   /* 12.69 white · 11.81 tint */
 
-  /* Semantic */
+  /* ── Action indigo — light surfaces (5.87 on white; white on it is also
+     5.87, so it works as text AND as a button fill) */
+  --color-indigo: #4945ff;
+  --color-indigo-hover: #3c38e5;  /* white on it = 7.27 */
+  --color-blue: #4945ff;          /* legacy alias */
+  --color-blue-deep: #3c38e5;
+  --color-blue-text: #4945ff;     /* legal as text, unlike the old #2D62FF */
+  --color-azure: #4945ff;         /* focus ring */
+
+  /* ── Action indigo — ink surfaces */
+  --color-indigo-on-dark: #a5a2ff;  /* 8.58 ink · 7.59 hero */
+  --color-blue-on-dark: #a5a2ff;
+  --color-blue-soft: #f6f6ff;
+  --color-blue-line: #e9e9ff;
+
+  /* ── Brand purple — light surfaces */
+  --color-purple: #8c41cc;    /* 5.61 white · 5.22 tint */
+  --color-purple-deep: #7c35b8;
+  --color-violet: #8c41cc;    /* legacy alias */
+  --color-violet-deep: #7c35b8;
+  --color-amber: #8c41cc;     /* legacy alias */
+  --color-teal: #8c41cc;      /* legacy alias */
+  --color-teal-deep: #7c35b8;
+
+  /* ── Brand purple — ink surfaces */
+  --color-purple-on-dark: #b77bee;  /* 6.60 ink · 5.84 hero */
+  --color-violet-on-dark: #b77bee;
+  --color-violet-bright: #b77bee;
+
+  /* ── Body text on ink (replaces the warm taupe) */
+  --color-taupe: #c8c8dc;     /* 11.88 ink · 10.51 hero */
+
+  /* ── Text ramp — indigo-greys, not neutral greys */
+  --color-muted: #666687;     /* 5.50 white · 5.12 tint */
+  --color-subtle: #6e6e8c;    /* 4.92 white · 4.58 tint */
+
+  /* ── Borders — indigo-tinted */
+  --color-line: #e9e9ff;
+  --color-line-strong: #dcdce4;
+
+  /* ── Semantic */
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
+  --color-magenta: #db2777;   /* decorative gradients only — 4.60 on white, never a text token */
 
-  /* Typography — single grotesque (Plus Jakarta Sans) for sans/display/brand; Geist Mono for micro */
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  /* ── Typography — Inter variable (the free face closest to Cyera's Haffer VF) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-brand: var(--font-inter), ui-sans-serif, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
-  --font-brand: var(--font-jakarta), ui-sans-serif, sans-serif;
 
-  /* Layout */
+  /* ── Type scale — even numbers only, mirroring Cyera's 14/16/20/24/32/56.
+     The old system had ~48 sizes incl. half-pixels (9.5, 10.5, 15.5).
+     The FULL ramp is declared through 7xl on purpose: overriding only part of
+     it leaves Tailwind's defaults on the remaining rungs and inverts the scale
+     (that bug is live today at --radius-xl 28 > --radius-2xl 16). */
+  --text-xs: 0.75rem;      /* 12 — mono eyebrows (was 9.6px, illegible) */
+  --text-sm: 0.875rem;     /* 14 */
+  --text-base: 1rem;       /* 16 */
+  --text-lg: 1.25rem;      /* 20 — lead / intro */
+  --text-xl: 1.5rem;       /* 24 */
+  --text-2xl: 2rem;        /* 32 — section h2 */
+  --text-3xl: 2.5rem;      /* 40 */
+  --text-4xl: 3rem;        /* 48 */
+  --text-5xl: 3.5rem;      /* 56 — hero h1 */
+  --text-6xl: 4rem;        /* 64 */
+  --text-7xl: 4.5rem;      /* 72 */
+
+  /* Display sizes set their own leading; the Tailwind defaults paired with the
+     old sizes are far too tight once the size doubles. */
+  --text-2xl--line-height: 1.15;
+  --text-3xl--line-height: 1.1;
+  --text-4xl--line-height: 1.08;
+  --text-5xl--line-height: 1.05;
+  --text-6xl--line-height: 1.03;
+  --text-7xl--line-height: 1.02;
+
+  /* ── Layout — one container, shared by header and content (Cyera: 1185 @ 1280) */
   --spacing-section: 7rem;
+  --container-content: 75rem; /* 1200 */
 
-  /* Warm-contrast neutrals (legacy, retained for compatibility) */
-  --color-sand: #c79a6d;
-  --color-sand-soft: #efe4d3;
-  --color-warm-paper: #faf7f2;
-  --color-warm-tint: #f5eee2;
-  --color-warm-line: #ece1d0;
-
-  /* Premium radius scale */
-  --radius-sm: 10px;
-  --radius-md: 14px;
+  /* ── Radius — Cyera's 4px-step scale (8/12/16/20/24/40).
+     All six rungs are declared: overriding only sm..xl left Tailwind's
+     defaults for 2xl/3xl in place and inverted the scale (xl 28 > 2xl 16). */
+  --radius-xs: 8px;
+  --radius-sm: 12px;   /* the button radius */
+  --radius-md: 16px;
   --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-3xl: 40px;
   --radius-pill: 9999px;
 
-  /* Signature gradients */
-  --grad-cta: linear-gradient(180deg, #9b5de5 0%, #6d28d9 100%);
-  --grad-tri: linear-gradient(120deg, #6d28d9 0%, #2563eb 55%, #db2777 100%);
+  /* ── Signature gradients. Both stops checked against white text:
+     #4945FF = 5.87, #3C38E5 = 7.27. */
+  --grad-cta: linear-gradient(180deg, #4945ff 0%, #3c38e5 100%);
+  --grad-cta-hover: linear-gradient(180deg, #3c38e5 0%, #3330cc 100%); /* 7.27 top */
+  --grad-cta-purple: linear-gradient(180deg, #8c41cc 0%, #7c35b8 100%);
+  --grad-tri: linear-gradient(120deg, #4945ff 0%, #8c41cc 55%, #db2777 100%);
   --grad-dark-hero: radial-gradient(120% 100% at 50% 0%, #1e0b4e 0%, #0b0420 52%, #080214 100%);
+  /* Indigo-tinted wash for surfaces inside a white card */
+  --grad-tint: linear-gradient(160deg, #f6f6ff 0%, #eeeeff 100%);
 
-  /* Custom layered shadow system (indigo-tinted, multi-stop) */
-  --shadow-xs: 0 0 2px rgba(11, 4, 32, 0.04);
-  --shadow-sm: 0 0 2px rgba(11, 4, 32, 0.035), 0 0 6px rgba(11, 4, 32, 0.04);
-  --shadow-md: 0 0 2px rgba(11, 4, 32, 0.03), 0 0 9px rgba(11, 4, 32, 0.04), 0 0 20px rgba(11, 4, 32, 0.035);
-  --shadow-lg: 0 0 3px rgba(11, 4, 32, 0.04), 0 0 15px rgba(11, 4, 32, 0.055), 0 0 34px rgba(11, 4, 32, 0.055);
+  /* ── Shadows. All ambient: 0 x/y offset on the near layers so the card is
+     lifted evenly on every side rather than dropped downward, with one
+     offset far layer for weight. Every layer is tinted with the heading
+     indigo (41,40,117) — a neutral-black shadow under a tinted card is the
+     tell that separates a template from a designed page. */
+  --shadow-xs: 0 0 0 1px rgba(41, 40, 117, 0.04);
+  --shadow-sm: 0 0 0 1px rgba(41, 40, 117, 0.05), 0 0 8px rgba(41, 40, 117, 0.04);
+  --shadow-md: 0 0 0 1px rgba(41, 40, 117, 0.05), 0 0 12px rgba(41, 40, 117, 0.05), 0 8px 24px -6px rgba(41, 40, 117, 0.07);
+  --shadow-lg: 0 0 0 1px rgba(41, 40, 117, 0.05), 0 0 16px rgba(41, 40, 117, 0.05), 0 12px 32px -8px rgba(41, 40, 117, 0.09);
+
+  /* The card lift — ambient on all sides, four layers, kept deliberately
+     faint. The 1px ring IS the card's visible edge (the CSS border on the card
+     is transparent so hover can animate it in), so this ring is the knob for
+     "less border". Below ~0.03 a white card on a white page stops reading as a
+     card at all. */
+  --shadow-card: 0 0 0 1px rgba(41, 40, 117, 0.035), 0 0 8px rgba(41, 40, 117, 0.02), 0 3px 10px -4px rgba(41, 40, 117, 0.03), 0 10px 26px -14px rgba(41, 40, 117, 0.05);
+  --shadow-card-hover: 0 0 0 1px rgba(73, 69, 255, 0.14), 0 0 12px rgba(41, 40, 117, 0.03), 0 6px 16px -6px rgba(41, 40, 117, 0.05), 0 16px 38px -16px rgba(41, 40, 117, 0.09);
+
+  /* The discipline cards only. White on a white section, so the shadow is
+     their sole separation — the tint used to do half that job.
+     Ambient, not cast: every layer sits at y=0 (bar a 1px settle) so the halo
+     falls evenly on all four sides rather than pooling under the card. An
+     even halo reads as a lift; an offset one reads as a drop shadow.
+     The trade: ambient light spreads the same ink over 4 sides instead of 1,
+     so it separates less per unit alpha than a cast shadow of equal weight.
+     Ring at 0.03 — the documented floor, right where a white card on a white
+     page stops reading as a card on the ring alone. It still reads here
+     because the halo layers below are wider, not darker: same alpha as
+     before, larger blur/spread so the glow spreads further without getting
+     more opaque. */
+  --shadow-disc: 0 0 0 1px rgba(41, 40, 117, 0.03), 0 0 14px rgba(41, 40, 117, 0.035), 0 0 34px -2px rgba(41, 40, 117, 0.05), 0 2px 26px -6px rgba(41, 40, 117, 0.05);
+  --shadow-disc-hover: 0 0 0 1px rgba(73, 69, 255, 0.16), 0 0 18px rgba(41, 40, 117, 0.045), 0 0 42px -2px rgba(41, 40, 117, 0.07), 0 4px 34px -6px rgba(41, 40, 117, 0.07);
+
+  /* The homepage graph cards. Ambient like --shadow-disc — every layer at y=0
+     (bar a 2px settle) so the halo falls on all four sides — but spread wider,
+     because these cards are large and a tight halo on a 1000px-wide figure
+     reads as a hairline rather than a lift. No 1px ring layer: unlike the
+     discipline cards, these carry a real CSS border, and stacking a ring under
+     it would only re-darken the edge the border is deliberately keeping light. */
+  --shadow-graph: 0 0 14px rgba(41, 40, 117, 0.035), 0 0 40px -2px rgba(41, 40, 117, 0.05), 0 2px 30px -6px rgba(41, 40, 117, 0.05);
+
   --shadow-dark: 0 28px 60px -24px rgba(0, 0, 0, 0.55), 0 10px 26px -14px rgba(0, 0, 0, 0.42);
-  --shadow-violet: 0 1px 2px rgba(11, 4, 32, 0.10), 0 10px 22px -8px rgba(138, 57, 192, 0.42), 0 3px 8px -3px rgba(138, 57, 192, 0.30);
-  --shadow-violet-hover: 0 2px 4px rgba(11, 4, 32, 0.12), 0 16px 32px -8px rgba(138, 57, 192, 0.52);
-  --shadow-warm: 0 1px 2px rgba(78, 54, 28, 0.05), 0 12px 28px -12px rgba(120, 84, 44, 0.18);
 
-  /* Primary action = violet (legacy blue token folded into violet) */
-  --color-blue: #8a39c0;
-  --color-blue-bright: #9b5de5;
-  --shadow-blue: var(--shadow-violet);
-  --shadow-blue-hover: var(--shadow-violet-hover);
+  /* Button shadows carry the action indigo, not a neutral black. */
+  --shadow-blue: 0 0 0 1px rgba(41, 40, 117, 0.08), 0 1px 2px rgba(41, 40, 117, 0.10), 0 8px 20px -6px rgba(73, 69, 255, 0.40), 0 3px 8px -3px rgba(73, 69, 255, 0.28);
+  --shadow-blue-hover: 0 0 0 1px rgba(41, 40, 117, 0.10), 0 2px 4px rgba(41, 40, 117, 0.12), 0 14px 30px -6px rgba(73, 69, 255, 0.50);
+  --shadow-violet: 0 0 0 1px rgba(41, 40, 117, 0.08), 0 8px 20px -6px rgba(140, 65, 204, 0.38), 0 3px 8px -3px rgba(140, 65, 204, 0.26);
+  --shadow-violet-hover: 0 0 0 1px rgba(41, 40, 117, 0.10), 0 14px 30px -6px rgba(140, 65, 204, 0.48);
+  --shadow-warm: var(--shadow-card);
 
-  /* Legacy aliases kept for inner pages */
+  /* Legacy aliases kept for inner pages.
+     --shadow-card/-hover used to be re-declared here as aliases of sm/md.
+     Being later in the block, they silently overrode the real four-layer card
+     shadow above and flattened every card back to two layers. */
   --shadow-teal: var(--shadow-violet);
   --shadow-teal-hover: var(--shadow-violet-hover);
-  --shadow-card: var(--shadow-sm);
-  --shadow-card-hover: var(--shadow-md);
 }
 
 @layer base {
@@ -95,18 +216,28 @@
 
   body {
     background: var(--color-paper);
-    color: var(--color-ink);
+    /* The inherited default is the heading indigo (#292875, 12.69:1), not a
+       near-black. Anything that does not set its own colour — nav items, SVG
+       labels inside figures — then lands in the palette instead of drifting
+       to #120428, which is the ink reserved for dark surfaces. Literal rather
+       than var(--color-heading): Tailwind tree-shakes theme vars that no
+       utility class references, and nothing uses `text-heading`. */
+    color: #292875;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-violet) 28%, transparent);
+    background: color-mix(in srgb, var(--color-indigo) 22%, transparent);
     color: var(--color-ink);
   }
 
-  /* Respect users who prefer reduced motion */
+  /* Respect users who prefer reduced motion.
+     animation-iteration-count is the load-bearing line: without it, infinite
+     animations still loop forever — just at 0.001ms per cycle. For a rotation
+     (nm-orbit) that lands on an arbitrary angle every frame, which is worse
+     than the original motion and pins the compositor. */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -115,7 +246,9 @@
     *::before,
     *::after {
       animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
     }
   }
 
@@ -127,21 +260,34 @@
 }
 
 @layer components {
-  /* Eyebrow / kicker label — rendered as a small badge/chip */
+  /* Eyebrow / kicker label.
+     Was 0.6rem (9.6px) violet-on-transparent: illegible at that size, and the
+     color-mix background composited against whatever sat behind it — 5.11:1 on
+     white but 2.94:1 on every dark hero. Now 12px on an opaque surface, with an
+     explicit dark variant instead of a transparent one that guesses. */
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
+    font-size: var(--text-xs);
+    line-height: 1;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-violet);
+    color: var(--color-indigo);
     font-weight: 500;
-    padding: 0.35rem 0.8rem;
-    border-radius: 9999px;
-    background: color-mix(in srgb, var(--color-violet) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-violet) 22%, transparent);
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-xs);
+    background: #f6f6ff;
+    border: 1px solid #e9e9ff;
+  }
+
+  /* On ink the accent flips to the light indigo: #4945FF is only 2.95 against
+     the hero's lightest stop (#1E0B4E), #A5A2FF is 7.59. */
+  .eyebrow-on-dark {
+    color: var(--color-indigo-on-dark);
+    background: rgba(165, 162, 255, 0.12);
+    border-color: rgba(165, 162, 255, 0.28);
   }
 
   /* Display headings use the grotesque */
@@ -170,12 +316,33 @@
     animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* Nav dropdown item hover */
+  /* Nav dropdown item hover. The panel is white (Cyera-style), so the hover
+     wash is a light violet tint rather than the old on-dark alpha. */
   .nm-menu-item {
     transition: background 0.18s ease;
   }
-  .nm-menu-item:hover {
-    background: rgba(138, 57, 192, 0.12);
+  .nm-menu-item:hover,
+  .nm-menu-item:focus-visible {
+    background: #f6f6ff;
+  }
+  /* The row glyphs sit back at rest so a menu reads as a list of labels rather
+     than a column of icons; the row under the pointer comes to full strength.
+     They inherit currentColor, so the active row's icon turns blue for free. */
+  .nm-menu-item-ico {
+    opacity: 0.5;
+    transition: opacity 0.18s ease;
+  }
+  .nm-menu-item:hover .nm-menu-item-ico,
+  .nm-menu-item:focus-visible .nm-menu-item-ico {
+    opacity: 1;
+  }
+  /* The mega-menu's right rail: a visual tile for whichever item is
+     hovered/focused on the left, so the panel is never empty space. Tint-to-line
+     gradient keeps it inside the same indigo-tinted system as the rest of the
+     panel; the indigo number on it clears 3:1 easily at this size/weight. */
+  .nm-menu-preview {
+    background: linear-gradient(135deg, var(--color-tint), var(--color-line));
+    color: var(--color-indigo);
   }
 
   /* Nav responsive: hide desktop nav + cta below 1024px, show burger */
@@ -192,11 +359,38 @@
     }
   }
 
+  /* Links travel a few px toward their column on hover.
+     transform (not margin/padding) so the neighbouring rows never reflow.
+     The hover COLOUR deliberately is not here: these links carry Tailwind's
+     `text-taupe`, and @layer utilities outranks @layer components no matter the
+     specificity, so a `color` set here silently loses to it — which is why the
+     footer's hover colour never actually fired. The colour is a `hover:text-*`
+     utility at the call site instead. Transform has no competing utility, so it
+     is safe to keep in this layer. */
   .nm-footer-link {
-    transition: color 0.18s ease;
+    transition: color 0.18s ease, transform 0.18s cubic-bezier(.22, .61, .36, 1);
   }
   .nm-footer-link:hover {
-    color: #ffffff;
+    transform: translateX(3px);
+  }
+  .nm-footer-ico {
+    transition: color 0.18s ease;
+  }
+  /* The link chevron sits back at rest so a column reads as a list of labels
+     rather than a column of arrows, then comes up with its own link on hover.
+     It inherits currentColor, so it turns white with the label for free. */
+  .nm-footer-arrow {
+    opacity: 0.45;
+    transition: opacity 0.18s ease;
+  }
+  .nm-footer-link:hover .nm-footer-arrow {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nm-footer-link:hover {
+      transform: none;
+    }
   }
 
   @media (max-width: 900px) {
@@ -212,23 +406,83 @@
 
   /* Homepage hover states — Cyera-style: flat, bordered, a short lift on
      hover rather than a glow. Buttons are 12px "squircles", not full pills. */
+  /* Hover kept the old violet ramp (#A873EA), which flipped the now-blue CTA
+     to violet on hover — and white text on #A873EA measured 3.33:1, so the
+     button got *less* readable the moment you pointed at it. */
   .nm-cta-primary { transition: transform .18s cubic-bezier(.22,.61,.36,1), background .18s ease; }
-  .nm-cta-primary:hover { transform: translateY(-2px); background: linear-gradient(180deg,#A873EA 0%,#7B31E0 100%); }
+  .nm-cta-primary:hover { transform: translateY(-2px); background: var(--grad-cta-hover); }
   .nm-cta-light { transition: background .18s ease, border-color .18s ease, transform .18s ease; }
-  .nm-cta-light:hover { background: #f5f2fc; border-color: rgba(138,57,192,0.5); transform: translateY(-2px); }
-  .nm-disc-card { transition: border-color .2s ease, transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease; }
-  .nm-disc-card:hover { border-color: rgba(138,57,192,0.3); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(11,4,32,0.05), 0 10px 22px rgba(11,4,32,0.08); }
+  .nm-cta-light:hover { background: var(--color-linen); border-color: var(--color-line-strong); transform: translateY(-2px); }
+  /* ── The five-discipline grid: 3 per row, with the trailing 2 centred beneath
+     rather than left-aligned against a hole on the right.
+
+     Six columns, each card spanning two. Cards 1-3 fill the first row; card 4
+     is pushed to start at column 2, so 4 and 5 sit centred under the row above.
+     Own class because .nm-disc-grid is shared with /company/research (three
+     items, no orphan to handle).
+
+     At 3-up the cards are ~383px, so nothing is width-constrained here — the
+     202px floor that "Read the full account" imposes only ever mattered when
+     five had to share the row. */
+  .nm-discipline-grid { grid-template-columns: repeat(6, 1fr); }
+  .nm-discipline-grid > * { grid-column: span 2; }
+  .nm-discipline-grid > *:nth-child(4) { grid-column: 2 / span 2; }
+
+  @media (max-width: 1023px) {
+    /* 2 across, with the odd fifth centred. */
+    .nm-discipline-grid { grid-template-columns: repeat(4, 1fr); }
+    .nm-discipline-grid > *:nth-child(4) { grid-column: span 2; }
+    .nm-discipline-grid > *:nth-child(5) { grid-column: 2 / span 2; }
+  }
+  @media (max-width: 640px) {
+    .nm-discipline-grid { grid-template-columns: 1fr; }
+    .nm-discipline-grid > *,
+    .nm-discipline-grid > *:nth-child(4),
+    .nm-discipline-grid > *:nth-child(5) { grid-column: auto; }
+  }
+
+  /* Resting edge is the --shadow-disc ring alone; the border is transparent so
+     hover can bring an indigo edge in without stacking two borders. */
+  .nm-disc-card {
+    position: relative; text-decoration: none; background: #FFFFFF;
+    border: 1px solid transparent; border-radius: 8px; padding: 20px 24px 24px;
+    display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+    box-shadow: var(--shadow-disc);
+    transition: border-color .2s ease, transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
+  }
+  .nm-disc-card:hover { border-color: rgba(73,69,255,0.45); transform: translateY(-3px); box-shadow: var(--shadow-disc-hover); }
+  /* The whole card is the link, so every part answers a hover anywhere on it:
+     the arrow travels, the index warms, the chip lifts its tint and ring, and
+     the title turns from the heading indigo to the action blue. */
+  .nm-disc-arrow { transition: transform .25s cubic-bezier(.22,.61,.36,1); }
+  .nm-disc-card:hover .nm-disc-arrow { transform: translateX(4px); }
+  /* Bare glyph — no chip, aura, gradient or shadow left to animate, so the
+     icon simply lifts with the card. */
+  .nm-disc-chip {
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: none; margin-bottom: 14px;
+    transition: transform .25s cubic-bezier(.22,.61,.36,1);
+  }
+  .nm-disc-card:hover .nm-disc-chip { transform: translateY(-3px) scale(1.06); }
+  .nm-disc-card h3 { transition: color .2s ease; }
+  .nm-disc-card:hover h3 { color: #4945ff; }
   .nm-closing-primary { transition: transform .18s cubic-bezier(.22,.61,.36,1), background .18s ease; }
-  .nm-closing-primary:hover { transform: translateY(-2px); background: linear-gradient(180deg,#A873EA 0%,#7B31E0 100%); }
+  .nm-closing-primary:hover { transform: translateY(-2px); background: var(--grad-cta-hover); }
   .nm-closing-ghost { transition: border-color .2s ease, background .2s ease; }
-  .nm-closing-ghost:hover { border-color: rgba(196,181,253,0.5); background: rgba(255,255,255,0.04); }
+  /* Sits on ink — the light blue is the on-dark accent that clears 4.5:1. */
+  .nm-closing-ghost:hover { border-color: rgba(165, 162, 255, 0.5); background: rgba(255,255,255,0.04); }
   .nm-trust-chip { transition: color .2s ease; }
   .nm-trust-chip:hover { color: #0b0420; }
   .nm-stat-card { transition: border-color .2s ease, transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease; }
-  .nm-stat-card:hover { border-color: rgba(138,57,192,0.32); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(11,4,32,0.05), 0 10px 22px rgba(11,4,32,0.08); }
+  .nm-stat-card:hover { border-color: rgba(73,69,255,0.28); transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
 
-  /* Homepage responsive: collapse two-column grids on small screens */
-  @media (max-width: 900px) {
+  /* Homepage responsive: collapse two-column grids on small screens.
+     Collapses at 1024, matching the width where the desktop nav gives way to
+     the burger. At 900 there was a 901-1023px dead zone: a mobile burger above
+     a still-two-column desktop grid, with a 54px h1 crushed into a ~398px
+     column. Card grids share one breakpoint so /products and / stop
+     disagreeing between 861 and 900. */
+  @media (max-width: 1023px) {
     .nm-grid-2 { grid-template-columns: 1fr !important; }
     .nm-disc-grid { grid-template-columns: 1fr 1fr !important; }
   }
@@ -237,14 +491,171 @@
   }
 
   /* Inner-page cards & buttons */
-  .nm-feature-card { transition: box-shadow .3s ease, transform .3s ease; }
-  .nm-feature-card:hover { box-shadow: 0 16px 40px rgba(11,4,32,0.1); transform: translateY(-3px); }
-  .nm-suite-card { transition: box-shadow .3s ease, transform .3s ease; }
-  .nm-suite-card:hover { box-shadow: 0 20px 48px rgba(11,4,32,0.13); transform: translateY(-4px); }
+  .nm-feature-card { box-shadow: var(--shadow-card); transition: box-shadow .3s ease, transform .3s ease; }
+  .nm-feature-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+  .nm-suite-card { box-shadow: var(--shadow-card); transition: box-shadow .3s ease, transform .3s ease; }
+  .nm-suite-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
   .nm-ghost-dark { transition: border-color .25s ease; }
-  .nm-ghost-dark:hover { border-color: rgba(196,181,253,0.4); }
+  .nm-ghost-dark:hover { border-color: rgba(165,162,255,0.45); }
 
-  @media (max-width: 860px) {
+  /* ── Homepage (src/app/page.tsx) ──────────────────────────────
+     Every style that is the same on every render lives here as a class.
+     What stays inline on the page is only what genuinely varies per
+     render: the rise() scroll-reveal helper (a different animation-range
+     per element, tuned for stagger), values pulled from a data array
+     (bar colour/width, chip labels, SVG figure coordinates), and the
+     one-off path-drawing animations inside each SVG figure (dasharray
+     tied to that path's own length — not reusable across figures). */
+  .nm-home { background: #FFFFFF; }
+
+  .nm-hero { position: relative; overflow: hidden; background: linear-gradient(180deg,#D2D1FF 0%,#D2D1FF 20%,#FFFFFF 100%); }
+  /* Top padding clears the 88px fixed header and then adds breathing room on
+     top of it, so the eyebrow does not sit tight under the bar. */
+  .nm-hero-content { position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(104px, 12vw, 152px) clamp(20px, 5vw, 32px) clamp(40px, 6vw, 64px); display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 56px; align-items: center; }
+  .nm-hero-eyebrow { margin-bottom: 30px; }
+  .nm-hero-h1 { font-family: var(--font-display); font-weight: 540; font-size: clamp(30px, 5.2vw, 48px); line-height: 1.08; letter-spacing: -0.02em; color: #292875; margin: 0 0 24px; }
+  /* Darker than the site's --color-muted (#666687) BECAUSE of the hero tint:
+     the lead sits ~46% down the gradient, on ~#E1E0FF, where #666687 measures
+     4.27:1 and fails AA for 16px text. #5C5C7A clears it (4.99) and still
+     clears white (6.43) for the mobile/short-hero case. */
+  .nm-hero-lead { font-size: 16px; line-height: 1.6; color: #5C5C7A; max-width: 520px; margin: 0 0 32px; }
+  .nm-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .nm-cta-primary { padding: 13px 24px; background: var(--grad-cta); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
+  .nm-cta-light { padding: 12px 23px; background: #FFFFFF; border: 1px solid #E9E9FF; color: #292875; font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
+  .nm-hero-cardwrap { position: relative; }
+  /* No shadow: the border alone is the card's edge here. That border is a
+     translucent indigo rather than the solid #E9E9FF line token, so it reads
+     lighter without shifting hue away from the tinted-neutral system.
+     0.08 is shared by all four graph cards — see .nm-fig1/.nm-fig2/.nm-stat. */
+  .nm-signal-card { position: relative; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 12px; background: #F6F9FC; padding: 22px; }
+  .nm-signal-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  /* Card text runs deeper than the site's --color-muted (#666687): these sit on
+     the #F6F9FC graph surface rather than white, which costs ~0.3 of ratio, and
+     small mono labels at 9-10px need every point of it. */
+  .nm-signal-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; color: #4F4F68; }
+  .nm-signal-tracking { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; color: #7C35B8; }
+  .nm-signal-tracking-dot { width: 6px; height: 6px; border-radius: 50%; background: #7C35B8; box-shadow: 0 0 8px #7C35B8; }
+  .nm-svg-block { width: 100%; display: block; }
+  .nm-signal-callout { position: absolute; right: 30px; top: 64px; width: 184px; background: #FFFFFF; border: 1px solid #DCDCE4; border-radius: 14px; padding: 14px 15px; box-shadow: var(--shadow-card); }
+  .nm-signal-callout-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.18em; color: #7C35B8; margin-bottom: 7px; }
+  .nm-signal-callout-body { font-size: 12.5px; color: #292875; font-weight: 550; line-height: 1.4; margin-bottom: 8px; }
+  .nm-signal-callout-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nm-signal-tag { font-family: var(--font-mono); font-size: 9px; color: #4F4F68; border: 1px solid #DCDCE4; border-radius: 5px; padding: 2px 6px; }
+
+  .nm-trust-band { position: relative; border-top: 1px solid #E9E9FF; background: linear-gradient(180deg,rgba(255,255,255,0.9),rgba(234,248,245,0.45)); }
+  .nm-trust-band-inner { max-width: 1280px; margin: 0 auto; padding: 20px clamp(20px, 5vw, 32px) 22px; display: flex; align-items: center; justify-content: center; gap: 34px; flex-wrap: wrap; }
+  .nm-trust-divider { width: 1px; height: 28px; background: rgba(11,4,32,0.12); flex: none; }
+  .nm-trust-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .nm-trust-group-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #8C41CC; font-weight: 500; }
+  .nm-trust-items { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .nm-trust-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(11,4,32,0.22); flex: none; }
+  .nm-trust-chip { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.12em; color: #666687; cursor: default; }
+
+  .nm-section { background: #FFFFFF; padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 32px); }
+  .nm-section-ruled { background: #FFFFFF; padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 32px); border-top: 1px solid #E9E9FF; }
+  .nm-section-inner { max-width: 1180px; margin: 0 auto; }
+
+  .nm-thesis-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 48px; align-items: center; }
+  .nm-thesis-eyebrow { margin-bottom: 22px; }
+  .nm-thesis-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #292875; margin: 0 0 26px; }
+  .nm-thesis-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 20px; }
+  .nm-thesis-p-last { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 28px; }
+  .nm-thesis-strong { color: #292875; font-weight: 600; }
+  .nm-thesis-stats { display: flex; gap: 36px; padding-top: clamp(20px, 4vw, 26px); border-top: 1px solid #E9E9FF; }
+  .nm-thesis-stat-num { font-family: var(--font-display); font-weight: 640; font-size: clamp(26px, 6vw, 34px); letter-spacing: -0.03em; color: #292875; line-height: 1; }
+  .nm-thesis-stat-label { font-size: 12.5px; color: #666687; margin-top: 4px; }
+  .nm-fig1-card { background: #F6F9FC; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 14px; padding: clamp(18px, 3vw, 28px) clamp(16px, 4vw, 24px); box-shadow: var(--shadow-graph); }
+  .nm-fig-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.2em; color: #7C35B8; margin-bottom: 6px; }
+  .nm-fig1-caption { font-size: 13px; color: #4F4F68; margin-bottom: 26px; line-height: 1.5; }
+
+  .nm-disciplines-head { text-align: center; max-width: 740px; margin: 0 auto 40px; }
+  .nm-disciplines-eyebrow { margin-bottom: 20px; }
+  .nm-disciplines-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 48px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 20px; }
+  .nm-disciplines-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.6; color: #666687; margin: 0; }
+  .nm-disc-title { font-family: var(--font-sans); font-weight: 600; font-size: 18px; color: #292875; margin: 0 0 14px; letter-spacing: -0.02em; line-height: 1.3; }
+  .nm-disc-blurb { font-size: 14px; line-height: 1.7; color: #666687; margin: 0 0 16px; }
+  .nm-disc-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; text-align: left; flex: 1; width: 100%; }
+  .nm-disc-list-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.45; color: #666687; }
+  .nm-disc-link { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: #4945FF; display: inline-flex; align-items: center; justify-content: flex-start; gap: 8px; border-top: 1px solid #E9E9FF; padding-top: 16px; width: 100%; }
+  .nm-fig2-card { margin: 32px 0 0; background: #F6F9FC; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 14px; padding: clamp(18px, 3vw, 32px) clamp(16px, 3.5vw, 30px); box-shadow: var(--shadow-graph); }
+  .nm-fig2-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+  .nm-fig2-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 3.4vw, 25px); letter-spacing: -0.025em; color: #292875; max-width: 520px; line-height: 1.24; }
+  .nm-fig2-note { font-size: 13px; color: #4F4F68; max-width: 240px; line-height: 1.55; }
+
+  .nm-landscape-head { max-width: 680px; margin: 0 0 36px; }
+  .nm-landscape-eyebrow { margin-bottom: 18px; }
+  .nm-landscape-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 46px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 16px; }
+  .nm-landscape-p { font-size: 16.5px; line-height: 1.6; color: #666687; margin: 0; }
+  .nm-landscape-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; margin-bottom: 16px; }
+  .nm-stat-card { background: #F6F9FC; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 10px; padding: 20px 22px 24px; box-shadow: var(--shadow-graph); }
+
+  /* ── The two tinted graph cards (FIG 2 · The Method, and the exposure chart).
+     #D2D1FF is the hero's own tint, so these read as a deliberate pair rather
+     than two odd cards.
+     It is ~9x darker than the #F6F9FC the other graph cards use, which flips
+     what their chart furniture has to be: the light #E9E9FF / #DCDCE4 lines
+     were drawn to sit on near-white and measure ~1.1:1 here — they would
+     simply disappear, and the grid would read as lighter-than-background,
+     which is backwards. Both become translucent ink instead, so they darken
+     the tint the way a grid line is expected to.
+     Text is unchanged: #292875 (8.64), #4F4F68 (5.40) and #7C35B8 (4.68) all
+     still clear their floors on this tint. The one exception is the blue node
+     label in FIG 2 — see the comment at its fill in page.tsx. */
+  .nm-card-tinted { background: #D2D1FF; }
+  .nm-card-tinted svg g[stroke="#E9E9FF"] { stroke: rgba(41, 40, 117, 0.16); }
+  .nm-card-tinted svg path[stroke="#DCDCE4"] { stroke: rgba(41, 40, 117, 0.22); }
+  .nm-stat-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; color: #4F4F68; margin-bottom: 6px; }
+  .nm-stat-label-violet { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; color: #7C35B8; margin-bottom: 24px; }
+
+  /* The DETECTION GAP card centres its whole stack — label, donut, caption.
+     This lived as an inline style until the class refactor dropped it, which
+     is why the label had an align-self:flex-start of its own to fight the
+     centring; that override is gone now, so the label centres with everything
+     else rather than hanging off the left edge. */
+  .nm-detection-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .nm-stat-title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(15.5px, 2.4vw, 18px); color: #292875; margin-bottom: 28px; }
+  .nm-stat-title-tight { font-family: var(--font-sans); font-weight: 600; font-size: clamp(15.5px, 2.4vw, 18px); color: #292875; }
+  .nm-origin-bars { display: flex; flex-direction: column; gap: 20px; }
+  .nm-origin-row-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .nm-origin-row-label { font-size: 14.5px; color: #4F4F68; font-weight: 500; }
+  .nm-origin-row-pct { font-family: var(--font-mono); font-size: 13px; color: #292875; font-weight: 600; }
+  /* The groove behind each bar. It was the #F6F6FF tint, which is all but
+     identical to the card's own #F6F9FC — the track vanished and the bars read
+     as floating. This is the line token, so the groove still shows the 100%
+     extent each bar is measured against. */
+  .nm-origin-track { height: 12px; border-radius: 7px; background: #E9E9FF; overflow: hidden; }
+  .nm-origin-fill { position: relative; overflow: hidden; height: 100%; border-radius: 7px; transform-origin: left; animation: nm-grow 1.1s cubic-bezier(.16,1,.3,1) both; animation-timeline: view(); animation-range: entry 0% cover 44%; }
+  .nm-origin-shimmer { position: absolute; inset: 0; background: linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.42) 50%,transparent 100%); }
+  .nm-donut-wrap { width: 170px; height: 170px; }
+  .nm-donut-ring { animation: nm-donut 1.5s cubic-bezier(.16,1,.3,1) both; animation-timeline: view(); animation-range: entry 0% cover 42%; }
+  .nm-donut-caption { font-size: 13.5px; line-height: 1.6; color: #4F4F68; margin: 22px 0 0; }
+  .nm-exposure-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
+  .nm-exposure-legend { display: flex; gap: 18px; align-items: center; }
+  .nm-exposure-legend-item { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: #4F4F68; }
+  .nm-exposure-legend-swatch { width: 10px; height: 3px; border-radius: 2px; background: #4945FF; }
+  .nm-exposure-line { animation: nm-line 1.8s ease both; animation-timeline: view(); animation-range: entry 0% cover 46%; }
+
+  .nm-thread { background: #120428; padding: clamp(40px, 6vw, 64px) clamp(20px, 5vw, 32px); position: relative; overflow: hidden; }
+  .nm-thread-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(140,65,204,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,65,204,0.05) 1px,transparent 1px); background-size: 54px 54px; opacity: .6; }
+  .nm-thread-inner { position: relative; max-width: 980px; margin: 0 auto; text-align: center; }
+  .nm-thread-prism { display: flex; justify-content: center; margin-bottom: 8px; }
+  .nm-thread-eyebrow { margin-bottom: 28px; }
+  .nm-thread-p { font-family: var(--font-display); font-weight: 470; font-size: clamp(26px, 5vw, 37px); line-height: 1.32; letter-spacing: -0.028em; color: #FFFFFF; margin: 0; }
+
+  .nm-closing { background: linear-gradient(165deg,#0B0420,#120428); padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 32px); border-top: 1px solid rgba(200,200,220,0.08); }
+  .nm-closing-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  .nm-closing-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(32px, 6.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: #FFFFFF; margin: 0 0 24px; }
+  .nm-closing-p { font-size: clamp(15.5px, 2.4vw, 18px); line-height: 1.6; color: rgba(200,200,220,0.7); margin: 0 auto 40px; max-width: 620px; }
+  .nm-closing-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .nm-closing-primary { padding: 14px 28px; background: var(--grad-cta); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
+  .nm-closing-ghost { padding: 14px 28px; background: rgba(255,255,255,0.03); border: 1px solid rgba(200,200,220,0.22); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 550; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
+
+  /* Reusable keyword-highlight spans (the blue/violet words inside headings) */
+  .nm-hl-blue { color: #4945FF; font-weight: 560; }
+  .nm-hl-violet-550 { color: #A5A2FF; font-weight: 550; }
+  .nm-hl-violet-560 { color: #A5A2FF; font-weight: 560; }
+
+  @media (max-width: 1023px) {
     .nm-suite-grid { grid-template-columns: 1fr 1fr !important; }
     .nm-feature-grid { grid-template-columns: 1fr !important; }
     .nm-overview-grid { grid-template-columns: 1fr !important; gap: 28px !important; }

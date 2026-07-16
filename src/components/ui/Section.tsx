@@ -12,10 +12,10 @@ export function Section({
   id?: string;
 }) {
   const tones = {
-    paper: "bg-paper text-ink",
-    mist: "bg-mist text-ink",
-    navy: "bg-navy text-paper",
-    ink: "bg-ink text-paper",
+    paper: "bg-paper text-heading",
+    mist: "bg-linen text-heading",
+    navy: "bg-navy text-taupe",
+    ink: "bg-ink text-taupe",
   };
   return (
     <section
@@ -27,6 +27,13 @@ export function Section({
   );
 }
 
+/**
+ * `light` means "this eyebrow sits on a dark surface".
+ * It used to apply `text-amber`, which resolves to the same #8C41CC the
+ * .eyebrow class already sets — a no-op, and the escape hatch for the 2.94:1
+ * failure on dark heroes was therefore never wired up. It now flips the accent
+ * to the light violet.
+ */
 export function Eyebrow({
   children,
   className,
@@ -37,7 +44,9 @@ export function Eyebrow({
   light?: boolean;
 }) {
   return (
-    <p className={cn("eyebrow", light && "text-amber", className)}>{children}</p>
+    <p className={cn("eyebrow", light && "eyebrow-on-dark", className)}>
+      {children}
+    </p>
   );
 }
 
@@ -63,11 +72,15 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && <Eyebrow className="mb-4">{eyebrow}</Eyebrow>}
+      {eyebrow && (
+        <Eyebrow light={light} className="mb-4">
+          {eyebrow}
+        </Eyebrow>
+      )}
       <h2
         className={cn(
-          "font-display text-3xl font-medium leading-[1.12] tracking-tight sm:text-4xl",
-          light ? "text-paper" : "text-ink",
+          "font-display text-xl font-medium leading-[1.12] tracking-tight sm:text-2xl",
+          light ? "text-paper" : "text-heading",
         )}
       >
         {title}
@@ -76,7 +89,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-5 text-lg leading-relaxed",
-            light ? "text-paper/70" : "text-muted",
+            light ? "text-taupe" : "text-muted",
           )}
         >
           {intro}

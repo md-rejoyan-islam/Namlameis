@@ -9,7 +9,7 @@ export function Logo({
   className?: string;
   variant?: "default" | "light";
 }) {
-  const wordColor = variant === "light" ? "text-paper" : "text-ink";
+  const wordColor = variant === "light" ? "text-paper" : "text-heading";
   const markColor = variant === "light" ? "text-paper" : "text-navy";
   return (
     <Link

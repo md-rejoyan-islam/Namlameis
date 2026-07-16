@@ -11,7 +11,7 @@ export function Prism({ size = 220, className }: { size?: number; className?: st
   ] as const;
   const cx = 50;
   const cy = 50;
-  const fills = ["#9B5DE5", "#2563EB", "#8A39C0", "#6D28D9", "#7C3AED", "#DB2777"];
+  const fills = ["#B77BEE", "#A5A2FF", "#8C41CC", "#7C35B8", "#4945FF", "#DB2777"];
   const tri = (a: readonly number[], b: readonly number[]) =>
     `${a[0]},${a[1]} ${b[0]},${b[1]} ${cx},${cy}`;
 
@@ -33,7 +33,7 @@ export function Prism({ size = 220, className }: { size?: number; className?: st
           position: "absolute",
           inset: "-10% 6%",
           background:
-            "radial-gradient(circle at 50% 45%, rgba(138,57,192,0.45), rgba(219,39,119,0.12) 45%, transparent 70%)",
+            "radial-gradient(circle at 50% 45%, rgba(140,65,204,0.45), rgba(219,39,119,0.12) 45%, transparent 70%)",
           filter: "blur(18px)",
           animation: "nm-glow 6s ease-in-out infinite",
         }}

@@ -21,13 +21,13 @@ export function SolutionCard({
       <span className="font-mono text-xs tracking-[0.18em] text-amber">
         {solution.number}
       </span>
-      <h3 className="mt-3 font-display text-xl font-medium leading-snug tracking-tight text-ink">
+      <h3 className="mt-3 font-display text-xl font-medium leading-snug tracking-tight text-heading">
         {solution.cardTitle}
       </h3>
       <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">
         {solution.cardBlurb}
       </p>
-      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-amber">
+      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-heading transition-colors group-hover:text-amber">
         Explore
         <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
       </span>
@@ -50,13 +50,13 @@ export function IndustryCard({
         className,
       )}
     >
-      <h3 className="font-display text-xl font-medium leading-snug tracking-tight text-ink">
+      <h3 className="font-display text-xl font-medium leading-snug tracking-tight text-heading">
         {industry.name}
       </h3>
       <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">
         {industry.cardBlurb}
       </p>
-      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-amber">
+      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-heading transition-colors group-hover:text-amber">
         View industry
         <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
       </span>

@@ -67,7 +67,7 @@ export default function OpengraphImage() {
           >
             We find what others miss — before it finds you.
           </div>
-          <div style={{ fontSize: 30, color: "#8A39C0", fontWeight: 500 }}>
+          <div style={{ fontSize: 30, color: "#8C41CC", fontWeight: 500 }}>
             Machines find the known. We find the unknown.
           </div>
         </div>

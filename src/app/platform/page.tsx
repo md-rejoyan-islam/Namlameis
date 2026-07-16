@@ -59,7 +59,7 @@ export default function PlatformPage() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="sm:flex sm:flex-1 sm:items-baseline sm:gap-8">
-                    <h3 className="font-display text-xl font-medium tracking-tight text-ink sm:w-72 sm:shrink-0">
+                    <h3 className="font-display text-xl font-medium tracking-tight text-heading sm:w-72 sm:shrink-0">
                       {l.name}
                     </h3>
                     <p className="mt-2 text-[1.02rem] leading-relaxed text-muted sm:mt-0">
@@ -72,7 +72,7 @@ export default function PlatformPage() {
           </Reveal>
 
           <Reveal>
-            <p className="mx-auto mt-14 max-w-2xl text-center font-display text-xl font-medium leading-relaxed tracking-tight text-ink sm:text-2xl">
+            <p className="mx-auto mt-14 max-w-2xl text-center font-display text-xl font-medium leading-relaxed tracking-tight text-heading sm:text-2xl">
               The platform finds the known so our researchers can spend their
               attention where it uniquely counts:{" "}
               <span className="text-amber">on the unknown.</span>

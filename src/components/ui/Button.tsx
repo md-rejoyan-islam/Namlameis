@@ -4,23 +4,28 @@ import { cn } from "@/lib/cn";
 type Variant = "primary" | "secondary" | "ghost" | "light" | "dark";
 type Size = "md" | "lg";
 
+// Cyera's button spec, measured from the live site: 12px radius (a "squircle",
+// not a pill), 16px/600, ~50px tall. globals.css already claimed this shape —
+// "Buttons are 12px squircles, not full pills" — while shipping rounded-full.
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-sm font-semibold tracking-[-0.01em] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none cursor-pointer";
 
 const sizes: Record<Size, string> = {
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-[0.95rem]",
+  md: "h-11 px-5 text-sm",
+  lg: "h-[50px] px-6 text-base",
 };
 
 const variants: Record<Variant, string> = {
+  // Blue is the action colour. Both gradient stops clear white text:
+  // #4945FF = 4.88, #3C38E5 = 7.66.
   primary:
-    "bg-amber text-white shadow-[0_6px_20px_-6px_rgba(138,57,192,0.55)] hover:bg-[#6D28D9] hover:-translate-y-0.5",
-  secondary:
-    "border border-line-strong text-ink hover:border-navy hover:bg-mist",
-  ghost: "text-ink hover:text-amber",
+    "bg-[image:var(--grad-cta)] text-white shadow-blue hover:bg-[image:var(--grad-cta-hover)] hover:-translate-y-0.5",
+  secondary: "border border-line-strong text-heading hover:border-ink hover:bg-linen",
+  ghost: "text-heading hover:text-blue-text",
+  // On ink surfaces the light blue is the accent that clears 4.5:1 (9.86).
   light:
-    "border border-white/25 text-paper hover:bg-white/10 hover:border-white/50",
-  dark: "bg-ink text-paper hover:bg-navy hover:-translate-y-0.5",
+    "border border-white/25 text-paper hover:bg-white/10 hover:border-blue-on-dark/60",
+  dark: "bg-ink text-paper hover:bg-[#1d0940] hover:-translate-y-0.5",
 };
 
 function classesFor(variant: Variant, size: Size, className?: string) {
