@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Prism } from "@/components/Prism";
 import { solutions } from "@/lib/content";
@@ -70,44 +70,6 @@ const originBars = [
   { label: "Reputation & narrative attacks", pct: "34%", w: "44%", color: "#7C35B8" },
 ];
 
-const mono = "var(--font-mono)";
-
-// Shared eyebrow/kicker — an editorial accent line + label, in the action
-// indigo. It is used on BOTH light and dark sections, so it cannot hardcode one
-// value: the light accent is 5.87:1 on white but only 3.33:1 on the ink THREAD
-// section. `onDark` flips it to the light indigo (8.58:1). The dash gradients
-// and accent colour are computed per-call (light vs dark), so they stay inline;
-// className carries whatever static margin the call site needs.
-//
-// The light accent is #3C38E5, one rung down the CTA gradient's own ramp
-// (#4945FF -> #3C38E5 -> #3330CC), NOT the #4945FF used elsewhere: at 11px this
-// is small text needing 4.5:1, and #4945FF measures only 4.03:1 against the
-// hero's #D2D1FF tint. #3C38E5 clears both surfaces (5.0 on the tint, 7.27 on
-// the white sections) so every eyebrow on the page can stay one colour.
-function Eyebrow({
-  children,
-  className,
-  style,
-  onDark = false,
-}: {
-  children: string;
-  className?: string;
-  style?: CSSProperties;
-  onDark?: boolean;
-}) {
-  const accent = onDark ? "#A5A2FF" : "#3C38E5";
-  const fade = onDark ? "rgba(165,162,255,0)" : "rgba(60,56,229,0)";
-  return (
-    <div className={className} style={style}>
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
-        <span style={{ width: 28, height: 2, borderRadius: 2, background: `linear-gradient(90deg,${fade},${accent})` }} />
-        <span style={{ fontFamily: mono, fontSize: 11, letterSpacing: "0.22em", color: accent, fontWeight: 600 }}>{children}</span>
-        <span style={{ width: 28, height: 2, borderRadius: 2, background: `linear-gradient(90deg,${accent},${fade})` }} />
-      </span>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className="nm-home">
@@ -115,7 +77,6 @@ export default function Home() {
       <section className="nm-hero">
         <div className="nm-grid-2 nm-hero-content">
           <div>
-            <Eyebrow className="nm-hero-eyebrow">CYBER · AI · DEFENSE</Eyebrow>
             <h1 className="nm-hero-h1">
               We find what others miss<br />
               <span className="nm-hl-blue">before</span> it finds you.
@@ -208,7 +169,6 @@ export default function Home() {
         <div className="nm-section-inner">
           <div className="nm-grid-2 nm-thesis-grid">
             <div>
-              <Eyebrow className="nm-thesis-eyebrow">THE THESIS</Eyebrow>
               <h2 className="nm-thesis-h2">Protection is not a platform. It is a <span className="nm-hl-blue">partnership of machine and mind</span>.</h2>
               <p className="nm-thesis-p">Most security companies sell you a platform and call it protection. We believe protection is something else entirely: the union of an intelligent system that sees everything and a human mind that understands what the system cannot.</p>
               <p className="nm-thesis-p-last">Machines are magnificent at the known — the catalogued, the signed, the seen-before. But the breach that ends an institution is almost never the known one. It is the novel, the chained, the human-shaped flaw that no model was trained to recognise, surfacing in the seam between two systems nobody thought to examine together. <strong className="nm-thesis-strong">That is the threat we were built to find.</strong></p>
@@ -257,7 +217,6 @@ export default function Home() {
       <section className="nm-section-ruled">
         <div className="nm-section-inner">
           <div className="nm-disciplines-head">
-            <Eyebrow className="nm-disciplines-eyebrow">FIVE DISCIPLINES · ONE METHOD</Eyebrow>
             <h2 className="nm-disciplines-h2">We practise five disciplines <span className="nm-hl-blue">as though they were one</span>.</h2>
             <p className="nm-disciplines-p">Because the modern adversary moves between them without pause. A vulnerability becomes an incident; the incident becomes a story; the story decides whether the institution survives.</p>
           </div>
@@ -414,7 +373,6 @@ export default function Home() {
       <section className="nm-section-ruled">
         <div className="nm-section-inner">
           <div className="nm-landscape-head">
-            <Eyebrow className="nm-landscape-eyebrow">THE LANDSCAPE, IN NUMBERS</Eyebrow>
             <h2 className="nm-landscape-h2">The shape of the threat we were <span className="nm-hl-blue">built to meet</span>.</h2>
             <p className="nm-landscape-p">Where the danger is moving — and why the novel, chained, human-shaped flaw is the one that decides an institution&apos;s fate.</p>
           </div>
@@ -499,7 +457,6 @@ export default function Home() {
           <div className="nm-thread-prism">
             <Prism size={120} />
           </div>
-          <Eyebrow onDark className="nm-thread-eyebrow">THE THREAD THE WHOLE FIRM HANGS ON</Eyebrow>
           <p className="nm-thread-p">Secure the data everywhere it lives — <span className="nm-hl-violet-550">at rest, in motion, and in use</span>, whether touched by humans or by AI — as the trusted foundation on which an organisation can adopt AI <span className="nm-hl-violet-550">without fear</span>.</p>
         </div>
       </section>

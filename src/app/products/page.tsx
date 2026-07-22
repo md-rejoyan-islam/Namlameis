@@ -20,7 +20,6 @@ export default function ProductsPage() {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <DarkHero
-        eyebrow="PRODUCTS"
         title={{ before: "The expertise is human. The platform makes it", italic: "scale", after: "." }}
         subtitle="The most accomplished firms in this field do not deliver a report and depart. They give the client a living platform to work inside. We do the same — six secure products, built and maintained in-house, that turn a service relationship into an experience."
         primary={{ label: "Get a demo", href: "/contact" }}

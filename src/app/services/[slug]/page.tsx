@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DetailPage } from "@/components/inner";
 import { ServiceDiagram } from "@/components/diagrams";
-import { serviceDetails, serviceSlugs } from "@/lib/services";
+import { serviceDetails, serviceSlugs, serviceCatalogue } from "@/lib/services";
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const d = serviceDetails[slug];
   if (!d) return {};
-  return { title: d.eyebrow.split("·").pop()?.trim(), description: d.subtitle };
+  return { title: serviceCatalogue.find((s) => s.slug === slug)?.name, description: d.subtitle };
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {

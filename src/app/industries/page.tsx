@@ -17,7 +17,6 @@ export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Industries"
         title="Where the stakes are highest."
         intro="We work where a missed flaw is never merely an inconvenience — where it is regulatory, strategic, or a matter of public safety."
       />

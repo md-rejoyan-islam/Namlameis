@@ -11,8 +11,6 @@ export const rise = (dur: string, range: string): CSSProperties =>
 type Btn = { label: string; href: string };
 
 export function DarkHero({
-  eyebrow,
-  badge,
   title,
   subtitle,
   primary,
@@ -20,8 +18,6 @@ export function DarkHero({
   split = false,
   children,
 }: {
-  eyebrow: string;
-  badge?: string;
   title: { before: string; italic?: string; after?: string };
   subtitle: string;
   primary: Btn;
@@ -32,10 +28,6 @@ export function DarkHero({
   const align = split ? "left" : "center";
   const content = (
     <>
-      {badge && (
-        <div style={{ ...rise(".65s", "entry 0% cover 16%"), display: "inline-block", fontFamily: mono, fontSize: 10.5, letterSpacing: "0.18em", color: "#FFFFFF", background: "var(--grad-cta)", borderRadius: 9999, padding: "6px 14px", marginBottom: 18, fontWeight: 600 }}>{badge}</div>
-      )}
-      <div style={{ ...rise(".7s", "entry 0% cover 18%"), fontFamily: mono, fontSize: 11.5, letterSpacing: "0.24em", color: "#A5A2FF", marginBottom: 24 }}>{eyebrow}</div>
       <h1 style={{ ...rise(".85s", "entry 0% cover 24%"), fontFamily: serif, fontWeight: 600, fontSize: split ? "clamp(30px, 6.2vw, 46px)" : "clamp(30px, 6.4vw, 52px)", lineHeight: 1.06, letterSpacing: "-0.02em", color: "#FFFFFF", margin: "0 0 22px" }}>
         {title.before}
         {title.italic && <span style={{ fontStyle: "italic", color: "#B77BEE" }}>{title.before ? " " : ""}{title.italic}</span>}
@@ -89,8 +81,6 @@ export function CtaBand({ heading, subtext, primary, secondary }: { heading: str
 }
 
 export type DetailData = {
-  eyebrow: string;
-  badge?: string;
   title: { before: string; italic?: string; after?: string };
   subtitle: string;
   heroPrimary: Btn;
@@ -108,7 +98,7 @@ export type DetailData = {
 export function DetailPage({ data, diagram, heroSplit = false }: { data: DetailData; diagram?: ReactNode; heroSplit?: boolean }) {
   return (
     <div style={{ background: "#FFFFFF" }}>
-      <DarkHero eyebrow={data.eyebrow} badge={data.badge} title={data.title} subtitle={data.subtitle} primary={data.heroPrimary} secondary={data.heroSecondary} split={heroSplit}>
+      <DarkHero title={data.title} subtitle={data.subtitle} primary={data.heroPrimary} secondary={data.heroSecondary} split={heroSplit}>
         {diagram}
       </DarkHero>
 
@@ -117,7 +107,6 @@ export function DetailPage({ data, diagram, heroSplit = false }: { data: DetailD
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <div className="nm-overview-grid" style={{ display: "grid", gridTemplateColumns: "0.36fr 0.64fr", gap: 56 }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%") }}>
-              <div style={{ fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#4945FF", marginBottom: 16 }}>OVERVIEW</div>
               <div style={{ fontFamily: serif, fontSize: "clamp(20px, 3.4vw, 27px)", fontWeight: 600, lineHeight: 1.2, color: "#292875", letterSpacing: "-0.01em" }}>{data.overview.heading}</div>
             </div>
             <div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DetailPage } from "@/components/inner";
 import { ProductDiagram } from "@/components/diagrams";
-import { productDetails, productSlugs } from "@/lib/products";
+import { productDetails, productSlugs, productSuite } from "@/lib/products";
 
 export function generateStaticParams() {
   return productSlugs.map((slug) => ({ slug }));
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const d = productDetails[slug];
   if (!d) return {};
-  return { title: d.eyebrow.split("·").pop()?.trim(), description: d.subtitle };
+  return { title: productSuite.find((p) => p.slug === slug)?.name, description: d.subtitle };
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {

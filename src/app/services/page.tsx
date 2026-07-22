@@ -14,7 +14,6 @@ export default function ServicesPage() {
   return (
     <div style={{ background: "#FFFFFF" }}>
       <DarkHero
-        eyebrow="DATA-SECURITY SERVICES"
         title={{ before: "The leader sells a platform. We sell", italic: "judgment", after: "." }}
         subtitle="Inspired by the catalogue of the market’s leading data-security platform, delivered as expert human engagements — for the organisations that need the answer done rigorously, once, rather than a perpetual subscription."
         primary={{ label: "Request a briefing", href: "/contact" }}

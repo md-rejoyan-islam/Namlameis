@@ -49,7 +49,7 @@ export default async function LegalPage({
 
   return (
     <>
-      <PageHero eyebrow="Legal" title={page.title} intro={page.intro} />
+      <PageHero title={page.title} intro={page.intro} />
       <Section tone="paper">
         <Container size="narrow">
           <div className="prose-measure space-y-5 text-muted">

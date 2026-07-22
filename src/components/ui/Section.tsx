@@ -27,38 +27,13 @@ export function Section({
   );
 }
 
-/**
- * `light` means "this eyebrow sits on a dark surface".
- * It used to apply `text-amber`, which resolves to the same #8C41CC the
- * .eyebrow class already sets — a no-op, and the escape hatch for the 2.94:1
- * failure on dark heroes was therefore never wired up. It now flips the accent
- * to the light violet.
- */
-export function Eyebrow({
-  children,
-  className,
-  light = false,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  light?: boolean;
-}) {
-  return (
-    <p className={cn("eyebrow", light && "eyebrow-on-dark", className)}>
-      {children}
-    </p>
-  );
-}
-
 export function SectionHeading({
-  eyebrow,
   title,
   intro,
   align = "left",
   light = false,
   className,
 }: {
-  eyebrow?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   align?: "left" | "center";
@@ -72,11 +47,6 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && (
-        <Eyebrow light={light} className="mb-4">
-          {eyebrow}
-        </Eyebrow>
-      )}
       <h2
         className={cn(
           "font-display text-xl font-medium leading-[1.12] tracking-tight sm:text-2xl",

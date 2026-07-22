@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
@@ -65,19 +65,17 @@ export default async function IndustryPage({
 
   return (
     <>
-      <PageHero eyebrow="Industries" title={industry.heroHeadline} />
+      <PageHero title={industry.heroHeadline} />
 
       <Section tone="paper">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <Reveal>
-              <Eyebrow className="mb-5">The challenge</Eyebrow>
               <p className="text-lg leading-relaxed text-muted">
                 {industry.challenge}
               </p>
             </Reveal>
             <Reveal delay={100}>
-              <Eyebrow className="mb-5">How we help</Eyebrow>
               <ul className="space-y-5">
                 {industry.help.map((h) => (
                   <li key={h} className="flex gap-3.5">
@@ -96,9 +94,6 @@ export default async function IndustryPage({
       {/* OTHER INDUSTRIES */}
       <Section tone="mist">
         <Container>
-          <Reveal>
-            <Eyebrow className="mb-6">Other industries</Eyebrow>
-          </Reveal>
           <Reveal>
             <div className="grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
               {others.map((o) => (

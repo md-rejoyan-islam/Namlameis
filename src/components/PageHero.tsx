@@ -1,19 +1,19 @@
 import { Container } from "./ui/Container";
-import { Eyebrow } from "./ui/Section";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/cn";
 
 // Inner-page hero on a deep navy field with a subtle signal grid.
 export function PageHero({
-  eyebrow,
   title,
   intro,
   className,
+  video,
 }: {
-  eyebrow?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   className?: string;
+  /** Looping background video (with poster fallback). Static poster only under reduced-motion. */
+  video?: { src: string; poster: string };
 }) {
   return (
     <section
@@ -22,7 +22,30 @@ export function PageHero({
         className,
       )}
     >
-      <div className="signal-grid absolute inset-0 opacity-60" aria-hidden="true" />
+      {video ? (
+        <>
+          <video
+            className="absolute inset-0 h-full w-full object-cover opacity-40 motion-reduce:hidden"
+            src={video.src}
+            poster={video.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element -- static reduced-motion fallback, no next/image processing needed */}
+          <img
+            src={video.poster}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 hidden h-full w-full object-cover opacity-40 motion-reduce:block"
+          />
+          <div className="absolute inset-0 bg-navy/70" aria-hidden="true" />
+        </>
+      ) : (
+        <div className="signal-grid absolute inset-0 opacity-60" aria-hidden="true" />
+      )}
       <div
         className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-azure/20 blur-3xl"
         aria-hidden="true"
@@ -33,13 +56,6 @@ export function PageHero({
       />
       <Container className="relative py-24 sm:py-32">
         <div className="max-w-3xl">
-          {eyebrow && (
-            <Reveal>
-              <Eyebrow light className="mb-5">
-                {eyebrow}
-              </Eyebrow>
-            </Reveal>
-          )}
           <Reveal delay={60}>
             <h1 className="font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
               {title}

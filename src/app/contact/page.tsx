@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { ServiceRequestForm } from "@/components/ServiceRequestForm";
@@ -29,7 +29,6 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Engage"
         title="Start a confidential conversation."
         intro="Tell us what you need to defend. Most engagements begin with a short, confidential call; if we are the right firm, we follow with a clear proposal — usually within a week."
       />
@@ -39,7 +38,6 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             {/* Contact details */}
             <Reveal>
-              <Eyebrow className="mb-6">Contact details</Eyebrow>
               <dl className="space-y-6">
                 {details.map((d) => (
                   <div key={d.label}>
@@ -73,7 +71,6 @@ export default function ContactPage() {
             {/* Service-request form */}
             <Reveal delay={100}>
               <div className="rounded-xl border border-line bg-mist p-7 shadow-[var(--shadow-card)] sm:p-9">
-                <Eyebrow className="mb-2">Service request</Eyebrow>
                 <p className="mb-7 text-sm leading-relaxed text-muted">
                   Register a request directly. The team reviews every submission
                   and responds.

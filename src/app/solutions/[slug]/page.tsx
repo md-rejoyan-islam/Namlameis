@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
@@ -46,7 +46,6 @@ export default async function SolutionPage({
   return (
     <>
       <PageHero
-        eyebrow={`Solutions · ${solution.number}`}
         title={solution.heroHeadline}
         intro={solution.heroSub}
       />
@@ -55,7 +54,6 @@ export default async function SolutionPage({
       <Section tone="paper">
         <Container>
           <Reveal className="max-w-3xl">
-            <Eyebrow className="mb-5">Overview</Eyebrow>
             <div className="space-y-5">
               {solution.overview.map((p, i) => (
                 <p
@@ -74,7 +72,6 @@ export default async function SolutionPage({
       <Section tone="mist">
         <Container>
           <Reveal>
-            <Eyebrow className="mb-5">Capabilities</Eyebrow>
             <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
               What this practice covers.
             </h2>
@@ -101,7 +98,6 @@ export default async function SolutionPage({
         <Section tone="paper">
           <Container>
             <Reveal className="max-w-3xl">
-              <Eyebrow className="mb-5">Method</Eyebrow>
               <h2 className="font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
                 {solution.method.heading}
               </h2>
@@ -123,7 +119,6 @@ export default async function SolutionPage({
                 aria-hidden="true"
               />
               <div className="relative max-w-3xl">
-                <Eyebrow className="mb-5">What you receive</Eyebrow>
                 <p className="font-display text-xl font-medium leading-relaxed tracking-tight sm:text-2xl">
                   {solution.whatYouReceive}
                 </p>
@@ -136,9 +131,6 @@ export default async function SolutionPage({
       {/* OTHER SOLUTIONS */}
       <Section tone="paper" className="border-t border-line">
         <Container>
-          <Reveal>
-            <Eyebrow className="mb-6">More solutions</Eyebrow>
-          </Reveal>
           <Reveal>
             <div className="grid overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
               {others.map((o) => (

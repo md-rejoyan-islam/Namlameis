@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Reveal } from "@/components/Reveal";
@@ -16,7 +16,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About"
         title="Founded in 2024 to find what others miss."
       />
 
@@ -24,7 +23,6 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
             <Reveal className="space-y-6">
-              <Eyebrow className="mb-1">Our story</Eyebrow>
               <p className="text-lg leading-relaxed text-muted">
                 Namlameis was founded in 2024 on a single conviction: that the
                 threats which truly endanger an institution are precisely the ones

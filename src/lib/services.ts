@@ -22,7 +22,6 @@ const reqPrimary = { label: "Request this service", href: "/contact" };
 
 export const serviceDetails: Record<string, DetailData> = {
   "data-discovery": {
-    eyebrow: "SERVICE 01 · DISCOVERY & CLASSIFICATION",
     title: { before: "Find it. Then", italic: "understand", after: " it." },
     subtitle:
       "A human-led engagement that locates and classifies sensitive data across your cloud, SaaS, and on-premise estate — the rigorous, expert counterpart to an automated scan.",
@@ -47,7 +46,6 @@ export const serviceDetails: Record<string, DetailData> = {
     cta: { heading: "See your true data map.", subtext: "Begin with a confidential scoping call — establish where your sensitive data lives, once and rigorously.", nextLabel: "Next: Access Review →", nextHref: "/services/access-review" },
   },
   "access-review": {
-    eyebrow: "SERVICE 02 · DATA ACCESS REVIEW",
     title: { before: "Who — and what", italic: "AI", after: " — can reach your data." },
     subtitle:
       "An investigation of every identity, human and machine, that can reach each class of sensitive data — and the standing excess an adversary inherits the moment one account falls.",
@@ -72,8 +70,6 @@ export const serviceDetails: Record<string, DetailData> = {
     cta: { heading: "Map your real access — before someone else does.", subtext: "Including the AI agents nobody has examined yet.", nextLabel: "Next: Shadow-AI →", nextHref: "/services/shadow-ai" },
   },
   "shadow-ai": {
-    eyebrow: "SERVICE 03 · SHADOW-AI & AI DATA-EXPOSURE",
-    badge: "HIGHEST-DIFFERENTIATION SERVICE",
     title: { before: "The fastest-growing exposure path in the enterprise." },
     subtitle:
       "A discovery of the AI tools in use across your organisation — sanctioned and not — and an assessment of what sensitive data is quietly flowing into them.",
@@ -98,7 +94,6 @@ export const serviceDetails: Record<string, DetailData> = {
     cta: { heading: "Find out where your data is already going.", subtext: "Before AI becomes the breach you have to explain.", nextLabel: "Next: DLP Tuning →", nextHref: "/services/dlp-tuning" },
   },
   "dlp-tuning": {
-    eyebrow: "SERVICE 04 · DLP STRATEGY & TUNING",
     title: { before: "From a fog of alerts to a", italic: "few", after: " that matter." },
     subtitle:
       "Expert review and tuning of your existing data-loss-prevention tooling — cutting the false-positive noise that exhausts a team until the real signal is the one they miss.",
@@ -123,7 +118,6 @@ export const serviceDetails: Record<string, DetailData> = {
     cta: { heading: "Make the tooling you already own finally work.", subtext: "One of the highest-return engagements we offer.", nextLabel: "Next: Managed Monitoring →", nextHref: "/services/managed-monitoring" },
   },
   "managed-monitoring": {
-    eyebrow: "SERVICE 05 · MANAGED DATA-RISK MONITORING",
     title: { before: "Continuity, run by", italic: "people", after: "." },
     subtitle:
       "For clients who want an ongoing partner rather than a one-time answer, an expert-led retainer: periodic re-assessment, risk-reduction guidance, and breach-response support.",

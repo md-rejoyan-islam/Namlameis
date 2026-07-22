@@ -24,7 +24,6 @@ const heroSecondary = { label: "Request a briefing", href: "/contact" };
 
 export const productDetails: Record<string, DetailData> = {
   "client-portal": {
-    eyebrow: "PRODUCT 01 · CLIENT PORTAL",
     title: { before: "Engagement & findings, in one", italic: "secure", after: " place." },
     subtitle:
       "A private, encrypted workspace where each client follows their engagement in real time — scope, progress, findings, and remediation, all in one calm interface.",
@@ -49,7 +48,6 @@ export const productDetails: Record<string, DetailData> = {
     cta: { heading: "See the portal in a live walkthrough.", nextLabel: "Next: Request Intake →", nextHref: "/products/request-intake" },
   },
   "request-intake": {
-    eyebrow: "PRODUCT 02 · REQUEST INTAKE & TRIAGE",
     title: { before: "Every request captured and routed in", italic: "seconds", after: "." },
     subtitle:
       "A refined request experience that captures exactly what a client needs and delivers it, triaged and tagged, to the right expert within seconds.",
@@ -74,7 +72,6 @@ export const productDetails: Record<string, DetailData> = {
     cta: { heading: "Make your first contact feel like trust.", nextLabel: "Next: Findings Dashboard →", nextHref: "/products/findings-dashboard" },
   },
   "findings-dashboard": {
-    eyebrow: "PRODUCT 03 · FINDINGS DASHBOARD",
     title: { before: "Signal, turned into a", italic: "narrative", after: "." },
     subtitle:
       "Raw security findings rendered into a clear, prioritised, human-readable story — severity, business impact, and remediation, all legible at a glance.",
@@ -99,7 +96,6 @@ export const productDetails: Record<string, DetailData> = {
     cta: { heading: "Turn your next report into a way through.", nextLabel: "Next: Trust Center →", nextHref: "/products/trust-center" },
   },
   "trust-center": {
-    eyebrow: "PRODUCT 04 · TRUST CENTER",
     title: { before: "We practise what we", italic: "sell", after: "." },
     subtitle:
       "A living, public statement of the firm’s own security and compliance posture — because a firm that sells security must visibly hold itself to the standard it asks of others.",
@@ -124,7 +120,6 @@ export const productDetails: Record<string, DetailData> = {
     cta: { heading: "Pass your vendor review before it begins.", nextLabel: "Next: Briefing Hub →", nextHref: "/products/briefing-hub" },
   },
   "briefing-hub": {
-    eyebrow: "PRODUCT 05 · THREAT-BRIEFING HUB",
     title: { before: "The credibility engine,", italic: "published", after: "." },
     subtitle:
       "The home of the firm’s research and recurring intelligence briefings — the single most powerful instrument a young security firm has for earning trust.",
@@ -149,7 +144,6 @@ export const productDetails: Record<string, DetailData> = {
     cta: { heading: "Follow the thinking. Replace the claim with evidence.", nextLabel: "Next: Secure Data Vault →", nextHref: "/products/data-vault" },
   },
   "data-vault": {
-    eyebrow: "PRODUCT 06 · SECURE DATA VAULT",
     title: { before: "Where sensitive client data", italic: "lives", after: "." },
     subtitle:
       "An encrypted, access-governed, fully-audited store for the sensitive data every engagement necessarily touches — the firm’s own embodiment of its data-security philosophy.",

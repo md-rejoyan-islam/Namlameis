@@ -41,7 +41,7 @@ function Monogram({ initials }: { initials: string }) {
 export default function LeadershipPage() {
   return (
     <>
-      <PageHero eyebrow="Leadership" title="In their own words." />
+      <PageHero title="In their own words." />
 
       <Section tone="paper">
         <Container size="narrow">

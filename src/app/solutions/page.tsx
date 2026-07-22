@@ -17,7 +17,6 @@ export default function SolutionsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Solutions"
         title="Five disciplines. One method."
         intro="The rest of the industry treats these as separate. We unite them — because modern adversaries do not respect the boundaries between them."
       />

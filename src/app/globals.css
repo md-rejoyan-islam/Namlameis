@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 /*
   Namlameis brand system — Strapi-informed premium palette
   ------------------------------------------------------------------
@@ -260,36 +261,6 @@
 }
 
 @layer components {
-  /* Eyebrow / kicker label.
-     Was 0.6rem (9.6px) violet-on-transparent: illegible at that size, and the
-     color-mix background composited against whatever sat behind it — 5.11:1 on
-     white but 2.94:1 on every dark hero. Now 12px on an opaque surface, with an
-     explicit dark variant instead of a transparent one that guesses. */
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    line-height: 1;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-indigo);
-    font-weight: 500;
-    padding: 0.4rem 0.75rem;
-    border-radius: var(--radius-xs);
-    background: #f6f6ff;
-    border: 1px solid #e9e9ff;
-  }
-
-  /* On ink the accent flips to the light indigo: #4945FF is only 2.95 against
-     the hero's lightest stop (#1E0B4E), #A5A2FF is 7.59. */
-  .eyebrow-on-dark {
-    color: var(--color-indigo-on-dark);
-    background: rgba(165, 162, 255, 0.12);
-    border-color: rgba(165, 162, 255, 0.28);
-  }
-
   /* Display headings use the grotesque */
   .font-display {
     font-family: var(--font-display);
@@ -508,16 +479,12 @@
      tied to that path's own length — not reusable across figures). */
   .nm-home { background: #FFFFFF; }
 
-  .nm-hero { position: relative; overflow: hidden; background: linear-gradient(180deg,#D2D1FF 0%,#D2D1FF 20%,#FFFFFF 100%); }
+  .nm-hero { position: relative; overflow: hidden; background: #FFFFFF; }
   /* Top padding clears the 88px fixed header and then adds breathing room on
      top of it, so the eyebrow does not sit tight under the bar. */
   .nm-hero-content { position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(104px, 12vw, 152px) clamp(20px, 5vw, 32px) clamp(40px, 6vw, 64px); display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 56px; align-items: center; }
-  .nm-hero-eyebrow { margin-bottom: 30px; }
   .nm-hero-h1 { font-family: var(--font-display); font-weight: 540; font-size: clamp(30px, 5.2vw, 48px); line-height: 1.08; letter-spacing: -0.02em; color: #292875; margin: 0 0 24px; }
-  /* Darker than the site's --color-muted (#666687) BECAUSE of the hero tint:
-     the lead sits ~46% down the gradient, on ~#E1E0FF, where #666687 measures
-     4.27:1 and fails AA for 16px text. #5C5C7A clears it (4.99) and still
-     clears white (6.43) for the mobile/short-hero case. */
+  /* #5C5C7A on white is 6.43:1, comfortably clearing AA for 16px text. */
   .nm-hero-lead { font-size: 16px; line-height: 1.6; color: #5C5C7A; max-width: 520px; margin: 0 0 32px; }
   .nm-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .nm-cta-primary { padding: 13px 24px; background: var(--grad-cta); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
@@ -556,7 +523,6 @@
   .nm-section-inner { max-width: 1180px; margin: 0 auto; }
 
   .nm-thesis-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 48px; align-items: center; }
-  .nm-thesis-eyebrow { margin-bottom: 22px; }
   .nm-thesis-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #292875; margin: 0 0 26px; }
   .nm-thesis-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 20px; }
   .nm-thesis-p-last { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 28px; }
@@ -569,7 +535,6 @@
   .nm-fig1-caption { font-size: 13px; color: #4F4F68; margin-bottom: 26px; line-height: 1.5; }
 
   .nm-disciplines-head { text-align: center; max-width: 740px; margin: 0 auto 40px; }
-  .nm-disciplines-eyebrow { margin-bottom: 20px; }
   .nm-disciplines-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 48px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 20px; }
   .nm-disciplines-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.6; color: #666687; margin: 0; }
   .nm-disc-title { font-family: var(--font-sans); font-weight: 600; font-size: 18px; color: #292875; margin: 0 0 14px; letter-spacing: -0.02em; line-height: 1.3; }
@@ -583,7 +548,6 @@
   .nm-fig2-note { font-size: 13px; color: #4F4F68; max-width: 240px; line-height: 1.55; }
 
   .nm-landscape-head { max-width: 680px; margin: 0 0 36px; }
-  .nm-landscape-eyebrow { margin-bottom: 18px; }
   .nm-landscape-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 46px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 16px; }
   .nm-landscape-p { font-size: 16.5px; line-height: 1.6; color: #666687; margin: 0; }
   .nm-landscape-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; margin-bottom: 16px; }
@@ -639,7 +603,6 @@
   .nm-thread-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(140,65,204,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,65,204,0.05) 1px,transparent 1px); background-size: 54px 54px; opacity: .6; }
   .nm-thread-inner { position: relative; max-width: 980px; margin: 0 auto; text-align: center; }
   .nm-thread-prism { display: flex; justify-content: center; margin-bottom: 8px; }
-  .nm-thread-eyebrow { margin-bottom: 28px; }
   .nm-thread-p { font-family: var(--font-display); font-weight: 470; font-size: clamp(26px, 5vw, 37px); line-height: 1.32; letter-spacing: -0.028em; color: #FFFFFF; margin: 0; }
 
   .nm-closing { background: linear-gradient(165deg,#0B0420,#120428); padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 32px); border-top: 1px solid rgba(200,200,220,0.08); }
