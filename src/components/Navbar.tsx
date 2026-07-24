@@ -570,7 +570,7 @@ export function Navbar() {
               // card to the page's content width clipped "Request a briefing"
               // past the card's right edge every time it scrolled. This cap is
               // sized to the header's own content, not the page grid.
-              "max-w-[1400px] rounded-t-xl border border-line bg-paper/85 shadow-lg backdrop-blur-xl backdrop-saturate-150"
+              "max-w-[1400px] rounded-t-xl bg-paper/85 shadow-lg backdrop-blur-xl backdrop-saturate-150"
             : "max-w-none rounded-none border border-transparent bg-transparent",
           // The mobile panel butts against the header's bottom edge, so that
           // edge has to be square while it is open or the two read as separate
@@ -596,7 +596,8 @@ export function Navbar() {
           />
           <span
             className={cn(
-              "font-brand text-lg font-extrabold tracking-[0.02em] text-ink-deep transition-colors",
+              "font-brand text-lg font-extrabold tracking-[0.02em] transition-colors",
+              onDark ? "text-white" : "text-ink-deep",
             )}
           >
             NAMLAMEIS
