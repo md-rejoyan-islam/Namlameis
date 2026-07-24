@@ -3,8 +3,8 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BrandMark } from "./BrandMark";
 import { cn } from "@/lib/cn";
 
 type Item = { name: string; desc?: string; href: string };
@@ -536,10 +536,10 @@ export function Navbar() {
   const linkTone = (seg: string) => {
     const active = pathname.startsWith(seg);
     if (onDark) return active ? "text-white" : "text-taupe hover:text-white";
-    // Base colour is the same deep #292875 heading ink as the section titles,
-    // not a lighter muted grey — hover/active both move to the accent blue so
-    // there is still a clear "you are here" / "you are pointing at this" cue.
-    return active ? "text-blue-text" : "text-heading hover:text-blue-text";
+    // Base colour is the deepest ink (#0b0420) — reads as black on the
+    // floating card — while hover/active still move to the accent blue for a
+    // clear "you are here" cue.
+    return active ? "text-blue-text" : "text-ink-deep hover:text-blue-text";
   };
 
   return (
@@ -560,9 +560,10 @@ export function Navbar() {
         className={cn(
           "pointer-events-auto relative mx-auto flex h-[88px] w-full items-center justify-between gap-3 min-[1280px]:gap-5",
           // Gutter matches Container's px-6 sm:px-10 exactly, so the logo lands
-          // on the same vertical as the h1 beneath it, in both states.
-          "px-6 sm:px-10",
-          "transition-[background-color,box-shadow,border-color,border-radius,max-width] duration-300",
+          // on the same vertical as the h1 beneath it. Pulled in slightly when
+          // the bar is a floating card so the scrolled header reads tighter.
+          floating ? "px-4 sm:px-6" : "px-6 sm:px-10",
+          "transition-[background-color,box-shadow,border-color,border-radius,max-width,padding] duration-300",
           floating
             ? // Deliberately NOT --container-content (1200px, the page's own
               // content width): logo + six nav triggers + two CTAs need ~1270px
@@ -582,11 +583,18 @@ export function Navbar() {
           href="/"
           className="flex flex-none items-center gap-3 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          <BrandMark size={38} />
+          <Image
+            src="/logo.png"
+            alt=""
+            width={38}
+            height={38}
+            priority
+            aria-hidden="true"
+            className="h-[38px] w-auto flex-none"
+          />
           <span
             className={cn(
-              "font-brand text-lg font-extrabold tracking-[0.02em] transition-colors",
-              onDark ? "text-white" : "text-heading",
+              "font-brand text-lg font-extrabold tracking-[0.02em] text-ink-deep transition-colors",
             )}
           >
             NAMLAMEIS
@@ -601,7 +609,7 @@ export function Navbar() {
           <Link
             href="/platform"
             className={cn(
-              "rounded-xs px-2.5 py-2 text-[15px] font-normal transition-colors",
+              "rounded-xs px-2.5 py-2 text-[15px] font-medium transition-colors",
               linkTone("/platform"),
             )}
           >
@@ -645,7 +653,7 @@ export function Navbar() {
                 aria-controls={`nav-menu-${m.key}`}
                 onClick={() => setOpen(open === m.key ? null : m.key)}
                 className={cn(
-                  "inline-flex cursor-pointer items-center gap-1.5 rounded-xs px-2.5 py-2 text-[15px] font-normal transition-colors",
+                  "inline-flex cursor-pointer items-center gap-1.5 rounded-xs px-2.5 py-2 text-[15px] font-medium transition-colors",
                   linkTone(m.seg),
                 )}
               >

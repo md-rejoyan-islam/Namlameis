@@ -143,25 +143,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="nm-trust-band">
-          <div className="nm-trust-band-inner">
-            {[
-              { label: "Regulatory alignment", items: ["DORA", "NIS2", "EU AI ACT", "GDPR"] },
-              { label: "Platform coverage", items: ["AWS", "AZURE", "GOOGLE CLOUD", "MICROSOFT 365"] },
-            ].flatMap((group, gi) => [
-              ...(gi > 0 ? [<span key="trust-div" aria-hidden="true" className="nm-trust-divider" />] : []),
-              <div key={group.label} className="nm-trust-group">
-                <span className="nm-trust-group-label">{group.label}</span>
-                <div className="nm-trust-items">
-                  {group.items.flatMap((it, ii) => [
-                    ...(ii > 0 ? [<span key={`${group.label}-dot-${ii}`} aria-hidden="true" className="nm-trust-dot" />] : []),
-                    <span key={it} className="nm-trust-chip">{it}</span>,
-                  ])}
-                </div>
-              </div>,
-            ])}
-          </div>
-        </div>
       </section>
 
       {/* ============ THESIS + FIG 1 ============ */}

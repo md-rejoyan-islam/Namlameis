@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* Season Mix (TRIAL) — upright cuts used for home page title text. The non-bold
+   title words use Regular (400), the bold keyword spans use Bold (700). The
+   family name "Season Mix-TRIAL" matches the name table inside the files, so
+   the browser selects weight by font-weight alone. Falls back to Inter. */
+@font-face {
+  font-family: "Season Mix-TRIAL";
+  src: url("/fonts/SeasonMix-TRIAL-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Season Mix-TRIAL";
+  src: url("/fonts/SeasonMix-TRIAL-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /*
   Namlameis brand system — Strapi-informed premium palette
@@ -99,6 +118,8 @@
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-brand: var(--font-inter), ui-sans-serif, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+  /* Home page titles — Season Mix (TRIAL), falling back to Inter. */
+  --font-season: "Season Mix-TRIAL", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* ── Type scale — even numbers only, mirroring Cyera's 14/16/20/24/32/56.
      The old system had ~48 sizes incl. half-pixels (9.5, 10.5, 15.5).
@@ -483,7 +504,7 @@
   /* Top padding clears the 88px fixed header and then adds breathing room on
      top of it, so the eyebrow does not sit tight under the bar. */
   .nm-hero-content { position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(104px, 12vw, 152px) clamp(20px, 5vw, 32px) clamp(40px, 6vw, 64px); display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 56px; align-items: center; }
-  .nm-hero-h1 { font-family: var(--font-display); font-weight: 540; font-size: clamp(30px, 5.2vw, 48px); line-height: 1.08; letter-spacing: -0.02em; color: #292875; margin: 0 0 24px; }
+  .nm-hero-h1 { font-family: var(--font-season); font-weight: 400; font-size: clamp(30px, 5.2vw, 48px); line-height: 1.08; letter-spacing: -0.02em; color: var(--color-ink-deep); margin: 0 0 24px; }
   /* #5C5C7A on white is 6.43:1, comfortably clearing AA for 16px text. */
   .nm-hero-lead { font-size: 16px; line-height: 1.6; color: #5C5C7A; max-width: 520px; margin: 0 0 32px; }
   .nm-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -523,7 +544,7 @@
   .nm-section-inner { max-width: 1180px; margin: 0 auto; }
 
   .nm-thesis-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 48px; align-items: center; }
-  .nm-thesis-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #292875; margin: 0 0 26px; }
+  .nm-thesis-h2 { font-family: var(--font-season); font-weight: 400; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: var(--color-ink-deep); margin: 0 0 26px; }
   .nm-thesis-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 20px; }
   .nm-thesis-p-last { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.76; color: #666687; margin: 0 0 28px; }
   .nm-thesis-strong { color: #292875; font-weight: 600; }
@@ -535,7 +556,7 @@
   .nm-fig1-caption { font-size: 13px; color: #4F4F68; margin-bottom: 26px; line-height: 1.5; }
 
   .nm-disciplines-head { text-align: center; max-width: 740px; margin: 0 auto 40px; }
-  .nm-disciplines-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 48px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 20px; }
+  .nm-disciplines-h2 { font-family: var(--font-season); font-weight: 400; font-size: clamp(28px, 5vw, 48px); line-height: 1.06; letter-spacing: -0.02em; color: var(--color-ink-deep); margin: 0 0 20px; }
   .nm-disciplines-p { font-size: clamp(15.5px, 2.4vw, 17px); line-height: 1.6; color: #666687; margin: 0; }
   .nm-disc-title { font-family: var(--font-sans); font-weight: 600; font-size: 18px; color: #292875; margin: 0 0 14px; letter-spacing: -0.02em; line-height: 1.3; }
   .nm-disc-blurb { font-size: 14px; line-height: 1.7; color: #666687; margin: 0 0 16px; }
@@ -544,11 +565,11 @@
   .nm-disc-link { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: #4945FF; display: inline-flex; align-items: center; justify-content: flex-start; gap: 8px; border-top: 1px solid #E9E9FF; padding-top: 16px; width: 100%; }
   .nm-fig2-card { margin: 32px 0 0; background: #F6F9FC; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 14px; padding: clamp(18px, 3vw, 32px) clamp(16px, 3.5vw, 30px); box-shadow: var(--shadow-graph); }
   .nm-fig2-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
-  .nm-fig2-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 3.4vw, 25px); letter-spacing: -0.025em; color: #292875; max-width: 520px; line-height: 1.24; }
+  .nm-fig2-title { font-family: var(--font-season); font-weight: 400; font-size: clamp(20px, 3.4vw, 25px); letter-spacing: -0.025em; color: var(--color-ink-deep); max-width: 520px; line-height: 1.24; }
   .nm-fig2-note { font-size: 13px; color: #4F4F68; max-width: 240px; line-height: 1.55; }
 
   .nm-landscape-head { max-width: 680px; margin: 0 0 36px; }
-  .nm-landscape-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(28px, 5vw, 46px); line-height: 1.06; letter-spacing: -0.02em; color: #292875; margin: 0 0 16px; }
+  .nm-landscape-h2 { font-family: var(--font-season); font-weight: 400; font-size: clamp(28px, 5vw, 46px); line-height: 1.06; letter-spacing: -0.02em; color: var(--color-ink-deep); margin: 0 0 16px; }
   .nm-landscape-p { font-size: 16.5px; line-height: 1.6; color: #666687; margin: 0; }
   .nm-landscape-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; margin-bottom: 16px; }
   .nm-stat-card { background: #F6F9FC; border: 1px solid rgba(41, 40, 117, 0.08); border-radius: 10px; padding: 20px 22px 24px; box-shadow: var(--shadow-graph); }
@@ -603,20 +624,33 @@
   .nm-thread-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(140,65,204,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,65,204,0.05) 1px,transparent 1px); background-size: 54px 54px; opacity: .6; }
   .nm-thread-inner { position: relative; max-width: 980px; margin: 0 auto; text-align: center; }
   .nm-thread-prism { display: flex; justify-content: center; margin-bottom: 8px; }
-  .nm-thread-p { font-family: var(--font-display); font-weight: 470; font-size: clamp(26px, 5vw, 37px); line-height: 1.32; letter-spacing: -0.028em; color: #FFFFFF; margin: 0; }
+  /* On the dark #120428 section — black text would be invisible, so white. */
+  .nm-thread-p { font-family: var(--font-season); font-weight: 400; font-size: clamp(26px, 5vw, 37px); line-height: 1.32; letter-spacing: -0.028em; color: #FFFFFF; margin: 0; }
 
   .nm-closing { background: linear-gradient(165deg,#0B0420,#120428); padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 32px); border-top: 1px solid rgba(200,200,220,0.08); }
   .nm-closing-inner { max-width: 860px; margin: 0 auto; text-align: center; }
-  .nm-closing-h2 { font-family: var(--font-display); font-weight: 540; font-size: clamp(32px, 6.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: #FFFFFF; margin: 0 0 24px; }
+  /* On the dark closing gradient — black text would be invisible, so white. */
+  .nm-closing-h2 { font-family: var(--font-season); font-weight: 400; font-size: clamp(32px, 6.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: #FFFFFF; margin: 0 0 24px; }
   .nm-closing-p { font-size: clamp(15.5px, 2.4vw, 18px); line-height: 1.6; color: rgba(200,200,220,0.7); margin: 0 auto 40px; max-width: 620px; }
   .nm-closing-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .nm-closing-primary { padding: 14px 28px; background: var(--grad-cta); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
   .nm-closing-ghost { padding: 14px 28px; background: rgba(255,255,255,0.03); border: 1px solid rgba(200,200,220,0.22); color: #FFFFFF; font-family: var(--font-sans); font-size: 15px; font-weight: 550; letter-spacing: -0.01em; text-decoration: none; border-radius: 12px; }
 
-  /* Reusable keyword-highlight spans (the blue/violet words inside headings) */
-  .nm-hl-blue { color: #4945FF; font-weight: 560; }
-  .nm-hl-violet-550 { color: #A5A2FF; font-weight: 550; }
-  .nm-hl-violet-560 { color: #A5A2FF; font-weight: 560; }
+  /* Reusable keyword-highlight spans inside headings: bold + black, so the
+     keyword reads as the emphatic word against the normal-weight surrounding
+     text. (Previously these were coloured blue/violet at medium weight.)
+     Black everywhere — including the dark-section headings. */
+  /* Bold keyword spans — explicit font-family so they always render in
+     Season Mix Bold (700), never falling back to the body's Inter through
+     inheritance or a utility override. Black on light sections. */
+  .nm-hl-blue { font-family: var(--font-sans); color: var(--color-ink-deep); font-weight: 700; }
+  .nm-hl-violet-550 { font-family: var(--font-season); color: var(--color-ink-deep); font-weight: 700; }
+  .nm-hl-violet-560 { font-family: var(--font-season); color: var(--color-ink-deep); font-weight: 700; }
+
+  /* On the dark thread/closing sections black spans would be invisible —
+     scope them to white within those two headings only. */
+  .nm-thread-p .nm-hl-violet-550,
+  .nm-closing-h2 .nm-hl-violet-560 { color: #FFFFFF; }
 
   @media (max-width: 1023px) {
     .nm-suite-grid { grid-template-columns: 1fr 1fr !important; }
