@@ -582,12 +582,12 @@ export function Navbar() {
           href="/"
           className="flex flex-none items-center gap-3 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          {/* Plain <img> rather than next/image: a logo is tiny and above the
-              fold, so Vercel's image-optimization hop adds a redirect that can
-              404. Serving the static file directly is faster and more robust. */}
+          {/* Two logo variants: white over dark heroes, black on the light
+              floating card. Plain <img> (not next/image) — a static logo
+              doesn't need optimization, and the redirect hop can 404 on Vercel. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
+            src={onDark ? "/logo-white.png" : "/logo-black.png"}
             alt=""
             width={38}
             height={38}

@@ -54,15 +54,15 @@ const pillars = [
  */
 function LeaderProfile({ leader }: { leader: Leader }) {
   return (
-    <article className="grid items-start overflow-hidden rounded-[var(--radius-2xl)] bg-mist shadow-[var(--shadow-card)] md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
-      {/* Portrait — capped height on md+ (shorter than the message column),
-          fixed aspect on mobile. */}
-      <Reveal>
+    <article className="grid items-stretch overflow-hidden rounded-[var(--radius-2xl)] bg-mist shadow-[var(--shadow-card)] md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
+      {/* Portrait — fills its column height (no white gap), column is narrow
+          so the image stays small. Fixed aspect on mobile. */}
+      <Reveal className="h-full min-h-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={leader.photo}
           alt={`Portrait of ${leader.name}, ${leader.role}`}
-          className="aspect-[4/5] w-full object-cover md:aspect-auto md:h-[22rem] md:w-full"
+          className="aspect-[4/5] h-full w-full object-cover md:aspect-auto"
           loading="lazy"
         />
       </Reveal>

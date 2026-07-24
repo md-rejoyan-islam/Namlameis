@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BrandMark } from "./BrandMark";
 import { Container } from "./ui/Container";
 
 /**
@@ -87,7 +86,17 @@ export function Footer() {
         >
           <div className="max-w-[300px]">
             <div className="mb-4 flex items-center gap-3">
-              <BrandMark size={38} />
+              {/* White logo on the footer's dark ink background. Plain <img>:
+                  static asset, avoids the next/image optimization hop. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-white.png"
+                alt=""
+                width={38}
+                height={38}
+                aria-hidden="true"
+                className="h-[38px] w-auto flex-none"
+              />
               <span className="font-brand text-base font-extrabold tracking-[0.02em] text-white">
                 NAMLAMEIS
               </span>
