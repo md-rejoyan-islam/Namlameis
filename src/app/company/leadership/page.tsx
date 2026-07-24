@@ -54,9 +54,9 @@ const pillars = [
  */
 function LeaderProfile({ leader }: { leader: Leader }) {
   return (
-    <article className="grid items-stretch overflow-hidden rounded-[var(--radius-2xl)] bg-mist shadow-[var(--shadow-card)] md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
-      {/* Portrait — fills its column height (no white gap), column is narrow
-          so the image stays small. Fixed aspect on mobile. */}
+    <article className="mx-auto grid w-full max-w-5xl items-stretch overflow-hidden rounded-[var(--radius-2xl)] bg-mist shadow-[var(--shadow-card)] md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
+      {/* Portrait — fills its column height (no white gap), narrow column so
+          the image stays small. Fixed aspect on mobile. */}
       <Reveal className="h-full min-h-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -68,7 +68,7 @@ function LeaderProfile({ leader }: { leader: Leader }) {
       </Reveal>
 
       {/* Message side */}
-      <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+      <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-10">
         <Reveal delay={80}>
           {/* small amber rule — a formal plate marker */}
           <span className="mb-4 block h-px w-10 bg-amber/50" aria-hidden="true" />
