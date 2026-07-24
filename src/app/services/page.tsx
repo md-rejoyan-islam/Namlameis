@@ -41,7 +41,7 @@ export default function ServicesPage() {
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ maxWidth: 640, margin: "56px 0 44px" }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%"), fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#4945FF", marginBottom: 16 }}>THE SERVICE CATALOGUE</div>
-            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 36px)", lineHeight: 1.16, color: "#292875", margin: 0 }}>Platform-grade, human-delivered.</h2>
+            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 36px)", lineHeight: 1.16, color: "#0b0420", margin: 0 }}>Platform-grade, human-delivered.</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {serviceCatalogue.map((s) => (

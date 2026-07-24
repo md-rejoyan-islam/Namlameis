@@ -49,8 +49,8 @@ export function SectionHeading({
     >
       <h2
         className={cn(
-          "font-display text-xl font-medium leading-[1.12] tracking-tight sm:text-2xl",
-          light ? "text-paper" : "text-heading",
+          "font-display text-xl font-normal leading-[1.12] tracking-tight sm:text-2xl [&_strong]:font-bold",
+          light ? "text-paper" : "text-ink-deep",
         )}
       >
         {title}

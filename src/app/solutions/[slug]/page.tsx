@@ -72,7 +72,7 @@ export default async function SolutionPage({
       <Section tone="mist">
         <Container>
           <Reveal>
-            <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
+            <h2 className="max-w-2xl font-display text-3xl font-normal leading-tight tracking-tight text-ink-deep [&_strong]:font-bold sm:text-4xl">
               What this practice covers.
             </h2>
           </Reveal>
@@ -98,7 +98,7 @@ export default async function SolutionPage({
         <Section tone="paper">
           <Container>
             <Reveal className="max-w-3xl">
-              <h2 className="font-display text-3xl font-medium leading-tight tracking-tight text-heading sm:text-4xl">
+              <h2 className="font-display text-3xl font-normal leading-tight tracking-tight text-ink-deep [&_strong]:font-bold sm:text-4xl">
                 {solution.method.heading}
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-muted">

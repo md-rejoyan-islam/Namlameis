@@ -243,7 +243,7 @@ function FeatureSection({
           )}
         >
           <Reveal>
-            <h2 className="font-display text-2xl font-medium leading-[1.12] tracking-tight text-heading sm:text-3xl">
+            <h2 className="font-display text-2xl font-normal leading-[1.12] tracking-tight text-ink-deep [&_strong]:font-bold sm:text-3xl">
               {title}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted">{intro}</p>

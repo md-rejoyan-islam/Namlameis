@@ -57,7 +57,7 @@ export function PageHero({
       <Container className="relative py-24 sm:py-32">
         <div className="max-w-3xl">
           <Reveal delay={60}>
-            <h1 className="font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+            <h1 className="font-display text-3xl font-normal leading-[1.05] tracking-tight text-paper [&_strong]:font-bold sm:text-4xl md:text-5xl">
               {title}
             </h1>
           </Reveal>

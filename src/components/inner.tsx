@@ -28,7 +28,7 @@ export function DarkHero({
   const align = split ? "left" : "center";
   const content = (
     <>
-      <h1 style={{ ...rise(".85s", "entry 0% cover 24%"), fontFamily: serif, fontWeight: 600, fontSize: split ? "clamp(30px, 6.2vw, 46px)" : "clamp(30px, 6.4vw, 52px)", lineHeight: 1.06, letterSpacing: "-0.02em", color: "#FFFFFF", margin: "0 0 22px" }}>
+      <h1 style={{ ...rise(".85s", "entry 0% cover 24%"), fontFamily: serif, fontWeight: 400, fontSize: split ? "clamp(30px, 6.2vw, 46px)" : "clamp(30px, 6.4vw, 52px)", lineHeight: 1.06, letterSpacing: "-0.02em", color: "#FFFFFF", margin: "0 0 22px" }}>
         {title.before}
         {title.italic && <span style={{ fontStyle: "italic", color: "#B77BEE" }}>{title.before ? " " : ""}{title.italic}</span>}
         {title.after}
@@ -67,7 +67,7 @@ export function CtaBand({ heading, subtext, primary, secondary }: { heading: str
   return (
     <section style={{ background: "linear-gradient(165deg,#0B0420,#120428)", padding: "clamp(52px, 11vw, 92px) clamp(20px, 5vw, 32px)", borderTop: "1px solid rgba(200,200,220,0.08)" }}>
       <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
-        <h2 style={{ ...rise(".85s", "entry 0% cover 30%"), fontFamily: serif, fontWeight: 600, fontSize: "clamp(26px, 5vw, 38px)", lineHeight: 1.12, color: "#FFFFFF", margin: subtext ? "0 0 14px" : "0 0 28px" }}>{heading}</h2>
+        <h2 style={{ ...rise(".85s", "entry 0% cover 30%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 38px)", lineHeight: 1.12, color: "#FFFFFF", margin: subtext ? "0 0 14px" : "0 0 28px" }}>{heading}</h2>
         {subtext && <p style={{ ...rise(".85s", "entry 0% cover 33%"), fontSize: 16, lineHeight: 1.7, color: "rgba(200,200,220,0.62)", margin: "0 auto 28px", maxWidth: 560 }}>{subtext}</p>}
         <div style={{ ...rise(".85s", "entry 0% cover 34%"), display: "flex", gap: 13, justifyContent: "center", flexWrap: "wrap" }}>
           <Link href={primary.href} className="nm-cta-primary" style={{ padding: "16px 30px", background: "var(--grad-cta)", color: "#FFFFFF", fontFamily: sans, fontSize: 15, fontWeight: 600, textDecoration: "none", borderRadius: 9999, boxShadow: "var(--shadow-blue)" }}>{primary.label}</Link>

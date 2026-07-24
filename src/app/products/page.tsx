@@ -31,7 +31,7 @@ export default function ProductsPage() {
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>
           <div style={{ maxWidth: 620, margin: "0 0 48px" }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%"), fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#4945FF", marginBottom: 16 }}>THE PRODUCT SUITE</div>
-            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 36px)", lineHeight: 1.16, color: "#292875", margin: 0 }}>A platform around the service.</h2>
+            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 36px)", lineHeight: 1.16, color: "#0b0420", margin: 0 }}>A platform around the service.</h2>
           </div>
           <div className="nm-suite-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
             {productSuite.map((p) => (
@@ -54,7 +54,7 @@ export default function ProductsPage() {
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <div style={{ maxWidth: 640, margin: "0 0 44px" }}>
             <div style={{ ...rise(".8s", "entry 0% cover 24%"), fontFamily: mono, fontSize: 12, letterSpacing: "0.2em", color: "#4945FF", marginBottom: 16 }}>PLATFORM ARCHITECTURE</div>
-            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 34px)", lineHeight: 1.16, color: "#292875", margin: 0 }}>How the products fit together.</h2>
+            <h2 style={{ ...rise(".8s", "entry 0% cover 28%"), fontFamily: serif, fontWeight: 400, fontSize: "clamp(26px, 5vw, 34px)", lineHeight: 1.16, color: "#0b0420", margin: 0 }}>How the products fit together.</h2>
           </div>
           <figure style={{ ...rise("1s", "entry 0% cover 30%"), margin: 0 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 760 }}>

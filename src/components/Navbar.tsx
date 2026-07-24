@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
@@ -583,12 +582,15 @@ export function Navbar() {
           href="/"
           className="flex flex-none items-center gap-3 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          <Image
+          {/* Plain <img> rather than next/image: a logo is tiny and above the
+              fold, so Vercel's image-optimization hop adds a redirect that can
+              404. Serving the static file directly is faster and more robust. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/logo.png"
             alt=""
             width={38}
             height={38}
-            priority
             aria-hidden="true"
             className="h-[38px] w-auto flex-none"
           />

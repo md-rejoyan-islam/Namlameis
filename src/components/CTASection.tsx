@@ -17,7 +17,7 @@ export function CTASection({
     <section className="bg-ink text-paper">
       <Container className="py-20 sm:py-24">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+          <h2 className="font-display text-3xl font-normal leading-tight tracking-tight text-paper [&_strong]:font-bold sm:text-4xl">
             {title}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-paper/70">
